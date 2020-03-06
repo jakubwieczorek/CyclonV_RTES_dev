@@ -1,0 +1,52 @@
+# reading modelsim.ini
+# Loading project counter_parallel_port_tb
+# Compile of DE1_SoC_top_level.vhd was successful.
+# Compile of counter_parallel_port_tb.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of DE1_SoC_top_level.vhd was successful.
+# Compile of counter_parallel_port_tb.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of DE1_SoC_top_level.vhd was successful.
+# Compile of counter_parallel_port_tb.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of DE1_SoC_top_level.vhd was successful.
+# Compile of counter_parallel_port_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.tst_bench
+# vsim work.tst_bench 
+# Start time: 19:00:48 on Mar 06,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tst_bench(tst_bench_logic)
+# ** Warning: (vsim-3473) Component instance "counter_parallel_port_instance : counter_parallel_port" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /tst_bench File: /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+add wave -position end sim:/tst_bench/*
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /tst_bench
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /tst_bench/stopsim File: /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+# Break in Process stopsim at /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd line 42
+vsim work.tst_bench -t ns
+# End time: 19:01:45 on Mar 06,2020, Elapsed time: 0:00:57
+# Errors: 1, Warnings: 2
+# vsim work.tst_bench -t ns 
+# Start time: 19:01:45 on Mar 06,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tst_bench(tst_bench_logic)
+# ** Warning: (vsim-3473) Component instance "counter_parallel_port_instance : counter_parallel_port" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tst_bench File: /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+add wave -position end sim:/tst_bench/*
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /tst_bench
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /tst_bench/stopsim File: /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+# Break in Process stopsim at /home/vm/Documents/QuartusV_RTES/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd line 42
+# End time: 19:02:27 on Mar 06,2020, Elapsed time: 0:00:42
+# Errors: 1, Warnings: 2

@@ -6,7 +6,7 @@ END tst_bench;
 
 architecture tst_bench_logic OF tst_bench IS
 	
-	COMPONENT counter_parallel_port IS
+	COMPONENT counter_parallel_port
 		PORT
 		(
 			CLOCK_50 : in  STD_LOGIC;
@@ -41,5 +41,4 @@ architecture tst_bench_logic OF tst_bench IS
 		assert false;
 		report "simulation finished" severity failure;
 	end process;
-	
 END tst_bench_logic;

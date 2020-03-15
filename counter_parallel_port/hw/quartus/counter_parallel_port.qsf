@@ -1155,6 +1155,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1_D35
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE ../modelsim/parallel_port_tb.vhd
+set_global_assignment -name VHDL_FILE ../hdl/parallel_port.vhd
 set_global_assignment -name VHDL_FILE ../modelsim/counter_tb.vhd
 set_global_assignment -name VHDL_FILE ../modelsim/counter_parallel_port_tb.vhd
 set_global_assignment -name QSYS_FILE soc_system.qsys

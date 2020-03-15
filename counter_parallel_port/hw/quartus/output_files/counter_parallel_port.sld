@@ -2,7 +2,7 @@
   <sld_infos>
     <sld_info hpath="" name="">
       <assignment_values>
-        <assignment_value text="QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1583749159"/>
+        <assignment_value text="QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1584278972"/>
       </assignment_values>
     </sld_info>
     <sld_info hpath="sld_hub:auto_hub" name="auto_hub">

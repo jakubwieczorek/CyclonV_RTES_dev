@@ -22,9 +22,9 @@ VWN6[`2Ml>H_NzLzZ2bVWf1
 !s100 T1MOIeFTj7@AFA8]Q?ZdA1
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1584311546
+Z8 !s110 1584382339
 !i10b 1
-Z9 !s108 1584311546.000000
+Z9 !s108 1584382339.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd|
 Z11 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd|
 !i113 1
@@ -130,7 +130,7 @@ R23
 R12
 R13
 Eparallel_port
-Z24 w1584311459
+Z24 w1584379864
 R1
 R2
 R3
@@ -139,15 +139,15 @@ Z25 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd
 Z26 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd
 l0
 L5
-V>a8A<54nH>kWDQSQl@4<C2
-!s100 f4CPk:OIFzfgEBKWaIFgF1
+V^ZkSoU6ga_mQAIPSd2_?32
+!s100 QJ9d1z]:`AS6V?^HW:;zn3
 R7
 32
-Z27 !s110 1584311547
+R8
 !i10b 1
 R9
-Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd|
-Z29 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd|
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd|
+Z28 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd|
 !i113 1
 R12
 R13
@@ -155,40 +155,40 @@ Aparallel_port_logic
 R1
 R2
 R3
-DEx4 work 13 parallel_port 0 22 >a8A<54nH>kWDQSQl@4<C2
-l28
-L24
-V2mcbo5HdL?<8W<V7IYZke0
-!s100 E:Mf8]B;7<W@a_FbYc05b3
+DEx4 work 13 parallel_port 0 22 ^ZkSoU6ga_mQAIPSd2_?32
+l29
+L25
+VZ:m4nLS=ST>ZGZH9bQzmh2
+!s100 Tb@YSoKd7c[G[:ncdVLWS2
 R7
 32
-R27
+R8
 !i10b 1
 R9
+R27
 R28
-R29
 !i113 1
 R12
 R13
 Eparallel_port_tb
-Z30 w1584310337
+Z29 w1584382188
 R1
 R2
 R3
 R4
-Z31 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-Z32 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
+Z30 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
+Z31 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
 l0
 L5
 Vf:kk761OaJ6lQglN]M08[2
 !s100 Z3`hd9K3=bm7`YL2ClL;=2
 R7
 32
-R27
+R8
 !i10b 1
-Z33 !s108 1584311547.000000
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd|
-Z35 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd|
+R9
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd|
+Z33 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd|
 !i113 1
 R12
 R13
@@ -196,28 +196,28 @@ Aparallel_port_tb_logic
 R1
 R2
 R3
-DEx4 work 16 parallel_port_tb 0 22 f:kk761OaJ6lQglN]M08[2
-l38
+Z34 DEx4 work 16 parallel_port_tb 0 22 f:kk761OaJ6lQglN]M08[2
+l39
 L8
-V;odII[G?W:]ROPN=KdZOI2
-!s100 Qzn2LK1[7`cCOzjf^?AVd1
+VlM2>caQ=Ez[:BNLL9<bgT1
+!s100 :Y2z2IJeFBWUKCoOdK^gB0
 R7
 32
-R27
+R8
 !i10b 1
+R9
+R32
 R33
-R34
-R35
 !i113 1
 R12
 R13
 Etst_bench
-Z36 w1583747623
+Z35 w1583747623
 R2
 R3
 R4
-Z37 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
-Z38 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+Z36 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+Z37 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
 l0
 L4
 VF_6OZbQ12Ui_Hb8MUES[a0
@@ -227,8 +227,8 @@ R7
 R8
 !i10b 1
 R9
-Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
-Z40 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
+Z39 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
 !i113 1
 R12
 R13
@@ -245,8 +245,8 @@ R7
 R8
 !i10b 1
 R9
+R38
 R39
-R40
 !i113 1
 R12
 R13

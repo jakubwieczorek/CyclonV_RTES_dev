@@ -6,10 +6,10 @@
    <connections preferredWidth="143" />
    <irq preferredWidth="34" />
    <export preferredWidth="270" />
-   <name preferredWidth="246" />
+   <name preferredWidth="222" />
    <description preferredWidth="228" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library expandedCategories="Project,Library,Project/custom_components" />
  <window width="1293" height="741" x="67" y="27" />
 </preferences>

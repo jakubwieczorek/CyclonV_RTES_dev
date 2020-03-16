@@ -1,6 +1,7 @@
 	soc_system u0 (
-		.clk_clk                          (<connected-to-clk_clk>),                          //                       clk.clk
-		.pio_0_external_connection_export (<connected-to-pio_0_external_connection_export>), // pio_0_external_connection.export
-		.reset_reset_n                    (<connected-to-reset_reset_n>)                     //                     reset.reset_n
+		.clk_clk                                        (<connected-to-clk_clk>),                                        //                         clk.clk
+		.parallel_port_0_conduit_end_beginbursttransfer (<connected-to-parallel_port_0_conduit_end_beginbursttransfer>), // parallel_port_0_conduit_end.beginbursttransfer
+		.pio_0_external_connection_export               (<connected-to-pio_0_external_connection_export>),               //   pio_0_external_connection.export
+		.reset_reset_n                                  (<connected-to-reset_reset_n>)                                   //                       reset.reset_n
 	);
 

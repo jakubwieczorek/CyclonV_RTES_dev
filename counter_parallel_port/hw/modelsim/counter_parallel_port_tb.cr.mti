@@ -14,4 +14,22 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity tst_bench
 -- Compiling architecture tst_bench_logic of tst_bench
 
+} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity counter_tb
+-- Compiling architecture counter_tb_logic of counter_tb
+
+} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity counter
+-- Compiling architecture counter_logic of counter
+
 } {} {}}

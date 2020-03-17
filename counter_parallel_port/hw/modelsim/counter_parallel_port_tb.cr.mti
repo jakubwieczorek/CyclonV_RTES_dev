@@ -1,10 +1,11 @@
-/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vhd
+/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity DE1_SoC_top_level
--- Compiling architecture rtl of DE1_SoC_top_level
+-- Loading package NUMERIC_STD
+-- Compiling entity counter_tb
+-- Compiling architecture counter_tb_logic of counter_tb
 
 } {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -14,14 +15,13 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity tst_bench
 -- Compiling architecture tst_bench_logic of tst_bench
 
-} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd
+} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity counter_tb
--- Compiling architecture counter_tb_logic of counter_tb
+-- Compiling entity DE1_SoC_top_level
+-- Compiling architecture rtl of DE1_SoC_top_level
 
 } {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016

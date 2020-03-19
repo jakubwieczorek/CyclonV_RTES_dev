@@ -176,7 +176,6 @@ architecture rtl of soc_system is
 
 	component soc_system_mm_interconnect_0 is
 		port (
-			clk_0_clk_clk                                             : in  std_logic                     := 'X';             -- clk
 			pll_0_outclk0_clk                                         : in  std_logic                     := 'X';             -- clk
 			pll_0_outclk1_clk                                         : in  std_logic                     := 'X';             -- clk
 			interupt_counter_0_reset_sink_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
@@ -466,7 +465,7 @@ architecture rtl of soc_system is
 		);
 	end component soc_system_rst_controller_002;
 
-	signal pll_0_outclk0_clk                                               : std_logic;                     -- pll_0:outclk_0 -> [irq_synchronizer_001:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, rst_controller_001:clk, sysid:clock]
+	signal pll_0_outclk0_clk                                               : std_logic;                     -- pll_0:outclk_0 -> [interupt_counter_0:Clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, nios_buttons:clk, nios_leds:clk, parallel_port_0:Clk, rst_controller:clk, rst_controller_001:clk, sysid:clock]
 	signal pll_0_outclk1_clk                                               : std_logic;                     -- pll_0:outclk_1 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, mm_interconnect_0:pll_0_outclk1_clk, nios2_gen2_0:clk, rst_controller_002:clk, sdram_controller_0:clk]
 	signal nios2_gen2_0_data_master_readdata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	signal nios2_gen2_0_data_master_waitrequest                            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
@@ -544,15 +543,15 @@ architecture rtl of soc_system is
 	signal mm_interconnect_0_sdram_controller_0_s1_read_ports_inv          : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_read:inv -> sdram_controller_0:az_rd_n
 	signal mm_interconnect_0_sdram_controller_0_s1_byteenable_ports_inv    : std_logic_vector(1 downto 0);  -- mm_interconnect_0_sdram_controller_0_s1_byteenable:inv -> sdram_controller_0:az_be_n
 	signal mm_interconnect_0_sdram_controller_0_s1_write_ports_inv         : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_write:inv -> sdram_controller_0:az_wr_n
-	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [interupt_counter_0:nReset, nios_buttons:reset_n, nios_leds:reset_n, parallel_port_0:nReset]
-	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [jtag_uart_0:rst_n, sysid:reset_n]
+	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [interupt_counter_0:nReset, nios_buttons:reset_n, parallel_port_0:nReset]
+	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [jtag_uart_0:rst_n, nios_leds:reset_n, sysid:reset_n]
 	signal rst_controller_002_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> [nios2_gen2_0:reset_n, sdram_controller_0:reset_n]
 
 begin
 
 	interupt_counter_0 : component counter
 		port map (
-			Clk        => clk_clk,                                                        --            clock.clk
+			Clk        => pll_0_outclk0_clk,                                              --            clock.clk
 			Address    => mm_interconnect_0_interupt_counter_0_avalon_slave_0_address,    --   avalon_slave_0.address
 			ChipSelect => mm_interconnect_0_interupt_counter_0_avalon_slave_0_chipselect, --                 .chipselect
 			Read       => mm_interconnect_0_interupt_counter_0_avalon_slave_0_read,       --                 .read
@@ -611,7 +610,7 @@ begin
 
 	nios_buttons : component soc_system_nios_buttons
 		port map (
-			clk      => clk_clk,                                    --                 clk.clk
+			clk      => pll_0_outclk0_clk,                          --                 clk.clk
 			reset_n  => rst_controller_reset_out_reset_ports_inv,   --               reset.reset_n
 			address  => mm_interconnect_0_nios_buttons_s1_address,  --                  s1.address
 			readdata => mm_interconnect_0_nios_buttons_s1_readdata, --                    .readdata
@@ -620,8 +619,8 @@ begin
 
 	nios_leds : component soc_system_nios_leds
 		port map (
-			clk        => clk_clk,                                        --                 clk.clk
-			reset_n    => rst_controller_reset_out_reset_ports_inv,       --               reset.reset_n
+			clk        => pll_0_outclk0_clk,                              --                 clk.clk
+			reset_n    => rst_controller_001_reset_out_reset_ports_inv,   --               reset.reset_n
 			address    => mm_interconnect_0_nios_leds_s1_address,         --                  s1.address
 			write_n    => mm_interconnect_0_nios_leds_s1_write_ports_inv, --                    .write_n
 			writedata  => mm_interconnect_0_nios_leds_s1_writedata,       --                    .writedata
@@ -635,7 +634,7 @@ begin
 			N => 32
 		)
 		port map (
-			Clk        => clk_clk,                                                     --          clock.clk
+			Clk        => pll_0_outclk0_clk,                                           --          clock.clk
 			Address    => mm_interconnect_0_parallel_port_0_avalon_slave_0_address,    -- avalon_slave_0.address
 			ChipSelect => mm_interconnect_0_parallel_port_0_avalon_slave_0_chipselect, --               .chipselect
 			Write      => mm_interconnect_0_parallel_port_0_avalon_slave_0_write,      --               .write
@@ -690,7 +689,6 @@ begin
 
 	mm_interconnect_0 : component soc_system_mm_interconnect_0
 		port map (
-			clk_0_clk_clk                                             => clk_clk,                                                        --                                           clk_0_clk.clk
 			pll_0_outclk0_clk                                         => pll_0_outclk0_clk,                                              --                                       pll_0_outclk0.clk
 			pll_0_outclk1_clk                                         => pll_0_outclk1_clk,                                              --                                       pll_0_outclk1.clk
 			interupt_counter_0_reset_sink_reset_bridge_in_reset_reset => rst_controller_reset_out_reset,                                 -- interupt_counter_0_reset_sink_reset_bridge_in_reset.reset
@@ -771,7 +769,7 @@ begin
 			IRQ_WIDTH => 1
 		)
 		port map (
-			receiver_clk   => clk_clk,                            --       receiver_clk.clk
+			receiver_clk   => pll_0_outclk0_clk,                  --       receiver_clk.clk
 			sender_clk     => pll_0_outclk1_clk,                  --         sender_clk.clk
 			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
 			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
@@ -821,7 +819,7 @@ begin
 		)
 		port map (
 			reset_in0      => reset_reset_n_ports_inv,        -- reset_in0.reset
-			clk            => clk_clk,                        --       clk.clk
+			clk            => pll_0_outclk0_clk,              --       clk.clk
 			reset_out      => rst_controller_reset_out_reset, -- reset_out.reset
 			reset_req      => open,                           -- (terminated)
 			reset_req_in0  => '0',                            -- (terminated)

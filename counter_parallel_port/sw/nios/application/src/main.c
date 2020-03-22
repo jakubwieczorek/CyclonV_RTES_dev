@@ -1,3 +1,10 @@
+/*
+ * main.c
+ *
+ *  Created on: Mar 21, 2020
+ *      Author: vm
+ */
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -5,6 +12,9 @@
 #include "io.h"
 #include "altera_avalon_pio_regs.h"
 #include "system.h"
+
+#include "parallel_port.h"
+#include "interrupts_measurment.h"
 
 #define SLEEP_DELAY_US (100 * 1000)
 
@@ -18,6 +28,7 @@ void handle_leds()
 {
 	uint32_t leds_mask = IORD_ALTERA_AVALON_PIO_DATA(NIOS_LEDS_BASE);
 
+	// if current leds status is different then 1 on the most significant bit
 	if (leds_mask != (0x01 << (NIOS_LEDS_DATA_WIDTH - 1)))
 	{
 		// rotate leds
@@ -32,12 +43,28 @@ void handle_leds()
 }
 
 int main() {
+	test_parallel_port();
+
+
 	printf("DE1-SoC nios demo\n");
 
 	setup_leds();
 
+	setup_timer();
+
 	while (true)
 	{
+		if(flag)
+		{
+			alt_printf("snapl = %x \n", snapl);
+			alt_printf("snaph = %x \n", snapl);
+			alt_printf("0xffff-snap+1 = %x \n",0xffff-snapl+1);
+			alt_printf("snaph-snap+1 = %x \n",snaph-snapl+1);
+
+			flag=0;
+			IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,7); //Enable IRQ and Start timer
+		}
+
 		handle_leds();
 		usleep(SLEEP_DELAY_US);
 	}

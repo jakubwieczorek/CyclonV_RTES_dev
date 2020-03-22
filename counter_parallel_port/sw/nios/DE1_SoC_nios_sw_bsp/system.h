@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Thu Mar 19 16:06:21 CET 2020
+ * Generated: Sun Mar 22 18:04:03 CET 2020
  */
 
 /*
@@ -145,6 +145,7 @@
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_SYSID_QSYS
+#define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
 #define __INTERUPT_COUNTER
 #define __PARALLEL_PORT
@@ -166,19 +167,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x8001068
+#define ALT_STDERR_BASE 0x8001088
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x8001068
+#define ALT_STDIN_BASE 0x8001088
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x8001068
+#define ALT_STDOUT_BASE 0x8001088
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -193,8 +194,8 @@
 
 #define ALT_INCLUDE_INSTRUCTION_RELATED_EXCEPTION_API
 #define ALT_MAX_FD 32
-#define ALT_SYS_CLK none
-#define ALT_TIMESTAMP_CLK none
+#define ALT_SYS_CLK TIMER_0
+#define ALT_TIMESTAMP_CLK TIMER_0
 
 
 /*
@@ -203,7 +204,7 @@
  */
 
 #define ALT_MODULE_CLASS_interupt_counter_0 interupt_counter
-#define INTERUPT_COUNTER_0_BASE 0x8001020
+#define INTERUPT_COUNTER_0_BASE 0x8001040
 #define INTERUPT_COUNTER_0_IRQ -1
 #define INTERUPT_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define INTERUPT_COUNTER_0_NAME "/dev/interupt_counter_0"
@@ -217,7 +218,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x8001068
+#define JTAG_UART_0_BASE 0x8001088
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -235,7 +236,7 @@
  */
 
 #define ALT_MODULE_CLASS_nios_buttons altera_avalon_pio
-#define NIOS_BUTTONS_BASE 0x8001040
+#define NIOS_BUTTONS_BASE 0x8001060
 #define NIOS_BUTTONS_BIT_CLEARING_EDGE_REGISTER 0
 #define NIOS_BUTTONS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define NIOS_BUTTONS_CAPTURE 0
@@ -262,7 +263,7 @@
  */
 
 #define ALT_MODULE_CLASS_nios_leds altera_avalon_pio
-#define NIOS_LEDS_BASE 0x8001050
+#define NIOS_LEDS_BASE 0x8001070
 #define NIOS_LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define NIOS_LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define NIOS_LEDS_CAPTURE 0
@@ -289,7 +290,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_0 parallel_port
-#define PARALLEL_PORT_0_BASE 0x8001000
+#define PARALLEL_PORT_0_BASE 0x8001020
 #define PARALLEL_PORT_0_IRQ -1
 #define PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_0_NAME "/dev/parallel_port_0"
@@ -342,13 +343,39 @@
  */
 
 #define ALT_MODULE_CLASS_sysid altera_avalon_sysid_qsys
-#define SYSID_BASE 0x8001060
+#define SYSID_BASE 0x8001080
 #define SYSID_ID 0
 #define SYSID_IRQ -1
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1584567283
+#define SYSID_TIMESTAMP 1584895188
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
+
+
+/*
+ * timer_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_timer_0 altera_avalon_timer
+#define TIMER_0_ALWAYS_RUN 0
+#define TIMER_0_BASE 0x8001000
+#define TIMER_0_COUNTER_SIZE 32
+#define TIMER_0_FIXED_PERIOD 0
+#define TIMER_0_FREQ 50000000
+#define TIMER_0_IRQ 2
+#define TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define TIMER_0_LOAD_VALUE 49999999
+#define TIMER_0_MULT 0.001
+#define TIMER_0_NAME "/dev/timer_0"
+#define TIMER_0_PERIOD 1000
+#define TIMER_0_PERIOD_UNITS "ms"
+#define TIMER_0_RESET_OUTPUT 0
+#define TIMER_0_SNAPSHOT 1
+#define TIMER_0_SPAN 32
+#define TIMER_0_TICKS_PER_SEC 1
+#define TIMER_0_TIMEOUT_PULSE_OUTPUT 0
+#define TIMER_0_TYPE "altera_avalon_timer"
 
 #endif /* __SYSTEM_H_ */

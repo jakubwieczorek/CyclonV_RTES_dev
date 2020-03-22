@@ -142,7 +142,9 @@ ACDS_VERSION := 18.1
 ELF := DE1_SoC_nios_sw.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS += src/main.c
+C_SRCS += src/parallel_port_test.c
+C_SRCS += src/interrupts_measurment.c
 CXX_SRCS :=
 ASM_SRCS :=
 

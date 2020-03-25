@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sun Mar 22 18:04:03 CET 2020
+ * Generated: Wed Mar 25 13:27:23 CET 2020
  */
 
 /*
@@ -147,7 +147,7 @@
 #define __ALTERA_AVALON_SYSID_QSYS
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
-#define __INTERUPT_COUNTER
+#define __INTERRUPT_COUNTER
 #define __PARALLEL_PORT
 
 
@@ -199,17 +199,17 @@
 
 
 /*
- * interupt_counter_0 configuration
+ * interrupt_counter_0 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_interupt_counter_0 interupt_counter
-#define INTERUPT_COUNTER_0_BASE 0x8001040
-#define INTERUPT_COUNTER_0_IRQ -1
-#define INTERUPT_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define INTERUPT_COUNTER_0_NAME "/dev/interupt_counter_0"
-#define INTERUPT_COUNTER_0_SPAN 32
-#define INTERUPT_COUNTER_0_TYPE "interupt_counter"
+#define ALT_MODULE_CLASS_interrupt_counter_0 interrupt_counter
+#define INTERRUPT_COUNTER_0_BASE 0x8001000
+#define INTERRUPT_COUNTER_0_IRQ -1
+#define INTERRUPT_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define INTERRUPT_COUNTER_0_NAME "/dev/interrupt_counter_0"
+#define INTERRUPT_COUNTER_0_SPAN 32
+#define INTERRUPT_COUNTER_0_TYPE "interrupt_counter"
 
 
 /*
@@ -290,7 +290,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_0 parallel_port
-#define PARALLEL_PORT_0_BASE 0x8001020
+#define PARALLEL_PORT_0_BASE 0x8001040
 #define PARALLEL_PORT_0_IRQ -1
 #define PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_0_NAME "/dev/parallel_port_0"
@@ -349,7 +349,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1584895188
+#define SYSID_TIMESTAMP 1585138538
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -360,11 +360,11 @@
 
 #define ALT_MODULE_CLASS_timer_0 altera_avalon_timer
 #define TIMER_0_ALWAYS_RUN 0
-#define TIMER_0_BASE 0x8001000
+#define TIMER_0_BASE 0x8001020
 #define TIMER_0_COUNTER_SIZE 32
 #define TIMER_0_FIXED_PERIOD 0
 #define TIMER_0_FREQ 50000000
-#define TIMER_0_IRQ 2
+#define TIMER_0_IRQ 1
 #define TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define TIMER_0_LOAD_VALUE 49999999
 #define TIMER_0_MULT 0.001

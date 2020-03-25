@@ -25,7 +25,7 @@ entity DE1_SoC_top_level is
         DRAM_WE_N        : out   std_logic;
 		  
 		  -- GPIO_0
-		  GPIO_0 : inout std_logic_vector(35 downto 0)
+		  GPIO_0_D : inout std_logic_vector(31 downto 0)
     );
 end DE1_SoC_top_level;
 
@@ -67,7 +67,7 @@ begin
 			sdram_controller_0_wire_dqm(0)          => DRAM_LDQM,          --                              .dqm
 			sdram_controller_0_wire_ras_n        => DRAM_RAS_N,        --                              .ras_n
 			sdram_controller_0_wire_we_n         => DRAM_WE_N,         --                              .we_n
-			parallel_port_0_conduit_end_export   => GPIO_0(31 DOWNTO 0),   --   parallel_port_0_conduit_end.export
+			parallel_port_0_conduit_end_export   => GPIO_0_D(31 DOWNTO 0),   --   parallel_port_0_conduit_end.export
 			nios_leds_external_connection_export => LEDR(9 DOWNTO 0),  -- nios_leds_external_connection.export
 			pll_0_sdram_clk_clk							 => DRAM_CLK,
 			nios_buttons_external_connection_export => KEY_N(3 DOWNTO 1)

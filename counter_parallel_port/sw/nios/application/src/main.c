@@ -14,6 +14,7 @@
 #include "system.h"
 
 #include "parallel_port.h"
+#include "counter_test.h"
 #include "interrupts_measurment.h"
 
 #define SLEEP_DELAY_US (100 * 1000)
@@ -43,10 +44,13 @@ void handle_leds()
 }
 
 int main() {
-	test_parallel_port();
-
-
 	printf("DE1-SoC nios demo\n");
+
+	test_parallel_port();
+	usleep(SLEEP_DELAY_US);
+
+	test_counter();
+	usleep(SLEEP_DELAY_US);
 
 	setup_leds();
 

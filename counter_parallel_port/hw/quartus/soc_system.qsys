@@ -17,7 +17,7 @@
          type = "int";
       }
    }
-   element interupt_counter_0
+   element interrupt_counter_0
    {
       datum _sortIndex
       {
@@ -25,11 +25,11 @@
          type = "int";
       }
    }
-   element interupt_counter_0.avalon_slave_0
+   element interrupt_counter_0.avalon_slave_0
    {
       datum baseAddress
       {
-         value = "134221888";
+         value = "134221824";
          type = "String";
       }
    }
@@ -109,7 +109,7 @@
    {
       datum baseAddress
       {
-         value = "134221856";
+         value = "134221888";
          type = "String";
       }
    }
@@ -134,6 +134,22 @@
       datum baseAddress
       {
          value = "67108864";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
          type = "String";
       }
    }
@@ -181,7 +197,7 @@
    {
       datum baseAddress
       {
-         value = "134221824";
+         value = "134221856";
          type = "String";
       }
    }
@@ -240,8 +256,8 @@
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module
-   name="interupt_counter_0"
-   kind="interupt_counter"
+   name="interrupt_counter_0"
+   kind="interrupt_counter"
    version="1.0"
    enabled="1" />
  <module
@@ -287,7 +303,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_controller_0.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer_0.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='parallel_port_0.avalon_slave_0' start='0x8001020' end='0x8001040' type='parallel_port.avalon_slave_0' /><slave name='interupt_counter_0.avalon_slave_0' start='0x8001040' end='0x8001060' type='interupt_counter.avalon_slave_0' /><slave name='nios_buttons.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='nios_leds.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='sysid.control_slave' start='0x8001080' end='0x8001088' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x8001088' end='0x8001090' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_controller_0.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='interrupt_counter_0.avalon_slave_0' start='0x8001000' end='0x8001020' type='interrupt_counter.avalon_slave_0' /><slave name='timer_0.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='parallel_port_0.avalon_slave_0' start='0x8001040' end='0x8001060' type='parallel_port.avalon_slave_0' /><slave name='nios_buttons.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='nios_leds.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='sysid.control_slave' start='0x8001080' end='0x8001088' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x8001088' end='0x8001090' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -744,7 +760,7 @@
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.data_master"
-   end="interupt_counter_0.avalon_slave_0">
+   end="parallel_port_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08001040" />
   <parameter name="defaultConnection" value="false" />
@@ -753,9 +769,9 @@
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.data_master"
-   end="parallel_port_0.avalon_slave_0">
+   end="interrupt_counter_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001020" />
+  <parameter name="baseAddress" value="0x08001000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -809,7 +825,7 @@
    start="nios2_gen2_0.data_master"
    end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001000" />
+  <parameter name="baseAddress" value="0x08001020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -848,12 +864,12 @@
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="interupt_counter_0.clock" />
+   end="parallel_port_0.clock" />
  <connection
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="parallel_port_0.clock" />
+   end="interrupt_counter_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -868,8 +884,8 @@
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
-   end="interupt_counter_0.interrupt_sender">
-  <parameter name="irqNumber" value="1" />
+   end="interrupt_counter_0.interrupt_sender">
+  <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="interrupt"
@@ -883,7 +899,7 @@
    version="18.1"
    start="nios2_gen2_0.irq"
    end="timer_0.irq">
-  <parameter name="irqNumber" value="2" />
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="reset"
@@ -921,12 +937,12 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="interupt_counter_0.reset_sink" />
+   end="parallel_port_0.reset_sink" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="parallel_port_0.reset_sink" />
+   end="interrupt_counter_0.reset_sink" />
  <connection
    kind="reset"
    version="18.1"
@@ -957,6 +973,21 @@
    version="18.1"
    start="nios2_gen2_0.debug_reset_request"
    end="timer_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="nios_buttons.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="interrupt_counter_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="parallel_port_0.reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

@@ -145,6 +145,7 @@ ELF := DE1_SoC_nios_sw.elf
 C_SRCS += src/main.c
 C_SRCS += src/parallel_port_test.c
 C_SRCS += src/interrupts_measurment.c
+C_SRCS += src/counter_test.c
 CXX_SRCS :=
 ASM_SRCS :=
 

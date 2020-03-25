@@ -71,7 +71,7 @@ BEGIN
 	Read <= '0',
 		'1' after clk_period*9,
 		'0' after clk_period*9 + clk_period*2; -- from 9th to 15th cycle 
-	-- reading data from counter works, it shows data on the the bus (ReadData signal) with one cycle delay -- according to the task.
+	-- reading data from counter works, it shows data on the bus (ReadData signal) with one cycle delay -- according to the task.
 	
 	Address <= "000",
 			"001" after clk_period*2, -- reset counter from 2nd to 5th cycle

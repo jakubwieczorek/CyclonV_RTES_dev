@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sun Mar 22 18:04:03 CET 2020
+ * Generated: Thu Mar 26 21:14:37 CET 2020
  */
 
 /*

@@ -1,10 +1,10 @@
-/*
- * interrupts_measurment.c
- *
- *  Created on: Mar 22, 2020
- *      Author: vm
- */
-
+///*
+// * interrupts_measurment.c
+// *
+// *  Created on: Mar 22, 2020
+// *      Author: vm
+// */
+//
 #include "interrupts_measurment.h"
 
 static void my_isr(void* context);

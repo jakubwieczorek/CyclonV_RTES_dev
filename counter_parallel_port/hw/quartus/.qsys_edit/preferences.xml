@@ -12,7 +12,7 @@
    <baseaddress preferredWidth="187" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library expandedCategories="Project,Library,Project/custom_components" />
  <window width="1853" height="1175" x="67" y="25" />
  <generation synthesis="VHDL" block_symbol_file="0" />
 </preferences>

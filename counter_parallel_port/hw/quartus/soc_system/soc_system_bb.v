@@ -2,6 +2,8 @@
 module soc_system (
 	clk_clk,
 	nios_buttons_external_connection_export,
+	nios_leds_external_connection_export,
+	parallel_port_0_conduit_end_export,
 	pll_0_sdram_clk_clk,
 	reset_reset_n,
 	sdram_controller_0_wire_addr,
@@ -12,12 +14,12 @@ module soc_system (
 	sdram_controller_0_wire_dq,
 	sdram_controller_0_wire_dqm,
 	sdram_controller_0_wire_ras_n,
-	sdram_controller_0_wire_we_n,
-	nios_leds_external_connection_export,
-	parallel_port_0_conduit_end_export);	
+	sdram_controller_0_wire_we_n);	
 
 	input		clk_clk;
 	input	[2:0]	nios_buttons_external_connection_export;
+	output	[9:0]	nios_leds_external_connection_export;
+	inout	[31:0]	parallel_port_0_conduit_end_export;
 	output		pll_0_sdram_clk_clk;
 	input		reset_reset_n;
 	output	[12:0]	sdram_controller_0_wire_addr;
@@ -29,6 +31,4 @@ module soc_system (
 	output	[1:0]	sdram_controller_0_wire_dqm;
 	output		sdram_controller_0_wire_ras_n;
 	output		sdram_controller_0_wire_we_n;
-	output	[9:0]	nios_leds_external_connection_export;
-	inout	[31:0]	parallel_port_0_conduit_end_export;
 endmodule

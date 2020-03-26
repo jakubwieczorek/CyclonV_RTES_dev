@@ -1,9 +1,9 @@
-/*
- * counter_test.h
- *
- *  Created on: Mar 24, 2020
- *      Author: vm
- */
+///*
+// * counter_test.h
+// *
+// *  Created on: Mar 24, 2020
+// *      Author: vm
+// */
 
 #ifndef COUNTER_TEST_H_
 #define COUNTER_TEST_H_

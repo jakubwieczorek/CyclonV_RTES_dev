@@ -13,9 +13,11 @@
 #include "altera_avalon_pio_regs.h"
 #include "system.h"
 
-#include "parallel_port.h"
+#include "sys/alt_stdio.h"
+
 #include "counter_test.h"
 #include "interrupts_measurment.h"
+#include "parallel_port_test.h"
 
 #define SLEEP_DELAY_US (100 * 1000)
 
@@ -42,6 +44,16 @@ void handle_leds()
 
 	IOWR_ALTERA_AVALON_PIO_DATA(NIOS_LEDS_BASE, leds_mask);
 }
+
+#define IREGDIR   0  //Change the values if your register map is different than
+#define IREGPIN   1
+#define IREGPORT  2
+#define PARIRQEN  5
+#define PARIRQCLR 6
+#define MODE_ALL_OUTPUT 0xFF
+#define MODE_ALL_INPUT  0X00
+#define ALL_IRQ_EN      0XFF
+#define ALL_IRQ_CLR     0xFF
 
 int main() {
 	printf("DE1-SoC nios demo\n");

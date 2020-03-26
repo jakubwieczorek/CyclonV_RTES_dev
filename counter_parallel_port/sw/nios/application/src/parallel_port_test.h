@@ -1,12 +1,12 @@
-/*
- * parallel_port.h
- *
- *  Created on: Mar 21, 2020
- *      Author: vm
- */
-
-#ifndef PARALLEL_PORT_H_
-#define PARALLEL_PORT_H_
+///*
+// * parallel_port.h
+// *
+// *  Created on: Mar 21, 2020
+// *      Author: vm
+// */
+//
+#ifndef PARALLEL_PORT_TEST_H_
+#define PARALLEL_PORT_TEST_H_
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -29,4 +29,4 @@
 
 void test_parallel_port();
 
-#endif /* PARALLEL_PORT_H_ */
+#endif /* PARALLEL_PORT_TEST_H_ */

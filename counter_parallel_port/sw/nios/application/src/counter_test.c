@@ -1,9 +1,9 @@
-/*
- * counter_test.c
- *
- *  Created on: Mar 24, 2020
- *      Author: vm
- */
+///*
+// * counter_test.c
+// *
+// *  Created on: Mar 24, 2020
+// *      Author: vm
+// */
 #include "counter_test.h"
 
 void test_counter()

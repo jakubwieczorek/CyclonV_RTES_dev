@@ -5,8 +5,8 @@
 // *      Author: vm
 // */
 
-#ifndef COUNTER_TEST_H_
-#define COUNTER_TEST_H_
+#ifndef COUNTER_H_
+#define COUNTER_H_
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -18,12 +18,14 @@
 #include "sys/alt_stdio.h"
 
 #define IRESETVAL 0 //Change the values if your register map is different than here
-#define ICOUNTER 0
+#define ICOUNTER 0 // read
+
 #define IRZ 1
 #define ISTART 2
 #define ISTOP 3
 #define IIRQEN 4
 #define ICLREOT 5
+
 #define RESETVAL 0XFF000000 //Counter starts counting from this value
 #define IRQENVAL 1
 #define IRQDISVAL 0
@@ -32,4 +34,4 @@
 
 void test_counter();
 
-#endif /* COUNTER_TEST_H_ */
+#endif /* COUNTER_H_ */

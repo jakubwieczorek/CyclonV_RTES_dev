@@ -31,7 +31,7 @@ END ENTITY;
 
 \verb|Clk| and \verb|nReset| ale clock and reset signals, where the second one is negated -- high when zero. \verb|Address| is a control signal. Depending on his value different operation are performed, that is for example start counter, stop him or write to the parallel port, here his length is 3, but can be extended without any problems. If \verb|ChipSelect| is 1, then specifically that component is chosen to communicate. \verb|Read|, \verb|Write| are set when respectively system wants read values from component -- precisely from \verb|ReadData| or write them to the system -- precisely component will read them from \verb|WriteData| vector. For example to start counter \verb|ChipSelect|, \verb|Write| have to be set high and proper control value set in \verb|Address| signal.
 
-\section{Counter}
+\section{Counter} \label{sec:counter}
 Counter is characterised by the following features:
 \begin{enumerate}
   \item 32-bit Avalon slave
@@ -411,7 +411,7 @@ To measure interrupt response time built-in timer was utilised. The timer is sho
 
 The idea is to generate an interrupt periodically and measure a timer value inside an \verb|Interrupt| \verb|Service| \verb|Routine| (\verb|ISR|). When timer reaches 0 the interrupt is fired, but the timer still counts. The value of the timer inside \verb|ISR| indicates interrupt response time. Timer value can be read using snap register. Timer utilised in this paper is 32-bit length and the timer value is held in two 16-bit snap registers -- \verb|snapl| for the less significant part and \verb|snaph| for the second one. To read value from a snap register first a write operation into that register has to be performed (write-data is ignored, any value can be used). Then a timer value is copied into that register and can be accessed. The following listing shows timer configuration. 
 \begin{lstlisting}[style=customc, frame=none]
-void setup_timer()
+void setup_response_timer()
 {
     alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID,
     TIMER_0_IRQ,my_isr, NULL,NULL);
@@ -440,22 +440,141 @@ static void my_isr(void* context)
 At the beginning as it was noted, snap register is accessed first by writing some data into him and then by reading the register into the \verb|snapl| global variable. Next the interrupt flag has to be cleared. Otherwise immediately when \verb|ISR| finishes, program will invoke him once again. 
 In the main program function, timer is set-up. Then if interrupt occurred (flag variable) the snap register is printed into stdout. Finally timer interrupts are enabled once again.
 \begin{lstlisting}[style=customc, frame=none]
+// main.c
 int main()
 {
-    setup_timer();
+    setup_response_timer();
 
     while (true)
     {
-        if(flag)
-        {
-            alt_printf("0xffff-snap+1 = %x \n",0xffff-snapl+1);
-            flag=0;
-            IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,7); 
-        }
+        measure_response_time();
+        
         usleep(SLEEP_DELAY_US);
     }
     
     return 0;
 }
+// inerrupt_measurement.c
+void measure_response_time()
+{
+    if(flag)
+    {
+        alt_printf("response time = %x \n",0xffff-snapl+1);
+        flag=0;
+         //Enable IRQ and Start timer
+        IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,7);
+    }
+}
 \end{lstlisting}
-The interrupt response varies between while loop cycles and is between 80 and 100 cycles.
+The interrupt response varies between while loop cycles and is between 75 and 80 cycles. Usually is 0x4b (75).
+
+\subsection{Interrupt recovery time}
+Interrupt recovery time will be measured using a timer designed as an IP component which communicates with the rest of the system according to the \verb|Avalon| bus specification. Timer can be seen on \figurename{} \ref{fig:interrupt_counter_component}. Only external pins are presented, nevertheless inside of course there are \verb|Avalon| bus connections. On the \figurename{} \ref{fig:soc_system} showed a way in which an \verb|interrupt_counter_0| is connected with the rest of a \verb|SoC| system.
+
+First thing necessary to perform is test if it is possible to properly communicate with a timer using software, that is C code. Following code listing demonstrates counter test function which is executed in the \verb|main| procedure. Address of a counter component is stored in a  \verb|INTERRUPT_COUNTER_0_BASE| macro in \verb|bsp| library. At the beginning the counter is reset. It is worth noting, that to reset, start and stop the counter it is not important what is inside the data stream, that is why for these operations \verb|ARBITVAL| is passed as a third argument to \verb|IOWR| function. \verb|ARBITVAL| is set to 0x0000FFFF, but can be any different one. To perform 3 mentioned operations only the register value is needed -- \verb|IRZ|, \verb|ISTART|, \verb|ISTOP|, which represents an \verb|Address| signal from \verb|Avalon| bus. It is clearly visible on the counter implementation described in the section \ref{sec:counter}. 
+\begin{lstlisting}[style=customc, frame=none]
+#include "counter_test.h"
+
+void test_counter()
+{
+    // reset
+    IOWR(INTERRUPT_COUNTER_0_BASE, IRZ, ARBITVAL);
+    alt_printf("iCounter after reset= %x\n", 
+        IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+    
+    //start
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTART, ARBITVAL);
+    alt_printf("iCounter after start= %x\n", 
+        IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+    
+    // stop two times,  should give the same result
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTOP, ARBITVAL);
+    alt_printf("iCounter after stop1= %x\n", 
+        IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+    alt_printf("iCounter after stop2= %x\n", 
+        IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+    
+    // restart and read two times, should give different result
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTART, ARBITVAL);
+    alt_printf("iCounter after restart1=%x\n",
+        IORD(INTERRUPT_COUNTER_0_BASE,ICOUNTER));
+    alt_printf("iCounter after restart2=%x\n",
+        IORD(INTERRUPT_COUNTER_0_BASE,ICOUNTER));
+    
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTOP, ARBITVAL);
+}
+\end{lstlisting}
+The counter is first reset, launched, stopped two times to show that a value is the same between two consecutive stops and started once again. After that when the counter is running two reads are performed again, this time to prove that counter counts indeed. The macros to control the counter and the header files are showed below.
+\begin{lstlisting}[style=customc, frame=none]
+#include "io.h"
+#include "altera_avalon_pio_regs.h"
+#include "system.h"
+#include "sys/alt_stdio.h"
+
+#define ICOUNTER 0
+
+#define IRZ 1
+#define ISTART 2
+#define ISTOP 3
+#define IIRQEN 4
+#define ICLREOT 5
+
+#define IRQENVAL 1
+#define IRQDISVAL 0
+#define CLREOTVAL 1
+#define ARBITVAL 0X0000FFFF
+\end{lstlisting}
+The result of the test is showed on the following listing.
+\begin{lstlisting}[frame=single]
+iCounter after reset= 0
+iCounter after start= d
+iCounter after stop1= 64fe
+iCounter after stop2= 64fe
+iCounter after restart1=6501
+iCounter after restart2=d5da
+\end{lstlisting}
+
+When the counter is roughly tested, the next step is interrupt recovery time measurement. The logic behind it is very similar to response measurement, but this time, time will be measured between the last instruction in the timer \verb|ISR| and first instruction outside this interrupt handler by \verb|IP| counter component. When interrupt is triggered (timer reaches 0), then the last instruction in \verb|ISR| is \verb|interrupt_conter_0| launch. In the main function, \verb|interrupt_conter_0| value is polling all the time and checked if is different than zero, if so that value is a recovery time. The following listing shows a polling which is invoked in the main function. 
+\begin{lstlisting}[style=customc, frame=none]
+void measure_recovery_time()
+{
+    while(IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER)==0);
+    alt_printf("recovery time%x \n",
+        IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+    
+    // run it again
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTOP, ARBITVAL);
+    IOWR(INTERRUPT_COUNTER_0_BASE, IRZ, ARBITVAL);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,7);
+}
+\end{lstlisting}
+Interrupt service routine is presented below. As it was mentioned counter is launched as a last instruction.
+\begin{lstlisting}[style=customc, frame=none]
+static void recovery_isr(void* context)
+{
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,0);
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+    // start int timer
+    IOWR(INTERRUPT_COUNTER_0_BASE, ISTART, ARBITVAL); 
+}
+\end{lstlisting}
+And the main function. Setup function is exactly the same as for response one, but additionally interrupt timer is reset.
+\begin{lstlisting}[style=customc, frame=none]
+int main()
+{
+	setup_recovery_timer();
+
+	while (true)
+	{
+        measure_recovery_time();
+        
+        usleep(SLEEP_DELAY_US);
+	}
+
+	return 0;
+}
+\end{lstlisting}
+The recovery time is shorter than the response time and equals 0x32, which corresponds to 50 clock cycles.
+
+\section{Logic analyser interrupt measurements}
+In this section interrupt timing details are measured significantly more accurately exploiting logic analyser.

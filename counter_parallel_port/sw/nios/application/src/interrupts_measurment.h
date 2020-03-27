@@ -30,6 +30,9 @@ volatile int flag;
 int snapl;
 int snaph;
 
-void setup_timer();
+void setup_response_timer();
+void setup_recovery_timer();
+void measure_recovery_time();
+void measure_response_time();
 
 #endif /* INTERRUPTS_MEASURMENT_H_ */

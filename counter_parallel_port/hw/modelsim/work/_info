@@ -9,7 +9,7 @@ z2
 cModel Technology
 d/home/vm
 Ecounter
-Z0 w1583936543
+Z0 w1584447114
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -22,9 +22,9 @@ VWN6[`2Ml>H_NzLzZ2bVWf1
 !s100 T1MOIeFTj7@AFA8]Q?ZdA1
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1584382339
+Z8 !s110 1585394222
 !i10b 1
-Z9 !s108 1584382339.000000
+Z9 !s108 1585394222.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd|
 Z11 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/counter.vhd|
 !i113 1
@@ -50,7 +50,7 @@ R11
 R12
 R13
 Ecounter_tb
-Z14 w1583936699
+Z14 w1585145161
 R1
 R2
 R3
@@ -91,7 +91,7 @@ R18
 R12
 R13
 Ede1_soc_top_level
-Z19 w1583747785
+Z19 w1585252659
 R2
 R3
 R4
@@ -99,8 +99,8 @@ Z20 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vh
 Z21 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/DE1_SoC_top_level.vhd
 l0
 L4
-VQHUd9IchRL^JJhQ[jT0om3
-!s100 4jdYGLzMKj3BEB<DX]bgl1
+VEVO_n>jfNaF>_FUKPkDMQ3
+!s100 3@o5564olSOKI^nIeR`cL1
 R7
 32
 R8
@@ -114,11 +114,11 @@ R13
 Artl
 R2
 R3
-DEx4 work 17 de1_soc_top_level 0 22 QHUd9IchRL^JJhQ[jT0om3
-l44
-L12
-V_MTSfdzC0;DS::]7Md9oh3
-!s100 72^UNDB]Jj4C_9SF2zGC<1
+DEx4 work 17 de1_soc_top_level 0 22 EVO_n>jfNaF>_FUKPkDMQ3
+l54
+L32
+VZ_FW=eZh>]N@=QZ2ALEJ01
+!s100 N:9KZ7=2RmY;Q=Z03YHi63
 R7
 32
 R8
@@ -130,7 +130,7 @@ R23
 R12
 R13
 Eparallel_port
-Z24 w1584379864
+Z24 w1585391189
 R1
 R2
 R3
@@ -139,8 +139,8 @@ Z25 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd
 Z26 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/hdl/parallel_port.vhd
 l0
 L5
-V^ZkSoU6ga_mQAIPSd2_?32
-!s100 QJ9d1z]:`AS6V?^HW:;zn3
+VO3nL<7[L1WnTKLz<=k>961
+!s100 IO_o?P2NiG_EJRm8jL4hR2
 R7
 32
 R8
@@ -155,11 +155,11 @@ Aparallel_port_logic
 R1
 R2
 R3
-DEx4 work 13 parallel_port 0 22 ^ZkSoU6ga_mQAIPSd2_?32
-l29
-L25
-VZ:m4nLS=ST>ZGZH9bQzmh2
-!s100 Tb@YSoKd7c[G[:ncdVLWS2
+DEx4 work 13 parallel_port 0 22 O3nL<7[L1WnTKLz<=k>961
+l35
+L29
+VkR;P^B_RFki3TRG5O46Cz2
+!s100 :gNdk@bJbDgaZ[`G9khF30
 R7
 32
 R8
@@ -171,7 +171,7 @@ R28
 R12
 R13
 Eparallel_port_tb
-Z29 w1584382188
+Z29 w1585394207
 R1
 R2
 R3
@@ -199,8 +199,8 @@ R3
 Z34 DEx4 work 16 parallel_port_tb 0 22 f:kk761OaJ6lQglN]M08[2
 l39
 L8
-VlM2>caQ=Ez[:BNLL9<bgT1
-!s100 :Y2z2IJeFBWUKCoOdK^gB0
+Z35 VMgR?FLD8l1Vf?4l`k[[If2
+Z36 !s100 UoP9C?15c3O0YV4]B193W2
 R7
 32
 R8
@@ -212,12 +212,12 @@ R33
 R12
 R13
 Etst_bench
-Z35 w1583747623
+Z37 w1583747623
 R2
 R3
 R4
-Z36 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
-Z37 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+Z38 8/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
+Z39 F/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
 l0
 L4
 VF_6OZbQ12Ui_Hb8MUES[a0
@@ -227,8 +227,8 @@ R7
 R8
 !i10b 1
 R9
-Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
-Z39 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
+Z41 !s107 /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd|
 !i113 1
 R12
 R13
@@ -245,8 +245,8 @@ R7
 R8
 !i10b 1
 R9
-R38
-R39
+R40
+R41
 !i113 1
 R12
 R13

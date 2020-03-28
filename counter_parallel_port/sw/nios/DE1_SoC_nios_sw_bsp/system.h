@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Thu Mar 26 21:14:37 CET 2020
+ * Generated: Sat Mar 28 21:48:33 CET 2020
  */
 
 /*
@@ -219,7 +219,7 @@
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
 #define JTAG_UART_0_BASE 0x8001088
-#define JTAG_UART_0_IRQ 1
+#define JTAG_UART_0_IRQ 2
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
 #define JTAG_UART_0_READ_DEPTH 64
@@ -291,8 +291,8 @@
 
 #define ALT_MODULE_CLASS_parallel_port_0 parallel_port
 #define PARALLEL_PORT_0_BASE 0x8001040
-#define PARALLEL_PORT_0_IRQ -1
-#define PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PARALLEL_PORT_0_IRQ 1
+#define PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define PARALLEL_PORT_0_NAME "/dev/parallel_port_0"
 #define PARALLEL_PORT_0_SPAN 32
 #define PARALLEL_PORT_0_TYPE "parallel_port"
@@ -349,7 +349,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1585252782
+#define SYSID_TIMESTAMP 1585420947
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -364,7 +364,7 @@
 #define TIMER_0_COUNTER_SIZE 32
 #define TIMER_0_FIXED_PERIOD 0
 #define TIMER_0_FREQ 50000000
-#define TIMER_0_IRQ 2
+#define TIMER_0_IRQ 3
 #define TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define TIMER_0_LOAD_VALUE 49999999
 #define TIMER_0_MULT 0.001

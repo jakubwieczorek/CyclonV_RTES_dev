@@ -48,20 +48,22 @@ BEGIN
 	ChipSelect <= '1'; -- chip select all the time
 
 	Address <= "000", 
-				  "010" after clock_period * 2,
-				  "001" after clock_period * 2 + clock_period * 2; -- set direction
+				  "010" after clock_period * 2;
 	
 	-- first write direction and data then read
 	Write <= '1',
-				'0' after clock_period*2 + clock_period*2;
+				'0' after clock_period*10;
 				
 	Read <= '0',
-			  '1' after clock_period*2 + clock_period*2;
+			  '1' after clock_period*10;
 			  
-	ParPort <= "ZZZZ101Z";
+	ParPort <= "ZZZZ1Z1Z";
 	
-	WriteData <= "00000000" & "00000000" & "00000000" & "11110001", -- direction
-					 "00000000" & "00000000" & "00000000" & "01010001" after clock_period * 2; -- data
+	WriteData <= "00000000" & "00000000" & "00000000" & "11110101", -- direction
+					 "00000000" & "00000000" & "00000000" & "01010001" after clock_period * 2,
+					 "00000000" & "00000000" & "00000000" & "01010101" after clock_period * 2 + clock_period, -- data
+					 "00000000" & "00000000" & "00000000" & "01010001" after clock_period * 2 + clock_period*2, -- data
+					 "00000000" & "00000000" & "00000000" & "01010101" after clock_period * 2 + clock_period*3; -- data
 	
 	clk_process : process 
 	begin

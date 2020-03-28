@@ -22,8 +22,8 @@
 #define IREGPORT  2
 #define PARIRQEN  5
 #define PARIRQCLR 6
-#define MODE_ALL_OUTPUT 0xFF
-#define MODE_ALL_INPUT  0X00
+#define MODE_ALL_OUTPUT 0xFFFF
+#define MODE_ALL_INPUT  0X0000
 #define ALL_IRQ_EN      0XFF
 #define ALL_IRQ_CLR     0xFF
 

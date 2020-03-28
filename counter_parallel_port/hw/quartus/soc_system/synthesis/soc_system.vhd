@@ -125,7 +125,8 @@ architecture rtl of soc_system is
 			Read       : in    std_logic                     := 'X';             -- read
 			ReadData   : out   std_logic_vector(31 downto 0);                    -- readdata
 			nReset     : in    std_logic                     := 'X';             -- reset_n
-			ParPort    : inout std_logic_vector(31 downto 0) := (others => 'X')  -- export
+			ParPort    : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			IRQ        : out   std_logic                                         -- irq
 		);
 	end component parallel_port;
 
@@ -136,6 +137,7 @@ architecture rtl of soc_system is
 			outclk_0 : out std_logic;        -- clk
 			outclk_1 : out std_logic;        -- clk
 			outclk_2 : out std_logic;        -- clk
+			outclk_3 : out std_logic;        -- clk
 			locked   : out std_logic         -- export
 		);
 	end component soc_system_pll_0;
@@ -268,6 +270,7 @@ architecture rtl of soc_system is
 			receiver0_irq : in  std_logic                     := 'X'; -- irq
 			receiver1_irq : in  std_logic                     := 'X'; -- irq
 			receiver2_irq : in  std_logic                     := 'X'; -- irq
+			receiver3_irq : in  std_logic                     := 'X'; -- irq
 			sender_irq    : out std_logic_vector(31 downto 0)         -- irq
 		);
 	end component soc_system_irq_mapper;
@@ -484,8 +487,8 @@ architecture rtl of soc_system is
 		);
 	end component soc_system_rst_controller_002;
 
-	signal pll_0_outclk0_clk                                               : std_logic;                     -- pll_0:outclk_0 -> [interrupt_counter_0:Clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, irq_synchronizer_002:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, nios_buttons:clk, nios_leds:clk, parallel_port_0:Clk, rst_controller:clk, rst_controller_001:clk, sysid:clock, timer_0:clk]
-	signal pll_0_outclk1_clk                                               : std_logic;                     -- pll_0:outclk_1 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, irq_synchronizer_002:sender_clk, mm_interconnect_0:pll_0_outclk1_clk, nios2_gen2_0:clk, rst_controller_002:clk, sdram_controller_0:clk]
+	signal pll_0_outclk0_clk                                               : std_logic;                     -- pll_0:outclk_0 -> [interrupt_counter_0:Clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, irq_synchronizer_002:receiver_clk, irq_synchronizer_003:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, nios_buttons:clk, nios_leds:clk, parallel_port_0:Clk, rst_controller:clk, rst_controller_001:clk, sysid:clock, timer_0:clk]
+	signal pll_0_outclk1_clk                                               : std_logic;                     -- pll_0:outclk_1 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, irq_synchronizer_002:sender_clk, irq_synchronizer_003:sender_clk, mm_interconnect_0:pll_0_outclk1_clk, nios2_gen2_0:clk, rst_controller_002:clk, sdram_controller_0:clk]
 	signal nios2_gen2_0_data_master_readdata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	signal nios2_gen2_0_data_master_waitrequest                            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
 	signal nios2_gen2_0_data_master_debugaccess                            : std_logic;                     -- nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
@@ -554,13 +557,15 @@ architecture rtl of soc_system is
 	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
 	signal irq_synchronizer_receiver_irq                                   : std_logic_vector(0 downto 0);  -- interrupt_counter_0:IRQ -> irq_synchronizer:receiver_irq
 	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver1_irq
-	signal irq_synchronizer_001_receiver_irq                               : std_logic_vector(0 downto 0);  -- jtag_uart_0:av_irq -> irq_synchronizer_001:receiver_irq
+	signal irq_synchronizer_001_receiver_irq                               : std_logic_vector(0 downto 0);  -- parallel_port_0:IRQ -> irq_synchronizer_001:receiver_irq
 	signal irq_mapper_receiver2_irq                                        : std_logic;                     -- irq_synchronizer_002:sender_irq -> irq_mapper:receiver2_irq
-	signal irq_synchronizer_002_receiver_irq                               : std_logic_vector(0 downto 0);  -- timer_0:irq -> irq_synchronizer_002:receiver_irq
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_synchronizer:receiver_reset, mm_interconnect_0:parallel_port_0_reset_sink_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
-	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [irq_synchronizer_001:receiver_reset, irq_synchronizer_002:receiver_reset, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
+	signal irq_synchronizer_002_receiver_irq                               : std_logic_vector(0 downto 0);  -- jtag_uart_0:av_irq -> irq_synchronizer_002:receiver_irq
+	signal irq_mapper_receiver3_irq                                        : std_logic;                     -- irq_synchronizer_003:sender_irq -> irq_mapper:receiver3_irq
+	signal irq_synchronizer_003_receiver_irq                               : std_logic_vector(0 downto 0);  -- timer_0:irq -> irq_synchronizer_003:receiver_irq
+	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mm_interconnect_0:parallel_port_0_reset_sink_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
+	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [irq_synchronizer_002:receiver_reset, irq_synchronizer_003:receiver_reset, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
 	signal nios2_gen2_0_debug_reset_request_reset                          : std_logic;                     -- nios2_gen2_0:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_002:reset_in1]
-	signal rst_controller_002_reset_out_reset                              : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, irq_synchronizer_002:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_002_reset_out_reset                              : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, irq_synchronizer_002:sender_reset, irq_synchronizer_003:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_002_reset_out_reset_req                          : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
 	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> [pll_0:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
@@ -600,7 +605,7 @@ begin
 			av_write_n     => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv, --                  .write_n
 			av_writedata   => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata,       --                  .writedata
 			av_waitrequest => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest,     --                  .waitrequest
-			av_irq         => irq_synchronizer_001_receiver_irq(0)                             --               irq.irq
+			av_irq         => irq_synchronizer_002_receiver_irq(0)                             --               irq.irq
 		);
 
 	nios2_gen2_0 : component soc_system_nios2_gen2_0
@@ -661,15 +666,16 @@ begin
 			N => 32
 		)
 		port map (
-			Clk        => pll_0_outclk0_clk,                                           --          clock.clk
-			Address    => mm_interconnect_0_parallel_port_0_avalon_slave_0_address,    -- avalon_slave_0.address
-			ChipSelect => mm_interconnect_0_parallel_port_0_avalon_slave_0_chipselect, --               .chipselect
-			Write      => mm_interconnect_0_parallel_port_0_avalon_slave_0_write,      --               .write
-			WriteData  => mm_interconnect_0_parallel_port_0_avalon_slave_0_writedata,  --               .writedata
-			Read       => mm_interconnect_0_parallel_port_0_avalon_slave_0_read,       --               .read
-			ReadData   => mm_interconnect_0_parallel_port_0_avalon_slave_0_readdata,   --               .readdata
-			nReset     => rst_controller_reset_out_reset_ports_inv,                    --     reset_sink.reset_n
-			ParPort    => parallel_port_0_conduit_end_export                           --    conduit_end.export
+			Clk        => pll_0_outclk0_clk,                                           --            clock.clk
+			Address    => mm_interconnect_0_parallel_port_0_avalon_slave_0_address,    --   avalon_slave_0.address
+			ChipSelect => mm_interconnect_0_parallel_port_0_avalon_slave_0_chipselect, --                 .chipselect
+			Write      => mm_interconnect_0_parallel_port_0_avalon_slave_0_write,      --                 .write
+			WriteData  => mm_interconnect_0_parallel_port_0_avalon_slave_0_writedata,  --                 .writedata
+			Read       => mm_interconnect_0_parallel_port_0_avalon_slave_0_read,       --                 .read
+			ReadData   => mm_interconnect_0_parallel_port_0_avalon_slave_0_readdata,   --                 .readdata
+			nReset     => rst_controller_reset_out_reset_ports_inv,                    --       reset_sink.reset_n
+			ParPort    => parallel_port_0_conduit_end_export,                          --      conduit_end.export
+			IRQ        => irq_synchronizer_001_receiver_irq(0)                         -- interrupt_sender.irq
 		);
 
 	pll_0 : component soc_system_pll_0
@@ -679,6 +685,7 @@ begin
 			outclk_0 => pll_0_outclk0_clk,       -- outclk0.clk
 			outclk_1 => pll_0_outclk1_clk,       -- outclk1.clk
 			outclk_2 => pll_0_sdram_clk_clk,     -- outclk2.clk
+			outclk_3 => open,                    -- outclk3.clk
 			locked   => open                     -- (terminated)
 		);
 
@@ -723,7 +730,7 @@ begin
 			readdata   => mm_interconnect_0_timer_0_s1_readdata,        --      .readdata
 			chipselect => mm_interconnect_0_timer_0_s1_chipselect,      --      .chipselect
 			write_n    => mm_interconnect_0_timer_0_s1_write_ports_inv, --      .write_n
-			irq        => irq_synchronizer_002_receiver_irq(0)          --   irq.irq
+			irq        => irq_synchronizer_003_receiver_irq(0)          --   irq.irq
 		);
 
 	mm_interconnect_0 : component soc_system_mm_interconnect_0
@@ -806,6 +813,7 @@ begin
 			receiver0_irq => irq_mapper_receiver0_irq,           -- receiver0.irq
 			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
 			receiver2_irq => irq_mapper_receiver2_irq,           -- receiver2.irq
+			receiver3_irq => irq_mapper_receiver3_irq,           -- receiver3.irq
 			sender_irq    => nios2_gen2_0_irq_irq                --    sender.irq
 		);
 
@@ -829,7 +837,7 @@ begin
 		port map (
 			receiver_clk   => pll_0_outclk0_clk,                  --       receiver_clk.clk
 			sender_clk     => pll_0_outclk1_clk,                  --         sender_clk.clk
-			receiver_reset => rst_controller_001_reset_out_reset, -- receiver_clk_reset.reset
+			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
 			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_001_receiver_irq,  --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver1_irq            --             sender.irq
@@ -846,6 +854,19 @@ begin
 			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_002_receiver_irq,  --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver2_irq            --             sender.irq
+		);
+
+	irq_synchronizer_003 : component altera_irq_clock_crosser
+		generic map (
+			IRQ_WIDTH => 1
+		)
+		port map (
+			receiver_clk   => pll_0_outclk0_clk,                  --       receiver_clk.clk
+			sender_clk     => pll_0_outclk1_clk,                  --         sender_clk.clk
+			receiver_reset => rst_controller_001_reset_out_reset, -- receiver_clk_reset.reset
+			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			receiver_irq   => irq_synchronizer_003_receiver_irq,  --           receiver.irq
+			sender_irq(0)  => irq_mapper_receiver3_irq            --             sender.irq
 		);
 
 	rst_controller : component soc_system_rst_controller

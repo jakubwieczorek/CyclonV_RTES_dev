@@ -15,7 +15,7 @@ ENTITY counter IS
 		ReadData 	: OUT std_logic_vector (31 DOWNTO 0);
 		WriteData 	: IN  std_logic_vector (31 DOWNTO 0);
 		
-		-- Interruptions
+		-- Interrupts
 		IRQ 			: OUT std_logic
 	);
 END counter;

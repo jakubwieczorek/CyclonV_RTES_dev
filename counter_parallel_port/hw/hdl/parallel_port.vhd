@@ -18,6 +18,10 @@ ENTITY parallel_port is
 		Read 			: in 	  std_logic;
 		ReadData 	: out   std_logic_vector(31 downto 0);
 		
+		-- interrupts
+		IRQ			: out std_logic;
+		
+		-- parallel port 
 		ParPort 		: inout std_logic_vector(N-1 downto 0)
 	);
 END parallel_port;
@@ -26,6 +30,8 @@ ARCHITECTURE parallel_port_logic OF parallel_port IS
 	signal iRegDir : std_logic_vector (N-1 DOWNTO 0); -- direction
 	signal iRegPort: std_logic_vector (N-1 DOWNTO 0); -- data register 
 	signal iRegPin : std_logic_vector (N-1 DOWNTO 0); -- current pin state
+	signal iIRQEn 	 : std_logic := '1';
+
 BEGIN
 
 pPort : process(iRegDir, iRegPort) -- direction process
@@ -52,6 +58,7 @@ begin
 				when "010" => iRegPort <= WriteData(N-1 downto 0); -- write data
 				when "011" => iRegPort <= iRegPort OR WriteData(N-1 downto 0); -- set particular bits
 				when "100" => iRegPort <= iRegPort NAND WriteData(N-1 downto 0); -- reset particular bits
+				when "101" => iIRQEn   <= WriteData(0);
 				when others => null;
 			end case;
 		end if;
@@ -72,4 +79,8 @@ begin
 		end if;
 	end if;
 end process pRegRd;
+
+
+IRQ <= '1' when iIRQEn = '1' and iRegDir(2) = '1' and ParPort(2) = '1' else '0';
+
 END;

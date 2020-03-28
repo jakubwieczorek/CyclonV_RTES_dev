@@ -25,14 +25,6 @@
          type = "int";
       }
    }
-   element interrupt_counter_0.avalon_slave_0
-   {
-      datum baseAddress
-      {
-         value = "134221856";
-         type = "String";
-      }
-   }
    element jtag_uart_0
    {
       datum _sortIndex
@@ -41,28 +33,12 @@
          type = "int";
       }
    }
-   element jtag_uart_0.avalon_jtag_slave
-   {
-      datum baseAddress
-      {
-         value = "134221960";
-         type = "String";
-      }
-   }
    element nios2_gen2_0
    {
       datum _sortIndex
       {
          value = "3";
          type = "int";
-      }
-   }
-   element nios2_gen2_0.debug_mem_slave
-   {
-      datum baseAddress
-      {
-         value = "134219776";
-         type = "String";
       }
    }
    element nios_buttons
@@ -89,28 +65,12 @@
          type = "int";
       }
    }
-   element nios_leds.s1
-   {
-      datum baseAddress
-      {
-         value = "134221936";
-         type = "String";
-      }
-   }
    element parallel_port_0
    {
       datum _sortIndex
       {
          value = "8";
          type = "int";
-      }
-   }
-   element parallel_port_0.avalon_slave_0
-   {
-      datum baseAddress
-      {
-         value = "134221888";
-         type = "String";
       }
    }
    element pll_0
@@ -129,11 +89,19 @@
          type = "int";
       }
    }
-   element sdram_controller_0.s1
+   element soc_system
    {
-      datum baseAddress
+      datum _originalDeviceFamily
       {
-         value = "67108864";
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
          type = "String";
       }
    }
@@ -191,14 +159,6 @@
       {
          value = "4";
          type = "int";
-      }
-   }
-   element sysid.control_slave
-   {
-      datum baseAddress
-      {
-         value = "134221952";
-         type = "String";
       }
    }
    element timer_0
@@ -300,8 +260,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="5" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="6" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -365,7 +325,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="15" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -629,7 +589,7 @@
   <parameter name="gui_fractional_cout" value="32" />
   <parameter name="gui_mif_generate" value="false" />
   <parameter name="gui_multiply_factor" value="1" />
-  <parameter name="gui_number_of_clocks" value="3" />
+  <parameter name="gui_number_of_clocks" value="4" />
   <parameter name="gui_operation_mode" value="normal" />
   <parameter name="gui_output_clock_frequency0" value="50.0" />
   <parameter name="gui_output_clock_frequency1" value="100.0" />
@@ -642,7 +602,7 @@
   <parameter name="gui_output_clock_frequency16" value="100.0" />
   <parameter name="gui_output_clock_frequency17" value="100.0" />
   <parameter name="gui_output_clock_frequency2" value="100.0" />
-  <parameter name="gui_output_clock_frequency3" value="100.0" />
+  <parameter name="gui_output_clock_frequency3" value="300.0" />
   <parameter name="gui_output_clock_frequency4" value="100.0" />
   <parameter name="gui_output_clock_frequency5" value="100.0" />
   <parameter name="gui_output_clock_frequency6" value="100.0" />
@@ -729,7 +689,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="100000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName">soc_system_sdram_controller_0</parameter>
+  <parameter name="componentName">$${FILENAME}_sdram_controller_0</parameter>
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
@@ -907,15 +867,22 @@
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
-   end="jtag_uart_0.irq">
+   end="parallel_port_0.interrupt_sender">
   <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
-   end="timer_0.irq">
+   end="jtag_uart_0.irq">
   <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="nios2_gen2_0.irq"
+   end="timer_0.irq">
+  <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="reset"

@@ -7,9 +7,22 @@
 //
 #include "interrupts_measurment.h"
 #include "counter.h"
+#include "parallel_port_test.h"
 
 static void response_isr(void* context);
 static void recovery_isr(void* context);
+static void par_port_response_isr(void* context);
+
+int aaa = 0;
+
+static void par_port_response_isr(void* context)
+{
+	alt_printf("par_port_response_isr\n");
+
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0);
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQCLR,ALL_IRQ_CLR); //CLEAR IRQ
+	aaa = 15;
+}
 
 static void response_isr(void* context)
 {
@@ -21,9 +34,10 @@ static void response_isr(void* context)
 	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0); //CLEAR TO
 	flag=1; //Flag is a global variable
 }
-
 static void recovery_isr(void* context)
 {
+	alt_printf("recovery_isr\n");
+
     IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,0);
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
     IOWR(INTERRUPT_COUNTER_0_BASE, ISTART, ARBITVAL); // start int timer
@@ -69,10 +83,46 @@ void measure_response_time()
 void measure_recovery_time()
 {
 	while(IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER)==0); // value of a timer is recovery time
-	alt_printf("recovery time%x \n",IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
+	alt_printf("recovery time %x \n",IORD(INTERRUPT_COUNTER_0_BASE, ICOUNTER));
 
 	// run it again
 	IOWR(INTERRUPT_COUNTER_0_BASE, ISTOP, ARBITVAL);
 	IOWR(INTERRUPT_COUNTER_0_BASE, IRZ, ARBITVAL);
 	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,7);
 }
+
+void measure_response_time_par_port()
+{
+	int result = alt_ic_isr_register(PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID,
+			PARALLEL_PORT_0_IRQ,par_port_response_isr, NULL,NULL);
+
+	printf("result=%d\n", result);
+
+	alt_irq_cpu_enable_interrupts();
+
+	// Enable timer inerrupt
+	alt_ic_irq_enable(PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID, PARALLEL_PORT_0_IRQ);
+
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGDIR,MODE_ALL_OUTPUT); //Selected as output
+
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0x00);
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQEN,ALL_IRQ_EN);//Enable IRQ on each bit
+
+	volatile int k;
+	while(1)
+	{
+		//Write Parport 0x02 as the output value
+		IOWR_32DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0xFDFF);  //Bit2 is SET st IRQ
+		for(k = 0; k < 10000000; k++); //software delay
+		alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+		alt_printf("iParPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN));
+		alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+
+		IOWR_32DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0xFA00);  //Bit2 is SET st IRQ
+		for(k = 0; k < 10000000; k++); //software delay
+		alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+		alt_printf("iParPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN));
+		alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+	}
+}
+

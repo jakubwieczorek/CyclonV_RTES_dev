@@ -11,7 +11,7 @@ entity soc_system is
 		clk_clk                                 : in    std_logic                     := '0';             --                              clk.clk
 		nios_buttons_external_connection_export : in    std_logic_vector(2 downto 0)  := (others => '0'); -- nios_buttons_external_connection.export
 		nios_leds_external_connection_export    : out   std_logic_vector(9 downto 0);                     --    nios_leds_external_connection.export
-		parallel_port_0_conduit_end_export      : inout std_logic_vector(31 downto 0) := (others => '0'); --      parallel_port_0_conduit_end.export
+		parallel_port_0_conduit_end_export      : inout std_logic_vector(7 downto 0)  := (others => '0'); --      parallel_port_0_conduit_end.export
 		pll_0_sdram_clk_clk                     : out   std_logic;                                        --                  pll_0_sdram_clk.clk
 		reset_reset_n                           : in    std_logic                     := '0';             --                            reset.reset_n
 		sdram_controller_0_wire_addr            : out   std_logic_vector(12 downto 0);                    --          sdram_controller_0_wire.addr
@@ -125,7 +125,7 @@ architecture rtl of soc_system is
 			Read       : in    std_logic                     := 'X';             -- read
 			ReadData   : out   std_logic_vector(31 downto 0);                    -- readdata
 			nReset     : in    std_logic                     := 'X';             -- reset_n
-			ParPort    : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			ParPort    : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			IRQ        : out   std_logic                                         -- irq
 		);
 	end component parallel_port;
@@ -663,7 +663,7 @@ begin
 
 	parallel_port_0 : component parallel_port
 		generic map (
-			N => 32
+			N => 8
 		)
 		port map (
 			Clk        => pll_0_outclk0_clk,                                           --            clock.clk

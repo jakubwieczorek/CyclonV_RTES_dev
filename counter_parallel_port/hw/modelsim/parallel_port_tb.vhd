@@ -47,7 +47,7 @@ BEGIN
 	
 	ChipSelect <= '1'; -- chip select all the time
 
-	Address <= "000", 
+	Address <= "001", 
 				  "010" after clock_period * 2;
 	
 	-- first write direction and data then read

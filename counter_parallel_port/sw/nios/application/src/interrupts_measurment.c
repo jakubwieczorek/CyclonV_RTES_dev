@@ -20,7 +20,7 @@ static void par_port_response_isr(void* context)
 	alt_printf("par_port_response_isr\n");
 
 	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0);
-	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQCLR,ALL_IRQ_CLR); //CLEAR IRQ
+	//IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQCLR,ALL_IRQ_CLR); //CLEAR IRQ
 	aaa = 15;
 }
 
@@ -104,25 +104,29 @@ void measure_response_time_par_port()
 	alt_ic_irq_enable(PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID, PARALLEL_PORT_0_IRQ);
 
 	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGDIR,MODE_ALL_OUTPUT); //Selected as output
-
-	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0x00);
-	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQEN,ALL_IRQ_EN);//Enable IRQ on each bit
-
+	alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
 	volatile int k;
+
+	for(k = 0; k < 10000000; k++); //software delay
+	IOWR_8DIRECT(PARALLEL_PORT_0_BASE,0x02,0x00);
+	alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+
+	//IOWR_8DIRECT(PARALLEL_PORT_0_BASE,PARIRQEN,ALL_IRQ_EN);//Enable IRQ on each bit
+
 	while(1)
 	{
 		//Write Parport 0x02 as the output value
-		IOWR_32DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0xFDFF);  //Bit2 is SET st IRQ
+		IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0x04);  //Bit2 is SET st IRQ
 		for(k = 0; k < 10000000; k++); //software delay
-		alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
-		alt_printf("iParPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN));
-		alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+		alt_printf("iRegPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+		alt_printf("iParPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ));
+		alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
 
-		IOWR_32DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0xFA00);  //Bit2 is SET st IRQ
+		IOWR_8DIRECT(PARALLEL_PORT_0_BASE,IREGPORT,0x00);  //Bit2 is SET st IRQ
 		for(k = 0; k < 10000000; k++); //software delay
-		alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
-		alt_printf("iParPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN));
-		alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+		alt_printf("iRegPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+		alt_printf("iParPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ));
+		alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
 	}
 }
 

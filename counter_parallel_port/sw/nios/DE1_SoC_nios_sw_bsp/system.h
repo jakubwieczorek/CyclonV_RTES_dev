@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sat Mar 28 21:48:33 CET 2020
+ * Generated: Thu Apr 09 18:35:55 CEST 2020
  */
 
 /*
@@ -349,7 +349,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1585420947
+#define SYSID_TIMESTAMP 1586449588
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

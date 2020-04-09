@@ -470,7 +470,7 @@
   <parameter name="width" value="10" />
  </module>
  <module name="parallel_port_0" kind="parallel_port" version="1.0" enabled="1">
-  <parameter name="N" value="32" />
+  <parameter name="N" value="8" />
  </module>
  <module name="pll_0" kind="altera_pll" version="18.1" enabled="1">
   <parameter name="debug_print_output" value="false" />

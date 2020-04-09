@@ -55,10 +55,10 @@ begin
 		if ChipSelect = '1' and Write = '1' then -- Write cycle
 			case Address(2 downto 0) is
 				when "000" => iRegDir  <= WriteData(N-1 downto 0); -- control direction
-				when "010" => iRegPort <= WriteData(N-1 downto 0); -- write data
-				when "011" => iRegPort <= iRegPort OR WriteData(N-1 downto 0); -- set particular bits
-				when "100" => iRegPort <= iRegPort NAND WriteData(N-1 downto 0); -- reset particular bits
-				when "101" => iIRQEn   <= WriteData(0);
+				when "001" => iRegPort <= WriteData(N-1 downto 0); -- write data
+				when "010" => iRegPort <= iRegPort OR WriteData(N-1 downto 0); -- set particular bits
+				when "011" => iRegPort <= iRegPort NAND WriteData(N-1 downto 0); -- reset particular bits
+				when "100" => iIRQEn   <= WriteData(0);
 				when others => null;
 			end case;
 		end if;
@@ -72,15 +72,17 @@ begin
 		if ChipSelect = '1' and Read = '1' then -- Read cycle
 			case Address(2 downto 0) is
 				when "000" => ReadData(N-1 downto 0) <= iRegDir; -- read direction
-				when "001" => ReadData(N-1 downto 0) <= iRegPin; -- read the state of the port
-				when "010" => ReadData(N-1 downto 0) <= iRegPort; -- read what is the data register
+				when "001" => ReadData(N-1 downto 0) <= iRegPort; -- read the state of the port
+				when "010" => ReadData(N-1 downto 0) <= iRegPin; -- read what is the data register
+				when "011" => ReadData(0) <= iIRQEn;
 				when others => null;
 			end case;
 		end if;
 	end if;
 end process pRegRd;
 
+IRQ <= '1' when iIRQEn = '1' and iRegDir(2) = '1' and iRegPort(2) = '1' else '0';
 
-IRQ <= '1' when iIRQEn = '1' and iRegDir(2) = '1' and ParPort(2) = '1' else '0';
+--IRQ <= '1' when iIRQEn = '1' and iRegDir(2) = '1' and ParPort(2) = '1' else '0';
 
 END;

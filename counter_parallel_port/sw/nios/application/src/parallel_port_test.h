@@ -17,15 +17,16 @@
 #include "system.h"
 #include "sys/alt_stdio.h"
 
-#define IREGDIR   0  //Change the values if your register map is different than
-#define IREGPIN   1
-#define IREGPORT  2
-#define PARIRQEN  5
-#define PARIRQCLR 6
-#define MODE_ALL_OUTPUT 0xFFFF
-#define MODE_ALL_INPUT  0X0000
-#define ALL_IRQ_EN      0XFF
-#define ALL_IRQ_CLR     0xFF
+// 2 downto 0: when 001 it means 0x04 instead of 0x01
+#define IREGDIR   		0
+#define IREGPORT  		1
+#define IREGPIN_READ  	2
+//#define PARIRQEN  		(0x05*4)
+//#define PARIRQCLR 6
+#define MODE_ALL_OUTPUT 0xFF
+#define MODE_ALL_INPUT  0x00
+//#define ALL_IRQ_EN      0xFF
+//#define ALL_IRQ_CLR     0xFF
 
 void test_parallel_port();
 

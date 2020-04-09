@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Apr  9 18:31:51 2020
+Fitter Status : Successful - Thu Apr  9 21:22:33 2020
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : counter_parallel_port
 Top-level Entity Name : DE1_SoC_top_level
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 2,682 / 32,070 ( 8 % )
-Total registers : 5536
+Logic utilization (in ALMs) : 2,660 / 32,070 ( 8 % )
+Total registers : 5563
 Total pins : 62 / 457 ( 14 % )
 Total virtual pins : 0
 Total block memory bits : 196,672 / 4,065,280 ( 5 % )

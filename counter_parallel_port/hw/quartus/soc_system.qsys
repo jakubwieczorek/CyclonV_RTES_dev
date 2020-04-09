@@ -277,7 +277,7 @@
    name="parallel_port_0_conduit_end"
    internal="parallel_port_0.conduit_end" />
  <interface
-   name="parallel_port_0_conduit_end_1"
+   name="parallel_port_0_conduit_end_export"
    internal="parallel_port_0.conduit_end_1"
    type="conduit"
    dir="end" />
@@ -327,8 +327,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="5" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="6" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -756,7 +756,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="100000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName">soc_system_sdram_controller_0</parameter>
+  <parameter name="componentName">$${FILENAME}_sdram_controller_0</parameter>
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />

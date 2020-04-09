@@ -8,21 +8,21 @@ use IEEE.numeric_std.all;
 
 entity soc_system is
 	port (
-		clk_clk                                 : in    std_logic                     := '0';             --                              clk.clk
-		nios_buttons_external_connection_export : in    std_logic_vector(2 downto 0)  := (others => '0'); -- nios_buttons_external_connection.export
-		nios_leds_external_connection_export    : out   std_logic_vector(9 downto 0);                     --    nios_leds_external_connection.export
-		parallel_port_0_conduit_end_1_export    : inout std_logic_vector(7 downto 0)  := (others => '0'); --    parallel_port_0_conduit_end_1.export
-		pll_0_sdram_clk_clk                     : out   std_logic;                                        --                  pll_0_sdram_clk.clk
-		reset_reset_n                           : in    std_logic                     := '0';             --                            reset.reset_n
-		sdram_controller_0_wire_addr            : out   std_logic_vector(12 downto 0);                    --          sdram_controller_0_wire.addr
-		sdram_controller_0_wire_ba              : out   std_logic_vector(1 downto 0);                     --                                 .ba
-		sdram_controller_0_wire_cas_n           : out   std_logic;                                        --                                 .cas_n
-		sdram_controller_0_wire_cke             : out   std_logic;                                        --                                 .cke
-		sdram_controller_0_wire_cs_n            : out   std_logic;                                        --                                 .cs_n
-		sdram_controller_0_wire_dq              : inout std_logic_vector(15 downto 0) := (others => '0'); --                                 .dq
-		sdram_controller_0_wire_dqm             : out   std_logic_vector(1 downto 0);                     --                                 .dqm
-		sdram_controller_0_wire_ras_n           : out   std_logic;                                        --                                 .ras_n
-		sdram_controller_0_wire_we_n            : out   std_logic                                         --                                 .we_n
+		clk_clk                                   : in    std_logic                     := '0';             --                                clk.clk
+		nios_buttons_external_connection_export   : in    std_logic_vector(2 downto 0)  := (others => '0'); --   nios_buttons_external_connection.export
+		nios_leds_external_connection_export      : out   std_logic_vector(9 downto 0);                     --      nios_leds_external_connection.export
+		parallel_port_0_conduit_end_export_export : inout std_logic_vector(7 downto 0)  := (others => '0'); -- parallel_port_0_conduit_end_export.export
+		pll_0_sdram_clk_clk                       : out   std_logic;                                        --                    pll_0_sdram_clk.clk
+		reset_reset_n                             : in    std_logic                     := '0';             --                              reset.reset_n
+		sdram_controller_0_wire_addr              : out   std_logic_vector(12 downto 0);                    --            sdram_controller_0_wire.addr
+		sdram_controller_0_wire_ba                : out   std_logic_vector(1 downto 0);                     --                                   .ba
+		sdram_controller_0_wire_cas_n             : out   std_logic;                                        --                                   .cas_n
+		sdram_controller_0_wire_cke               : out   std_logic;                                        --                                   .cke
+		sdram_controller_0_wire_cs_n              : out   std_logic;                                        --                                   .cs_n
+		sdram_controller_0_wire_dq                : inout std_logic_vector(15 downto 0) := (others => '0'); --                                   .dq
+		sdram_controller_0_wire_dqm               : out   std_logic_vector(1 downto 0);                     --                                   .dqm
+		sdram_controller_0_wire_ras_n             : out   std_logic;                                        --                                   .ras_n
+		sdram_controller_0_wire_we_n              : out   std_logic                                         --                                   .we_n
 	);
 end entity soc_system;
 
@@ -675,7 +675,7 @@ begin
 			ReadData   => mm_interconnect_0_parallel_port_0_avalon_slave_0_readdata,   --                 .readdata
 			IRQ        => irq_synchronizer_001_receiver_irq(0),                        -- interrupt_sender.irq
 			nReset     => rst_controller_reset_out_reset_ports_inv,                    --     reset_sink_1.reset_n
-			ParPort    => parallel_port_0_conduit_end_1_export                         --    conduit_end_1.export
+			ParPort    => parallel_port_0_conduit_end_export_export                    --    conduit_end_1.export
 		);
 
 	pll_0 : component soc_system_pll_0

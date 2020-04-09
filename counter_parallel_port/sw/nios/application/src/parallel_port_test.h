@@ -19,12 +19,12 @@
 
 // 2 downto 0: when 001 it means 0x04 instead of 0x01
 #define IREGDIR   		0
-#define IREGPORT  		1
-#define IREGPIN_READ  	2
+#define IREGPORT  		(4*1)
+#define IREGPIN_READ  	(4*2)
 //#define PARIRQEN  		(0x05*4)
 //#define PARIRQCLR 6
-#define MODE_ALL_OUTPUT 0xFF
-#define MODE_ALL_INPUT  0x00
+#define MODE_ALL_OUTPUT 0xFFFFFFFF
+#define MODE_ALL_INPUT  0x00000000
 //#define ALL_IRQ_EN      0xFF
 //#define ALL_IRQ_CLR     0xFF
 

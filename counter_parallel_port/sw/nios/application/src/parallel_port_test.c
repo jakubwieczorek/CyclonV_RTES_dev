@@ -4,15 +4,21 @@ void test_parallel_port()
 {
 	volatile unsigned int k;
 
-	IOWR_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR, MODE_ALL_OUTPUT);
-	alt_printf("iRegPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
-	alt_printf("iRegPin=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ)); // the same value as IREGPORT
-	alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+	IOWR_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR, MODE_ALL_OUTPUT);
+	alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+	alt_printf("iRegPin=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ)); // the same value as IREGPORT
+	alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
 
-//	IOWR_8DIRECT(PARALLEL_PORT_0_BASE, IREGPORT, 0x9b);
-//	alt_printf("iRegPort=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
-//	alt_printf("iRegPin=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ)); // the same value as IREGPORT
-//	alt_printf("iRegDir=%x\n", IORD_8DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+	IOWR_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT, 0xAA);
+	alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+	alt_printf("iRegPin=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ)); // the same value as IREGPORT
+	alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+
+	IOWR_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR, MODE_ALL_INPUT);
+	alt_printf("iRegPort=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPORT));
+	alt_printf("iRegPin=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGPIN_READ)); // the same value as IREGPORT
+	alt_printf("iRegDir=%x\n", IORD_32DIRECT(PARALLEL_PORT_0_BASE, IREGDIR));
+
 
 	//Read iRegPort to check whether it is written correct
 	//Switch LEDS should give 0x9b, observe it

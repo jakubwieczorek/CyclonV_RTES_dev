@@ -20,7 +20,7 @@
 // 2 downto 0: when 001 it means 0x04 instead of 0x01
 #define IREGDIR   		0
 #define IREGPORT  		(4*1)
-#define IREGPIN_READ  	(4*2)
+#define IREGPIN_READ  	(0x02*4)
 //#define PARIRQEN  		(0x05*4)
 //#define PARIRQCLR 6
 #define MODE_ALL_OUTPUT 0xFFFFFFFF

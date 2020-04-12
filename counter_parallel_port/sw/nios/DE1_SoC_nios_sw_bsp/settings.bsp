@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 9, 2020 9:26:20 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1586460380679</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 11, 2020 3:14:50 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1586610890125</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/vm/CyclonV_RTES_dev/counter_parallel_port/sw/nios/DE1_SoC_nios_sw_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/soc_system.sopcinfo</SopcDesignFile>

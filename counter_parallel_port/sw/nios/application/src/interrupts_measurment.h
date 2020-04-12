@@ -34,6 +34,6 @@ void setup_response_timer();
 void setup_recovery_timer();
 void measure_recovery_time();
 void measure_response_time();
-void measure_response_time_par_port();
+void measure_response_recovery_time_par_port();
 
 #endif /* INTERRUPTS_MEASURMENT_H_ */

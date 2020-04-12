@@ -25,27 +25,27 @@
 int main() {
 	printf("DE1-SoC nios demo\n");
 
-	test_parallel_port();
-	usleep(SLEEP_DELAY_US);
+	//test_parallel_port();
+	//usleep(SLEEP_DELAY_US);
 //
 //	test_counter();
 //	usleep(SLEEP_DELAY_US);
 //
-	setup_leds();
+	//setup_leds();
 
 	//setup_response_timer();
 	//setup_recovery_timer();
 
-	//measure_response_time_par_port();
+	measure_response_recovery_time_par_port();
 
-	while (true)
-	{
-		//measure_response_time();
-		//measure_recovery_time();
-
-		handle_leds();
-		usleep(SLEEP_DELAY_US);
-	}
+//	while (true)
+//	{
+//		//measure_response_time();
+//		//measure_recovery_time();
+//
+//		handle_leds();
+//		usleep(SLEEP_DELAY_US);
+//	}
 
 	return 0;
 }

@@ -23,6 +23,7 @@ module soc_system_nios2_gen2_0 (
 		output wire        i_read,                              //                          .read
 		input  wire [31:0] i_readdata,                          //                          .readdata
 		input  wire        i_waitrequest,                       //                          .waitrequest
+		output wire [3:0]  i_burstcount,                        //                          .burstcount
 		input  wire        i_readdatavalid,                     //                          .readdatavalid
 		input  wire [31:0] irq,                                 //                       irq.irq
 		output wire        debug_reset_request,                 //       debug_reset_request.reset
@@ -54,6 +55,7 @@ module soc_system_nios2_gen2_0 (
 		.i_read                              (i_read),                              //                          .read
 		.i_readdata                          (i_readdata),                          //                          .readdata
 		.i_waitrequest                       (i_waitrequest),                       //                          .waitrequest
+		.i_burstcount                        (i_burstcount),                        //                          .burstcount
 		.i_readdatavalid                     (i_readdatavalid),                     //                          .readdatavalid
 		.irq                                 (irq),                                 //                       irq.irq
 		.debug_reset_request                 (debug_reset_request),                 //       debug_reset_request.reset

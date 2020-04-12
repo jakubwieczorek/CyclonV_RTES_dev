@@ -25,7 +25,7 @@ entity DE1_SoC_top_level is
         DRAM_WE_N        : out   std_logic;
 		  
 		  -- GPIO_0
-		  GPIO_1 : inout std_logic_vector(7 downto 0)
+		  GPIO_0 : inout std_logic_vector(7 downto 0)
     );
 end DE1_SoC_top_level;
 
@@ -44,7 +44,7 @@ architecture rtl of DE1_SoC_top_level is
 			sdram_controller_0_wire_dqm          : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_controller_0_wire_ras_n        : out   std_logic;                                        -- ras_n
 			sdram_controller_0_wire_we_n         : out   std_logic;                                        -- we_n
-			parallel_port_0_conduit_end_export_export   : inout std_logic_vector(7 downto 0) := (others => 'X'); -- export
+			parallel_port_0_conduit_end_export_export   : inout std_logic_vector(7 downto 0);				  -- export
 			nios_leds_external_connection_export    : out   std_logic_vector(9 downto 0);                     -- export
 			pll_0_sdram_clk_clk                    : out   std_logic;                                         -- clk
 			nios_buttons_external_connection_export : in    std_logic_vector(2 downto 0)  := (others => 'X')  -- export
@@ -67,7 +67,7 @@ begin
 			sdram_controller_0_wire_dqm(0)          => DRAM_LDQM,          --                              .dqm
 			sdram_controller_0_wire_ras_n        => DRAM_RAS_N,        --                              .ras_n
 			sdram_controller_0_wire_we_n         => DRAM_WE_N,         --                              .we_n
-			parallel_port_0_conduit_end_export_export   => GPIO_1,   --   parallel_port_0_conduit_end.export
+			parallel_port_0_conduit_end_export_export   => GPIO_0,   --   parallel_port_0_conduit_end.export
 			nios_leds_external_connection_export => LEDR,  -- nios_leds_external_connection.export
 			pll_0_sdram_clk_clk							 => DRAM_CLK,
 			nios_buttons_external_connection_export => KEY_N(3 DOWNTO 1)

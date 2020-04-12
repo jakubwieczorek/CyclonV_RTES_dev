@@ -378,7 +378,7 @@
   <parameter name="fa_cache_linesize" value="0" />
   <parameter name="flash_instruction_master_paddr_base" value="0" />
   <parameter name="flash_instruction_master_paddr_size" value="0" />
-  <parameter name="icache_burstType" value="None" />
+  <parameter name="icache_burstType" value="Sequential" />
   <parameter name="icache_numTCIM" value="0" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_size" value="4096" />

@@ -1,5 +1,5 @@
 Flow report for counter_parallel_port
-Sat Apr 11 15:03:27 2020
+Sun Apr 12 19:35:01 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Sat Apr 11 15:03:27 2020       ;
+; Flow Status                     ; Successful - Sun Apr 12 19:35:01 2020       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; counter_parallel_port                       ;
 ; Top-level Entity Name           ; DE1_SoC_top_level                           ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 2,283 / 32,070 ( 7 % )                      ;
-; Total registers                 ; 4426                                        ;
+; Logic utilization (in ALMs)     ; 2,434 / 32,070 ( 8 % )                      ;
+; Total registers                 ; 4571                                        ;
 ; Total pins                      ; 62 / 457 ( 14 % )                           ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 100,416 / 4,065,280 ( 2 % )                 ;
+; Total block memory bits         ; 107,584 / 4,065,280 ( 3 % )                 ;
 ; Total DSP Blocks                ; 3 / 87 ( 3 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -67,61 +67,61 @@ refer to the applicable agreement for further details.
 +-------------------+-----------------------+
 ; Option            ; Setting               ;
 +-------------------+-----------------------+
-; Start date & time ; 04/11/2020 14:55:51   ;
+; Start date & time ; 04/12/2020 19:24:36   ;
 ; Main task         ; Compilation           ;
 ; Revision Name     ; counter_parallel_port ;
 +-------------------+-----------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                                                             ;
-+-------------------------------------+-----------------------------------------------------------------------------------------+-----------------------+-------------------+------------------+
-; Assignment Name                     ; Value                                                                                   ; Default Value         ; Entity Name       ; Section Id       ;
-+-------------------------------------+-----------------------------------------------------------------------------------------+-----------------------+-------------------+------------------+
-; COMPILER_SIGNATURE_ID               ; 8796761034851.158660975005274                                                           ; --                    ; --                ; --               ;
-; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                                                    ; --                    ; --                ; eda_simulation   ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                                                  ; <None>                ; --                ; --               ;
-; EDA_TIME_SCALE                      ; 1 ps                                                                                    ; --                    ; --                ; eda_simulation   ;
-; ENABLE_SIGNALTAP                    ; On                                                                                      ; --                    ; --                ; --               ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                      ; --                    ; --                ; --               ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                       ; --                    ; --                ; --               ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                                  ; --                    ; DE1_SoC_top_level ; Top              ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                                  ; --                    ; DE1_SoC_top_level ; Top              ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                                  ; --                    ; DE1_SoC_top_level ; Top              ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                                     ; --                    ; --                ; --               ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                   ; --                    ; --                ; --               ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                                            ; --                    ; --                ; --               ;
-; SLD_FILE                            ; db/logic_analysis_auto_stripped.stp                                                     ; --                    ; --                ; --               ;
-; SLD_NODE_CREATOR_ID                 ; 110                                                                                     ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_ENTITY_NAME                ; sld_signaltap                                                                           ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_BLOCK_TYPE=AUTO                                                                 ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_INFO=805334528                                                                 ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_POWER_UP_TRIGGER=0                                                                  ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                           ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SEGMENT_SIZE=1024                                                                   ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                              ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_FLOW_USE_GENERATED=0                                                          ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_BITS=11                                                                       ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_BUFFER_FULL_STOP=1                                                                  ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_CURRENT_RESOURCE_WIDTH=1                                                            ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INCREMENTAL_ROUTING=1                                                               ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL=1                                                                     ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SAMPLE_DEPTH=1024                                                                   ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_IN_ENABLED=0                                                                ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_PIPELINE=0                                                                  ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_PIPELINE=0                                                                      ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_COUNTER_PIPELINE=0                                                                  ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                            ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK=000000000000000000000000                                             ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK_LENGTH=24                                                            ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ENABLE_ADVANCED_TRIGGER=1                                                           ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_DATA_BITS=34                                                                        ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_BITS=33                                                                     ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_BITS=34                                                           ; --                    ; --                ; auto_signaltap_0 ;
-; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ADVANCED_TRIGGER_ENTITY=sld_reserved_counter_parallel_port_auto_signaltap_0_1_4fc1, ; --                    ; --                ; auto_signaltap_0 ;
-; TOP_LEVEL_ENTITY                    ; DE1_SoC_top_level                                                                       ; counter_parallel_port ; --                ; --               ;
-; USE_SIGNALTAP_FILE                  ; logic_analysis.stp                                                                      ; --                    ; --                ; --               ;
-+-------------------------------------+-----------------------------------------------------------------------------------------+-----------------------+-------------------+------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                    ;
++-------------------------------------+------------------------------------------------+-----------------------+-------------------+------------------+
+; Assignment Name                     ; Value                                          ; Default Value         ; Entity Name       ; Section Id       ;
++-------------------------------------+------------------------------------------------+-----------------------+-------------------+------------------+
+; COMPILER_SIGNATURE_ID               ; 8796761034851.158671227602667                  ; --                    ; --                ; --               ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                           ; --                    ; --                ; eda_simulation   ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                         ; <None>                ; --                ; --               ;
+; EDA_TIME_SCALE                      ; 1 ps                                           ; --                    ; --                ; eda_simulation   ;
+; ENABLE_SIGNALTAP                    ; On                                             ; --                    ; --                ; --               ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                             ; --                    ; --                ; --               ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                              ; --                    ; --                ; --               ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)         ; --                    ; DE1_SoC_top_level ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)         ; --                    ; DE1_SoC_top_level ; Top              ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)         ; --                    ; DE1_SoC_top_level ; Top              ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                            ; --                    ; --                ; --               ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW          ; --                    ; --                ; --               ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                   ; --                    ; --                ; --               ;
+; SLD_FILE                            ; db/logic_analysis_auto_stripped.stp            ; --                    ; --                ; --               ;
+; SLD_NODE_CREATOR_ID                 ; 110                                            ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_ENTITY_NAME                ; sld_signaltap                                  ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_BLOCK_TYPE=AUTO                        ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_INFO=805334528                        ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_POWER_UP_TRIGGER=0                         ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0  ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SEGMENT_SIZE=1024                          ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ATTRIBUTE_MEM_MODE=OFF                     ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_FLOW_USE_GENERATED=0                 ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_BITS=11                              ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_BUFFER_FULL_STOP=1                         ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_CURRENT_RESOURCE_WIDTH=1                   ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INCREMENTAL_ROUTING=1                      ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL=1                            ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SAMPLE_DEPTH=1024                          ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_IN_ENABLED=0                       ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_PIPELINE=0                         ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_PIPELINE=0                             ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_COUNTER_PIPELINE=0                         ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL_PIPELINE=1                   ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_DATA_BITS=41                               ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_BITS=41                  ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_BITS=1                             ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK=000000000000000000000000000 ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK_LENGTH=27                   ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,           ; --                    ; --                ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ENABLE_ADVANCED_TRIGGER=0                  ; --                    ; --                ; auto_signaltap_0 ;
+; TOP_LEVEL_ENTITY                    ; DE1_SoC_top_level                              ; counter_parallel_port ; --                ; --               ;
+; USE_SIGNALTAP_FILE                  ; logic_analysis.stp                             ; --                    ; --                ; --               ;
++-------------------------------------+------------------------------------------------+-----------------------+-------------------+------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -129,12 +129,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:02:26     ; 1.0                     ; 1314 MB             ; 00:02:27                           ;
-; Fitter               ; 00:03:36     ; 1.1                     ; 2639 MB             ; 00:04:23                           ;
-; Assembler            ; 00:00:25     ; 1.0                     ; 1042 MB             ; 00:00:13                           ;
-; Timing Analyzer      ; 00:00:36     ; 1.5                     ; 1468 MB             ; 00:00:37                           ;
-; EDA Netlist Writer   ; 00:00:12     ; 1.0                     ; 1374 MB             ; 00:00:08                           ;
-; Total                ; 00:07:15     ; --                      ; --                  ; 00:07:48                           ;
+; Analysis & Synthesis ; 00:03:19     ; 1.0                     ; 1313 MB             ; 00:02:58                           ;
+; Fitter               ; 00:05:19     ; 1.1                     ; 2655 MB             ; 00:05:34                           ;
+; Assembler            ; 00:00:39     ; 1.0                     ; 1044 MB             ; 00:00:13                           ;
+; Timing Analyzer      ; 00:00:37     ; 1.4                     ; 1465 MB             ; 00:00:36                           ;
+; EDA Netlist Writer   ; 00:00:15     ; 1.0                     ; 1375 MB             ; 00:00:07                           ;
+; Total                ; 00:10:09     ; --                      ; --                  ; 00:09:28                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

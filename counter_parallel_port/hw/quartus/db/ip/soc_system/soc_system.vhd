@@ -74,6 +74,7 @@ architecture rtl of soc_system is
 			i_read                              : out std_logic;                                        -- read
 			i_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			i_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
+			i_burstcount                        : out std_logic_vector(3 downto 0);                     -- burstcount
 			i_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
 			irq                                 : in  std_logic_vector(31 downto 0) := (others => 'X'); -- irq
 			debug_reset_request                 : out std_logic;                                        -- reset
@@ -207,6 +208,7 @@ architecture rtl of soc_system is
 			nios2_gen2_0_data_master_debugaccess                       : in  std_logic                     := 'X';             -- debugaccess
 			nios2_gen2_0_instruction_master_address                    : in  std_logic_vector(27 downto 0) := (others => 'X'); -- address
 			nios2_gen2_0_instruction_master_waitrequest                : out std_logic;                                        -- waitrequest
+			nios2_gen2_0_instruction_master_burstcount                 : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- burstcount
 			nios2_gen2_0_instruction_master_read                       : in  std_logic                     := 'X';             -- read
 			nios2_gen2_0_instruction_master_readdata                   : out std_logic_vector(31 downto 0);                    -- readdata
 			nios2_gen2_0_instruction_master_readdatavalid              : out std_logic;                                        -- readdatavalid
@@ -503,6 +505,7 @@ architecture rtl of soc_system is
 	signal nios2_gen2_0_instruction_master_address                         : std_logic_vector(27 downto 0); -- nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	signal nios2_gen2_0_instruction_master_read                            : std_logic;                     -- nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
 	signal nios2_gen2_0_instruction_master_readdatavalid                   : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
+	signal nios2_gen2_0_instruction_master_burstcount                      : std_logic_vector(3 downto 0);  -- nios2_gen2_0:i_burstcount -> mm_interconnect_0:nios2_gen2_0_instruction_master_burstcount
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata        : std_logic_vector(31 downto 0); -- jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest     : std_logic;                     -- jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
@@ -626,6 +629,7 @@ begin
 			i_read                              => nios2_gen2_0_instruction_master_read,                       --                          .read
 			i_readdata                          => nios2_gen2_0_instruction_master_readdata,                   --                          .readdata
 			i_waitrequest                       => nios2_gen2_0_instruction_master_waitrequest,                --                          .waitrequest
+			i_burstcount                        => nios2_gen2_0_instruction_master_burstcount,                 --                          .burstcount
 			i_readdatavalid                     => nios2_gen2_0_instruction_master_readdatavalid,              --                          .readdatavalid
 			irq                                 => nios2_gen2_0_irq_irq,                                       --                       irq.irq
 			debug_reset_request                 => nios2_gen2_0_debug_reset_request_reset,                     --       debug_reset_request.reset
@@ -751,6 +755,7 @@ begin
 			nios2_gen2_0_data_master_debugaccess                       => nios2_gen2_0_data_master_debugaccess,                            --                                                     .debugaccess
 			nios2_gen2_0_instruction_master_address                    => nios2_gen2_0_instruction_master_address,                         --                      nios2_gen2_0_instruction_master.address
 			nios2_gen2_0_instruction_master_waitrequest                => nios2_gen2_0_instruction_master_waitrequest,                     --                                                     .waitrequest
+			nios2_gen2_0_instruction_master_burstcount                 => nios2_gen2_0_instruction_master_burstcount,                      --                                                     .burstcount
 			nios2_gen2_0_instruction_master_read                       => nios2_gen2_0_instruction_master_read,                            --                                                     .read
 			nios2_gen2_0_instruction_master_readdata                   => nios2_gen2_0_instruction_master_readdata,                        --                                                     .readdata
 			nios2_gen2_0_instruction_master_readdatavalid              => nios2_gen2_0_instruction_master_readdatavalid,                   --                                                     .readdatavalid

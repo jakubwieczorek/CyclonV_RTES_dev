@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Apr 11 14:58:18 2020
+Analysis & Synthesis Status : Successful - Sun Apr 12 19:27:57 2020
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : counter_parallel_port
 Top-level Entity Name : DE1_SoC_top_level
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 4308
+Total registers : 4451
 Total pins : 62
 Total virtual pins : 0
-Total block memory bits : 100,416
+Total block memory bits : 107,584
 Total DSP Blocks : 3
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

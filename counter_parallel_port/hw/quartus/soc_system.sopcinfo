@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2020.04.11.14:56:33 -->
+ <!-- 2020.04.12.19:25:36 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1586609793</value>
+  <value>1586712335</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2589,7 +2589,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="icache_burstType">
    <type>java.lang.String</type>
-   <value>None</value>
+   <value>Sequential</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4377,6 +4377,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>waitrequest</role>
+   </port>
+   <port>
+    <name>i_burstcount</name>
+    <direction>Output</direction>
+    <width>4</width>
+    <role>burstcount</role>
    </port>
    <port>
     <name>i_readdatavalid</name>
@@ -12342,7 +12348,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1586609793</value>
+   <value>1586712335</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -12362,7 +12368,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1586609793</value>
+   <value>1586712335</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -12378,7 +12384,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1586609793</value>
+   <value>1586712335</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>

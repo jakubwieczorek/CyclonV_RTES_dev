@@ -1,3 +1,6 @@
 [submodule "counter_parallel_port/doc/5e6e9c69aaf9cb00011de01b"]
 	path = counter_parallel_port/doc/5e6e9c69aaf9cb00011de01b
 	url = https://git.overleaf.com/5e6e9c69aaf9cb00011de01b
+[submodule "custom_instruction_profiling/doc/5e96c1c59d4f42000167c363"]
+	path = custom_instruction_profiling/doc/5e96c1c59d4f42000167c363
+	url = https://git.overleaf.com/5e96c1c59d4f42000167c363

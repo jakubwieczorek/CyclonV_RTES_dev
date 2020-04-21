@@ -1,0 +1,564 @@
+Analysis & Synthesis report for counter_parallel_port
+Tue Apr 21 16:34:15 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Tue Apr 21 16:34:15 2020           ;
+; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name               ; counter_parallel_port                       ;
+; Top-level Entity Name       ; DE1_SoC_top_level                           ;
+; Family                      ; Cyclone V                                   ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                                ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+; Option                                                                          ; Setting            ; Default Value         ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                       ;
+; Top-level entity name                                                           ; DE1_SoC_top_level  ; counter_parallel_port ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V             ;
+; Use smart compilation                                                           ; Off                ; Off                   ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                    ;
+; Enable compact report table                                                     ; Off                ; Off                   ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto                  ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                   ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                   ;
+; Preserve fewer node names                                                       ; On                 ; On                    ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001          ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993             ;
+; State Machine Processing                                                        ; Auto               ; Auto                  ;
+; Safe State Machine                                                              ; Off                ; Off                   ;
+; Extract Verilog State Machines                                                  ; On                 ; On                    ;
+; Extract VHDL State Machines                                                     ; On                 ; On                    ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                   ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000                  ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                   ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                    ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                    ;
+; Parallel Synthesis                                                              ; On                 ; On                    ;
+; DSP Block Balancing                                                             ; Auto               ; Auto                  ;
+; NOT Gate Push-Back                                                              ; On                 ; On                    ;
+; Power-Up Don't Care                                                             ; On                 ; On                    ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                   ;
+; Remove Duplicate Registers                                                      ; On                 ; On                    ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                   ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                   ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                   ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                   ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                   ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                    ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                   ;
+; Optimization Technique                                                          ; Balanced           ; Balanced              ;
+; Carry Chain Length                                                              ; 70                 ; 70                    ;
+; Auto Carry Chains                                                               ; On                 ; On                    ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                    ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                   ;
+; Auto ROM Replacement                                                            ; On                 ; On                    ;
+; Auto RAM Replacement                                                            ; On                 ; On                    ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                    ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto                  ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto                  ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                    ;
+; Strict RAM Replacement                                                          ; Off                ; Off                   ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                    ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                   ;
+; Auto Resource Sharing                                                           ; Off                ; Off                   ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                   ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                   ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                   ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                    ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                   ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                    ;
+; Report Parameter Settings                                                       ; On                 ; On                    ;
+; Report Source Assignments                                                       ; On                 ; On                    ;
+; Report Connectivity Checks                                                      ; On                 ; On                    ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                   ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                     ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation    ;
+; HDL message level                                                               ; Level2             ; Level2                ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                   ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000                  ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000                  ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                   ;
+; Clock MUX Protection                                                            ; On                 ; On                    ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                   ;
+; Block Design Naming                                                             ; Auto               ; Auto                  ;
+; SDC constraint protection                                                       ; Off                ; Off                   ;
+; Synthesis Effort                                                                ; Auto               ; Auto                  ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                    ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                   ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium                ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto                  ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                    ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                    ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                   ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Apr 21 16:32:51 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off hardware_accelerator -c counter_parallel_port
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12248): Elaborating Platform Designer system entity "soc_system.qsys"
+Info (12250): 2020.04.21.16:33:22 Progress: Loading quartus/soc_system.qsys
+Info (12250): 2020.04.21.16:33:22 Progress: Reading input file
+Info (12250): 2020.04.21.16:33:22 Progress: Adding clk_0 [clock_source 18.1]
+Info (12250): 2020.04.21.16:33:24 Progress: Parameterizing module clk_0
+Info (12250): 2020.04.21.16:33:24 Progress: Adding dma_0 [altera_avalon_dma 18.1]
+Info (12250): 2020.04.21.16:33:24 Progress: Parameterizing module dma_0
+Info (12250): 2020.04.21.16:33:24 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
+Info (12250): 2020.04.21.16:33:24 Progress: Parameterizing module jtag_uart_0
+Info (12250): 2020.04.21.16:33:24 Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
+Info (12250): 2020.04.21.16:33:25 Progress: Parameterizing module nios2_gen2_0
+Info (12250): 2020.04.21.16:33:25 Progress: Adding nios_buttons [altera_avalon_pio 18.1]
+Info (12250): 2020.04.21.16:33:25 Progress: Parameterizing module nios_buttons
+Info (12250): 2020.04.21.16:33:25 Progress: Adding nios_leds [altera_avalon_pio 18.1]
+Info (12250): 2020.04.21.16:33:25 Progress: Parameterizing module nios_leds
+Info (12250): 2020.04.21.16:33:25 Progress: Adding pll_0 [altera_pll 18.1]
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing module pll_0
+Info (12250): 2020.04.21.16:33:26 Progress: Adding sdram_controller_0 [altera_avalon_new_sdram_controller 18.1]
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing module sdram_controller_0
+Info (12250): 2020.04.21.16:33:26 Progress: Adding swap_accelerator_0 [swap_accelerator 1.0]
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing module swap_accelerator_0
+Info (12250): 2020.04.21.16:33:26 Progress: Adding sysid [altera_avalon_sysid_qsys 18.1]
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing module sysid
+Info (12250): 2020.04.21.16:33:26 Progress: Adding timer_0 [altera_avalon_timer 18.1]
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing module timer_0
+Info (12250): 2020.04.21.16:33:26 Progress: Building connections
+Info (12250): 2020.04.21.16:33:26 Progress: Parameterizing connections
+Info (12250): 2020.04.21.16:33:26 Progress: Validating
+Info (12250): 2020.04.21.16:33:35 Progress: Done reading input file
+Info (12250): Soc_system.dma_0: DMA Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info (12250): Soc_system.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info (12250): Soc_system.nios_buttons: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info (12250): Soc_system.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info (12250): Soc_system.pll_0: Able to implement PLL with user settings
+Info (12250): Soc_system.sdram_controller_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info (12250): Soc_system.sysid: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info (12250): Soc_system.sysid: Time stamp will be automatically updated when this component is generated.
+Warning (12251): Soc_system.dma_0.write_master/dma_0.control_port_slave: Master dma_0.write_master cannot safely write to slave dma_0.control_port_slave, because the master data width is narrower than the slave data width. Add byteenable support to the slave to support safe writes from a narrow master.
+Error (12252): Soc_system.dma_0.write_master: dma_0.control_port_slave (0x8001000..0x800101f) is outside the master's address range (0x0..0x1f)
+Warning (12251): Soc_system.dma_0: dma_0.read_master must be connected to an Avalon-MM slave
+Info (12250): Soc_system: Generating soc_system "soc_system" for QUARTUS_SYNTH
+Info (12250): Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src2 and cmd_mux_002.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src3 and cmd_mux_003.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src5 and cmd_mux_005.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src7 and cmd_mux_007.sink0
+Info (12250): Inserting clock-crossing logic between cmd_demux.src8 and cmd_mux_008.sink0
+Info (12250): Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+Info (12250): Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+Info (12250): Inserting clock-crossing logic between rsp_demux_002.src0 and rsp_mux.sink2
+Info (12250): Inserting clock-crossing logic between rsp_demux_003.src0 and rsp_mux.sink3
+Info (12250): Inserting clock-crossing logic between rsp_demux_005.src0 and rsp_mux.sink5
+Info (12250): Inserting clock-crossing logic between rsp_demux_007.src0 and rsp_mux.sink7
+Info (12250): Inserting clock-crossing logic between rsp_demux_008.src0 and rsp_mux.sink8
+Info (12250): Dma_0: softresetEnable = 1
+Info (12250): Dma_0: Starting RTL generation for module 'soc_system_dma_0'
+Info (12250): Dma_0:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64//perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64//perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_dma -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_dma/generate_rtl.pl --name=soc_system_dma_0 --dir=/tmp/alt8373_292170306267138431.dir/0002_dma_0_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0002_dma_0_gen//soc_system_dma_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Dma_0: # 2020.04.21 16:33:47 (*)   soc_system_dma_0: allowing these transactions: hw, byte_access
+Info (12250): Dma_0: Done RTL generation for module 'soc_system_dma_0'
+Info (12250): Dma_0: "soc_system" instantiated altera_avalon_dma "dma_0"
+Info (12250): Jtag_uart_0: Starting RTL generation for module 'soc_system_jtag_uart_0'
+Info (12250): Jtag_uart_0:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=soc_system_jtag_uart_0 --dir=/tmp/alt8373_292170306267138431.dir/0003_jtag_uart_0_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0003_jtag_uart_0_gen//soc_system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Jtag_uart_0: Done RTL generation for module 'soc_system_jtag_uart_0'
+Info (12250): Jtag_uart_0: "soc_system" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info (12250): Nios2_gen2_0: "soc_system" instantiated altera_nios2_gen2 "nios2_gen2_0"
+Info (12250): Nios_buttons: Starting RTL generation for module 'soc_system_nios_buttons'
+Info (12250): Nios_buttons:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_nios_buttons --dir=/tmp/alt8373_292170306267138431.dir/0004_nios_buttons_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0004_nios_buttons_gen//soc_system_nios_buttons_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Nios_buttons: Done RTL generation for module 'soc_system_nios_buttons'
+Info (12250): Nios_buttons: "soc_system" instantiated altera_avalon_pio "nios_buttons"
+Info (12250): Nios_leds: Starting RTL generation for module 'soc_system_nios_leds'
+Info (12250): Nios_leds:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_nios_leds --dir=/tmp/alt8373_292170306267138431.dir/0005_nios_leds_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0005_nios_leds_gen//soc_system_nios_leds_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Nios_leds: Done RTL generation for module 'soc_system_nios_leds'
+Info (12250): Nios_leds: "soc_system" instantiated altera_avalon_pio "nios_leds"
+Info (12250): Pll_0: "soc_system" instantiated altera_pll "pll_0"
+Info (12250): Sdram_controller_0: Starting RTL generation for module 'soc_system_sdram_controller_0'
+Info (12250): Sdram_controller_0:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=soc_system_sdram_controller_0 --dir=/tmp/alt8373_292170306267138431.dir/0007_sdram_controller_0_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0007_sdram_controller_0_gen//soc_system_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Sdram_controller_0: Done RTL generation for module 'soc_system_sdram_controller_0'
+Info (12250): Sdram_controller_0: "soc_system" instantiated altera_avalon_new_sdram_controller "sdram_controller_0"
+Info (12250): Swap_accelerator_0: "soc_system" instantiated swap_accelerator "swap_accelerator_0"
+Info (12250): Sysid: "soc_system" instantiated altera_avalon_sysid_qsys "sysid"
+Info (12250): Timer_0: Starting RTL generation for module 'soc_system_timer_0'
+Info (12250): Timer_0:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64//perl/bin/perl -I /opt/intelFPGA/18.1/quartus/linux64//perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- /opt/intelFPGA/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=soc_system_timer_0 --dir=/tmp/alt8373_292170306267138431.dir/0010_timer_0_gen/ --quartus_dir=/opt/intelFPGA/18.1/quartus --verilog --config=/tmp/alt8373_292170306267138431.dir/0010_timer_0_gen//soc_system_timer_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Timer_0: Done RTL generation for module 'soc_system_timer_0'
+Info (12250): Timer_0: "soc_system" instantiated altera_avalon_timer "timer_0"
+Info (12250): Avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info (12250): Avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info (12250): Mm_interconnect_0: "soc_system" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info (12250): Irq_mapper: "soc_system" instantiated altera_irq_mapper "irq_mapper"
+Info (12250): Irq_synchronizer: "soc_system" instantiated altera_irq_clock_crosser "irq_synchronizer"
+Info (12250): Rst_controller: "soc_system" instantiated altera_reset_controller "rst_controller"
+Info (12250): Cpu: Starting RTL generation for module 'soc_system_nios2_gen2_0_cpu'
+Info (12250): Cpu:   Generation command is [exec /opt/intelFPGA/18.1/quartus/linux64//eperlcmd -I /opt/intelFPGA/18.1/quartus/linux64//perl/lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /opt/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /opt/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /opt/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /opt/intelFPGA/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=soc_system_nios2_gen2_0_cpu --dir=/tmp/alt8373_292170306267138431.dir/0014_cpu_gen/ --quartus_bindir=/opt/intelFPGA/18.1/quartus/linux64/ --verilog --config=/tmp/alt8373_292170306267138431.dir/0014_cpu_gen//soc_system_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info (12250): Cpu: # 2020.04.21 16:33:53 (*) Starting Nios II generation
+Info (12250): Cpu: # 2020.04.21 16:33:53 (*)   Checking for plaintext license.
+Info (12250): Cpu: # 2020.04.21 16:33:55 (*)   Plaintext license not found.
+Info (12250): Cpu: # 2020.04.21 16:33:55 (*)   Checking for encrypted license (non-evaluation).
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)   Encrypted license found.  SOF will not be time-limited.
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)   Elaborating CPU configuration settings
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)   Creating all objects for CPU
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)     Testbench
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)     Instruction decoding
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)       Instruction fields
+Info (12250): Cpu: # 2020.04.21 16:33:58 (*)       Instruction decodes
+Info (12250): Cpu: # 2020.04.21 16:33:59 (*)       Signals for RTL simulation waveforms
+Info (12250): Cpu: # 2020.04.21 16:33:59 (*)       Instruction controls
+Info (12250): Cpu: # 2020.04.21 16:33:59 (*)     Pipeline frontend
+Info (12250): Cpu: # 2020.04.21 16:33:59 (*)     Pipeline backend
+Info (12250): Cpu: # 2020.04.21 16:34:03 (*)   Generating RTL from CPU objects
+Info (12250): Cpu: # 2020.04.21 16:34:05 (*)   Creating encrypted RTL
+Info (12250): Cpu: # 2020.04.21 16:34:06 (*) Done Nios II generation
+Info (12250): Cpu: Done RTL generation for module 'soc_system_nios2_gen2_0_cpu'
+Info (12250): Cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
+Info (12250): Nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
+Info (12250): Jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info (12250): Nios2_gen2_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_gen2_0_data_master_agent"
+Info (12250): Jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info (12250): Jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo"
+Info (12250): Router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info (12250): Router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info (12250): Router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info (12250): Router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info (12250): Router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info (12250): Router_007: "mm_interconnect_0" instantiated altera_merlin_router "router_007"
+Info (12250): Router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
+Info (12250): Nios2_gen2_0_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "nios2_gen2_0_data_master_limiter"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_sc_fifo.v
+Info (12250): Nios2_gen2_0_debug_mem_slave_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "nios2_gen2_0_debug_mem_slave_burst_adapter"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_pipeline_base.v
+Info (12250): Cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info (12250): Cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info (12250): Cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info (12250): Cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info (12250): Cmd_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_002"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+Info (12250): Cmd_mux_006: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_006"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+Info (12250): Rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info (12250): Rsp_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_002"
+Info (12250): Rsp_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_004"
+Info (12250): Rsp_demux_006: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_006"
+Info (12250): Rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+Info (12250): Rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+Info (12250): Rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+Info (12250): Nios2_gen2_0_data_master_to_sdram_controller_0_s1_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "nios2_gen2_0_data_master_to_sdram_controller_0_s1_cmd_width_adapter"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_address_alignment.sv
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_uncompressor.sv
+Info (12250): Crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info (12250): Reusing file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_pipeline_base.v
+Info (12250): Avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info (12250): Avalon_st_adapter_006: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_006"
+Info (12250): Error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info (12250): Error_adapter_0: "avalon_st_adapter_006" instantiated error_adapter "error_adapter_0"
+Info (12250): Soc_system: Done "soc_system" with 49 modules, 83 files
+Info (12249): Finished elaborating Platform Designer system entity "soc_system.qsys"
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd
+    Info (12022): Found design unit 1: swap_accelerator-swap_accelerator_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd Line: 31
+    Info (12023): Found entity 1: swap_accelerator File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/parallel_port_tb.vhd
+    Info (12022): Found design unit 1: parallel_port_tb-parallel_port_tb_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/parallel_port_tb.vhd Line: 8
+    Info (12023): Found entity 1: parallel_port_tb File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/parallel_port_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/parallel_port.vhd
+    Info (12022): Found design unit 1: parallel_port-parallel_port_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/parallel_port.vhd Line: 29
+    Info (12023): Found entity 1: parallel_port File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/parallel_port.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/counter_tb.vhd
+    Info (12022): Found design unit 1: counter_tb-counter_tb_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/counter_tb.vhd Line: 8
+    Info (12023): Found entity 1: counter_tb File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/counter_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/DE1_SoC_top_level.vhd
+    Info (12022): Found design unit 1: DE1_SoC_top_level-rtl File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/DE1_SoC_top_level.vhd Line: 32
+    Info (12023): Found entity 1: DE1_SoC_top_level File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/DE1_SoC_top_level.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/counter.vhd
+    Info (12022): Found design unit 1: counter-counter_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/counter.vhd Line: 23
+    Info (12023): Found entity 1: counter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/counter.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/soc_system.vhd
+    Info (12022): Found design unit 1: soc_system-rtl File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system.vhd Line: 28
+    Info (12023): Found entity 1: soc_system File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/soc_system_rst_controller.vhd
+    Info (12022): Found design unit 1: soc_system_rst_controller-rtl File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller.vhd Line: 75
+    Info (12023): Found entity 1: soc_system_rst_controller File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/soc_system_rst_controller_001.vhd
+    Info (12022): Found design unit 1: soc_system_rst_controller_001-rtl File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller_001.vhd Line: 75
+    Info (12023): Found entity 1: soc_system_rst_controller_001 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller_001.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/soc_system_rst_controller_002.vhd
+    Info (12022): Found design unit 1: soc_system_rst_controller_002-rtl File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller_002.vhd Line: 75
+    Info (12023): Found entity 1: soc_system_rst_controller_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/soc_system_rst_controller_002.vhd Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_avalon_sc_fifo.v
+    Info (12023): Found entity 1: altera_avalon_sc_fifo File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_sc_fifo.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_avalon_st_clock_crosser.v
+    Info (12023): Found entity 1: altera_avalon_st_clock_crosser File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_clock_crosser.v Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_avalon_st_handshake_clock_crosser.v
+    Info (12023): Found entity 1: altera_avalon_st_handshake_clock_crosser File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_handshake_clock_crosser.v Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_avalon_st_pipeline_base.v
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_base File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_pipeline_base.v Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_avalon_st_pipeline_stage.sv
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_stage File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_avalon_st_pipeline_stage.sv Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_default_burst_converter.sv
+    Info (12023): Found entity 1: altera_default_burst_converter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_default_burst_converter.sv Line: 30
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_incr_burst_converter.sv
+    Info (12023): Found entity 1: altera_incr_burst_converter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_incr_burst_converter.sv Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_irq_clock_crosser.sv
+    Info (12023): Found entity 1: altera_irq_clock_crosser File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_irq_clock_crosser.sv Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_address_alignment.sv
+    Info (12023): Found entity 1: altera_merlin_address_alignment File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_address_alignment.sv Line: 26
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/altera_merlin_arbitrator.sv
+    Info (12023): Found entity 1: altera_merlin_arbitrator File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv Line: 103
+    Info (12023): Found entity 2: altera_merlin_arb_adder File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_arbitrator.sv Line: 228
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_burst_adapter.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter.sv Line: 21
+Info (12021): Found 5 design units, including 5 entities, in source file db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_burstwrap_increment File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv Line: 40
+    Info (12023): Found entity 2: altera_merlin_burst_adapter_adder File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv Line: 55
+    Info (12023): Found entity 3: altera_merlin_burst_adapter_subtractor File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv Line: 77
+    Info (12023): Found entity 4: altera_merlin_burst_adapter_min File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv Line: 98
+    Info (12023): Found entity 5: altera_merlin_burst_adapter_13_1 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_13_1.sv Line: 264
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_burst_adapter_new.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_new File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_new.sv Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_burst_adapter_uncmpr.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_uncompressed_only File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_adapter_uncmpr.sv Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_burst_uncompressor.sv
+    Info (12023): Found entity 1: altera_merlin_burst_uncompressor File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_burst_uncompressor.sv Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_master_agent.sv
+    Info (12023): Found entity 1: altera_merlin_master_agent File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_master_agent.sv Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_master_translator.sv
+    Info (12023): Found entity 1: altera_merlin_master_translator File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_master_translator.sv Line: 32
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/altera_merlin_reorder_memory.sv
+    Info (12023): Found entity 1: altera_merlin_reorder_memory File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_reorder_memory.sv Line: 28
+    Info (12023): Found entity 2: memory_pointer_controller File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_reorder_memory.sv Line: 185
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_slave_agent.sv
+    Info (12023): Found entity 1: altera_merlin_slave_agent File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_slave_agent.sv Line: 34
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_slave_translator.sv
+    Info (12023): Found entity 1: altera_merlin_slave_translator File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_slave_translator.sv Line: 35
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_traffic_limiter.sv
+    Info (12023): Found entity 1: altera_merlin_traffic_limiter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_traffic_limiter.sv Line: 49
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_merlin_width_adapter.sv
+    Info (12023): Found entity 1: altera_merlin_width_adapter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_merlin_width_adapter.sv Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_reset_controller.v Line: 42
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_reset_synchronizer.v Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_std_synchronizer_nocut.v
+    Info (12023): Found entity 1: altera_std_synchronizer_nocut File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_std_synchronizer_nocut.v Line: 44
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/altera_wrap_burst_converter.sv
+    Info (12023): Found entity 1: altera_wrap_burst_converter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/altera_wrap_burst_converter.sv Line: 27
+Info (12021): Found 7 design units, including 7 entities, in source file db/ip/soc_system/submodules/soc_system_dma_0.v
+    Info (12023): Found entity 1: soc_system_dma_0_read_data_mux File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 21
+    Info (12023): Found entity 2: soc_system_dma_0_byteenables File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 96
+    Info (12023): Found entity 3: soc_system_dma_0_fifo_module_fifo_ram_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 133
+    Info (12023): Found entity 4: soc_system_dma_0_fifo_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 232
+    Info (12023): Found entity 5: soc_system_dma_0_mem_read File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 396
+    Info (12023): Found entity 6: soc_system_dma_0_mem_write File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 484
+    Info (12023): Found entity 7: soc_system_dma_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_dma_0.v Line: 534
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_irq_mapper.sv
+    Info (12023): Found entity 1: soc_system_irq_mapper File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_irq_mapper.sv Line: 31
+Info (12021): Found 5 design units, including 5 entities, in source file db/ip/soc_system/submodules/soc_system_jtag_uart_0.v
+    Info (12023): Found entity 1: soc_system_jtag_uart_0_sim_scfifo_w File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_jtag_uart_0.v Line: 21
+    Info (12023): Found entity 2: soc_system_jtag_uart_0_scfifo_w File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_jtag_uart_0.v Line: 78
+    Info (12023): Found entity 3: soc_system_jtag_uart_0_sim_scfifo_r File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_jtag_uart_0.v Line: 164
+    Info (12023): Found entity 4: soc_system_jtag_uart_0_scfifo_r File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_jtag_uart_0.v Line: 243
+    Info (12023): Found entity 5: soc_system_jtag_uart_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_jtag_uart_0.v Line: 331
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0.v
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter.v
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_avalon_st_adapter File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_006.v
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_avalon_st_adapter_006 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_006.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_006_error_adapter_0.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_avalon_st_adapter_006_error_adapter_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_006_error_adapter_0.sv Line: 66
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_avalon_st_adapter_error_adapter_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv Line: 66
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_demux File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux_001.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_demux_001 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux_001.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux_002.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_demux_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_demux_002.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_mux File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux_002.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_mux_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux_002.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux_006.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_cmd_mux_006 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_cmd_mux_006.sv Line: 51
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_001.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_001_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_001.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_001 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_001.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_002.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_002_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_002.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_002.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_003.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_003_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_003.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_003 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_003.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_005.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_005_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_005.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_005 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_005.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_007.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_007_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_007.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_007 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_007.sv Line: 84
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_009.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_router_009_default_decode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_009.sv Line: 45
+    Info (12023): Found entity 2: soc_system_mm_interconnect_0_router_009 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_router_009.sv Line: 84
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_demux File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_002.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_demux_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_002.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_004.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_demux_004 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_004.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_006.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_demux_006 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_demux_006.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_mux File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux_001.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_mux_001 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux_001.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux_002.sv
+    Info (12023): Found entity 1: soc_system_mm_interconnect_0_rsp_mux_002 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_mm_interconnect_0_rsp_mux_002.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0.v Line: 9
+Info (12021): Found 27 design units, including 27 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_ic_data_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 21
+    Info (12023): Found entity 2: soc_system_nios2_gen2_0_cpu_ic_tag_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 89
+    Info (12023): Found entity 3: soc_system_nios2_gen2_0_cpu_bht_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 158
+    Info (12023): Found entity 4: soc_system_nios2_gen2_0_cpu_register_bank_a_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 227
+    Info (12023): Found entity 5: soc_system_nios2_gen2_0_cpu_register_bank_b_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 293
+    Info (12023): Found entity 6: soc_system_nios2_gen2_0_cpu_dc_tag_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 359
+    Info (12023): Found entity 7: soc_system_nios2_gen2_0_cpu_dc_data_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 425
+    Info (12023): Found entity 8: soc_system_nios2_gen2_0_cpu_dc_victim_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 494
+    Info (12023): Found entity 9: soc_system_nios2_gen2_0_cpu_nios2_oci_debug File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 562
+    Info (12023): Found entity 10: soc_system_nios2_gen2_0_cpu_nios2_oci_break File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 708
+    Info (12023): Found entity 11: soc_system_nios2_gen2_0_cpu_nios2_oci_xbrk File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1001
+    Info (12023): Found entity 12: soc_system_nios2_gen2_0_cpu_nios2_oci_dbrk File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1262
+    Info (12023): Found entity 13: soc_system_nios2_gen2_0_cpu_nios2_oci_itrace File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1451
+    Info (12023): Found entity 14: soc_system_nios2_gen2_0_cpu_nios2_oci_td_mode File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1634
+    Info (12023): Found entity 15: soc_system_nios2_gen2_0_cpu_nios2_oci_dtrace File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1702
+    Info (12023): Found entity 16: soc_system_nios2_gen2_0_cpu_nios2_oci_compute_input_tm_cnt File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1784
+    Info (12023): Found entity 17: soc_system_nios2_gen2_0_cpu_nios2_oci_fifo_wrptr_inc File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1856
+    Info (12023): Found entity 18: soc_system_nios2_gen2_0_cpu_nios2_oci_fifo_cnt_inc File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1899
+    Info (12023): Found entity 19: soc_system_nios2_gen2_0_cpu_nios2_oci_fifo File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 1946
+    Info (12023): Found entity 20: soc_system_nios2_gen2_0_cpu_nios2_oci_pib File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2432
+    Info (12023): Found entity 21: soc_system_nios2_gen2_0_cpu_nios2_oci_im File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2455
+    Info (12023): Found entity 22: soc_system_nios2_gen2_0_cpu_nios2_performance_monitors File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2525
+    Info (12023): Found entity 23: soc_system_nios2_gen2_0_cpu_nios2_avalon_reg File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2542
+    Info (12023): Found entity 24: soc_system_nios2_gen2_0_cpu_ociram_sp_ram_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2635
+    Info (12023): Found entity 25: soc_system_nios2_gen2_0_cpu_nios2_ocimem File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2700
+    Info (12023): Found entity 26: soc_system_nios2_gen2_0_cpu_nios2_oci File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 2881
+    Info (12023): Found entity 27: soc_system_nios2_gen2_0_cpu File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 3426
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_sysclk.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_debug_slave_sysclk File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_sysclk.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_tck.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_debug_slave_tck File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_tck.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_wrapper.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_debug_slave_wrapper File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_debug_slave_wrapper.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_mult_cell.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_mult_cell File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_mult_cell.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_test_bench.v
+    Info (12023): Found entity 1: soc_system_nios2_gen2_0_cpu_test_bench File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu_test_bench.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios_buttons.v
+    Info (12023): Found entity 1: soc_system_nios_buttons File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios_buttons.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_nios_leds.v
+    Info (12023): Found entity 1: soc_system_nios_leds File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_nios_leds.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_pll_0.v
+    Info (12023): Found entity 1: soc_system_pll_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_pll_0.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file db/ip/soc_system/submodules/soc_system_sdram_controller_0.v
+    Info (12023): Found entity 1: soc_system_sdram_controller_0_input_efifo_module File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_sdram_controller_0.v Line: 21
+    Info (12023): Found entity 2: soc_system_sdram_controller_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_sdram_controller_0.v Line: 159
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_sysid.v
+    Info (12023): Found entity 1: soc_system_sysid File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_sysid.v Line: 34
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_timer_0.v
+    Info (12023): Found entity 1: soc_system_timer_0 File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/soc_system_timer_0.v Line: 21
+Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/submodules/swap.vhd
+    Info (12022): Found design unit 1: swap_accelerator-swap_accelerator_logic File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/swap.vhd Line: 31
+    Info (12023): Found entity 1: swap_accelerator File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/db/ip/soc_system/submodules/swap.vhd Line: 5
+Error (10327): VHDL error at swap.vhd(125): can't determine definition of operator ""&"" -- found 0 possible definitions File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd Line: 125
+Info (144001): Generated suppressed messages file /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/output_files/counter_parallel_port.map.smsg
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 3 warnings
+    Error: Peak virtual memory: 1066 megabytes
+    Error: Processing ended: Tue Apr 21 16:34:15 2020
+    Error: Elapsed time: 00:01:24
+    Error: Total CPU time (on all processors): 00:01:39
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/output_files/counter_parallel_port.map.smsg.
+
+

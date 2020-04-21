@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="255" />
+   <irq preferredWidth="34" />
+   <export preferredWidth="251" />
+   <name preferredWidth="222" />
+   <description preferredWidth="215" />
+   <inputclock preferredWidth="99" />
+   <baseaddress preferredWidth="111" />
+   <endaddress preferredWidth="99" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Library,Project/custom_components,Project" />
+ <window width="1853" height="1173" x="67" y="27" />
+ <generation synthesis="VHDL" block_symbol_file="0" />
+</preferences>

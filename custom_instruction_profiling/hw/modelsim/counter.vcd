@@ -1,0 +1,497 @@
+$date
+	Mon Mar 16 11:30:40 2020
+$end
+$version
+	ModelSim Version 10.5b
+$end
+$timescale
+	1ns
+$end
+
+$scope module counter_tb $end
+$var wire 1 ! Clk $end
+$var wire 1 " nReset $end
+$var wire 1 # Address [2] $end
+$var wire 1 $ Address [1] $end
+$var wire 1 % Address [0] $end
+$var wire 1 & ChipSelect $end
+$var wire 1 ' Read $end
+$var wire 1 ( Write $end
+$var wire 1 ) ReadData [31] $end
+$var wire 1 * ReadData [30] $end
+$var wire 1 + ReadData [29] $end
+$var wire 1 , ReadData [28] $end
+$var wire 1 - ReadData [27] $end
+$var wire 1 . ReadData [26] $end
+$var wire 1 / ReadData [25] $end
+$var wire 1 0 ReadData [24] $end
+$var wire 1 1 ReadData [23] $end
+$var wire 1 2 ReadData [22] $end
+$var wire 1 3 ReadData [21] $end
+$var wire 1 4 ReadData [20] $end
+$var wire 1 5 ReadData [19] $end
+$var wire 1 6 ReadData [18] $end
+$var wire 1 7 ReadData [17] $end
+$var wire 1 8 ReadData [16] $end
+$var wire 1 9 ReadData [15] $end
+$var wire 1 : ReadData [14] $end
+$var wire 1 ; ReadData [13] $end
+$var wire 1 < ReadData [12] $end
+$var wire 1 = ReadData [11] $end
+$var wire 1 > ReadData [10] $end
+$var wire 1 ? ReadData [9] $end
+$var wire 1 @ ReadData [8] $end
+$var wire 1 A ReadData [7] $end
+$var wire 1 B ReadData [6] $end
+$var wire 1 C ReadData [5] $end
+$var wire 1 D ReadData [4] $end
+$var wire 1 E ReadData [3] $end
+$var wire 1 F ReadData [2] $end
+$var wire 1 G ReadData [1] $end
+$var wire 1 H ReadData [0] $end
+$var wire 1 I WriteData [31] $end
+$var wire 1 J WriteData [30] $end
+$var wire 1 K WriteData [29] $end
+$var wire 1 L WriteData [28] $end
+$var wire 1 M WriteData [27] $end
+$var wire 1 N WriteData [26] $end
+$var wire 1 O WriteData [25] $end
+$var wire 1 P WriteData [24] $end
+$var wire 1 Q WriteData [23] $end
+$var wire 1 R WriteData [22] $end
+$var wire 1 S WriteData [21] $end
+$var wire 1 T WriteData [20] $end
+$var wire 1 U WriteData [19] $end
+$var wire 1 V WriteData [18] $end
+$var wire 1 W WriteData [17] $end
+$var wire 1 X WriteData [16] $end
+$var wire 1 Y WriteData [15] $end
+$var wire 1 Z WriteData [14] $end
+$var wire 1 [ WriteData [13] $end
+$var wire 1 \ WriteData [12] $end
+$var wire 1 ] WriteData [11] $end
+$var wire 1 ^ WriteData [10] $end
+$var wire 1 _ WriteData [9] $end
+$var wire 1 ` WriteData [8] $end
+$var wire 1 a WriteData [7] $end
+$var wire 1 b WriteData [6] $end
+$var wire 1 c WriteData [5] $end
+$var wire 1 d WriteData [4] $end
+$var wire 1 e WriteData [3] $end
+$var wire 1 f WriteData [2] $end
+$var wire 1 g WriteData [1] $end
+$var wire 1 h WriteData [0] $end
+$var wire 1 i IRQ $end
+$var wire 1 ! Clk $end
+$var wire 1 " nReset $end
+$var wire 1 # Address [2] $end
+$var wire 1 $ Address [1] $end
+$var wire 1 % Address [0] $end
+$var wire 1 & ChipSelect $end
+$var wire 1 ' Read $end
+$var wire 1 ( Write $end
+$var wire 1 ) ReadData [31] $end
+$var wire 1 * ReadData [30] $end
+$var wire 1 + ReadData [29] $end
+$var wire 1 , ReadData [28] $end
+$var wire 1 - ReadData [27] $end
+$var wire 1 . ReadData [26] $end
+$var wire 1 / ReadData [25] $end
+$var wire 1 0 ReadData [24] $end
+$var wire 1 1 ReadData [23] $end
+$var wire 1 2 ReadData [22] $end
+$var wire 1 3 ReadData [21] $end
+$var wire 1 4 ReadData [20] $end
+$var wire 1 5 ReadData [19] $end
+$var wire 1 6 ReadData [18] $end
+$var wire 1 7 ReadData [17] $end
+$var wire 1 8 ReadData [16] $end
+$var wire 1 9 ReadData [15] $end
+$var wire 1 : ReadData [14] $end
+$var wire 1 ; ReadData [13] $end
+$var wire 1 < ReadData [12] $end
+$var wire 1 = ReadData [11] $end
+$var wire 1 > ReadData [10] $end
+$var wire 1 ? ReadData [9] $end
+$var wire 1 @ ReadData [8] $end
+$var wire 1 A ReadData [7] $end
+$var wire 1 B ReadData [6] $end
+$var wire 1 C ReadData [5] $end
+$var wire 1 D ReadData [4] $end
+$var wire 1 E ReadData [3] $end
+$var wire 1 F ReadData [2] $end
+$var wire 1 G ReadData [1] $end
+$var wire 1 H ReadData [0] $end
+$var wire 1 I WriteData [31] $end
+$var wire 1 J WriteData [30] $end
+$var wire 1 K WriteData [29] $end
+$var wire 1 L WriteData [28] $end
+$var wire 1 M WriteData [27] $end
+$var wire 1 N WriteData [26] $end
+$var wire 1 O WriteData [25] $end
+$var wire 1 P WriteData [24] $end
+$var wire 1 Q WriteData [23] $end
+$var wire 1 R WriteData [22] $end
+$var wire 1 S WriteData [21] $end
+$var wire 1 T WriteData [20] $end
+$var wire 1 U WriteData [19] $end
+$var wire 1 V WriteData [18] $end
+$var wire 1 W WriteData [17] $end
+$var wire 1 X WriteData [16] $end
+$var wire 1 Y WriteData [15] $end
+$var wire 1 Z WriteData [14] $end
+$var wire 1 [ WriteData [13] $end
+$var wire 1 \ WriteData [12] $end
+$var wire 1 ] WriteData [11] $end
+$var wire 1 ^ WriteData [10] $end
+$var wire 1 _ WriteData [9] $end
+$var wire 1 ` WriteData [8] $end
+$var wire 1 a WriteData [7] $end
+$var wire 1 b WriteData [6] $end
+$var wire 1 c WriteData [5] $end
+$var wire 1 d WriteData [4] $end
+$var wire 1 e WriteData [3] $end
+$var wire 1 f WriteData [2] $end
+$var wire 1 g WriteData [1] $end
+$var wire 1 h WriteData [0] $end
+$var wire 1 i IRQ $end
+
+$scope module counter_instance $end
+$var wire 1 ! Clk $end
+$var wire 1 " nReset $end
+$var wire 1 # Address [2] $end
+$var wire 1 $ Address [1] $end
+$var wire 1 % Address [0] $end
+$var wire 1 & ChipSelect $end
+$var wire 1 ' Read $end
+$var wire 1 ( Write $end
+$var wire 1 ) ReadData [31] $end
+$var wire 1 * ReadData [30] $end
+$var wire 1 + ReadData [29] $end
+$var wire 1 , ReadData [28] $end
+$var wire 1 - ReadData [27] $end
+$var wire 1 . ReadData [26] $end
+$var wire 1 / ReadData [25] $end
+$var wire 1 0 ReadData [24] $end
+$var wire 1 1 ReadData [23] $end
+$var wire 1 2 ReadData [22] $end
+$var wire 1 3 ReadData [21] $end
+$var wire 1 4 ReadData [20] $end
+$var wire 1 5 ReadData [19] $end
+$var wire 1 6 ReadData [18] $end
+$var wire 1 7 ReadData [17] $end
+$var wire 1 8 ReadData [16] $end
+$var wire 1 9 ReadData [15] $end
+$var wire 1 : ReadData [14] $end
+$var wire 1 ; ReadData [13] $end
+$var wire 1 < ReadData [12] $end
+$var wire 1 = ReadData [11] $end
+$var wire 1 > ReadData [10] $end
+$var wire 1 ? ReadData [9] $end
+$var wire 1 @ ReadData [8] $end
+$var wire 1 A ReadData [7] $end
+$var wire 1 B ReadData [6] $end
+$var wire 1 C ReadData [5] $end
+$var wire 1 D ReadData [4] $end
+$var wire 1 E ReadData [3] $end
+$var wire 1 F ReadData [2] $end
+$var wire 1 G ReadData [1] $end
+$var wire 1 H ReadData [0] $end
+$var wire 1 I WriteData [31] $end
+$var wire 1 J WriteData [30] $end
+$var wire 1 K WriteData [29] $end
+$var wire 1 L WriteData [28] $end
+$var wire 1 M WriteData [27] $end
+$var wire 1 N WriteData [26] $end
+$var wire 1 O WriteData [25] $end
+$var wire 1 P WriteData [24] $end
+$var wire 1 Q WriteData [23] $end
+$var wire 1 R WriteData [22] $end
+$var wire 1 S WriteData [21] $end
+$var wire 1 T WriteData [20] $end
+$var wire 1 U WriteData [19] $end
+$var wire 1 V WriteData [18] $end
+$var wire 1 W WriteData [17] $end
+$var wire 1 X WriteData [16] $end
+$var wire 1 Y WriteData [15] $end
+$var wire 1 Z WriteData [14] $end
+$var wire 1 [ WriteData [13] $end
+$var wire 1 \ WriteData [12] $end
+$var wire 1 ] WriteData [11] $end
+$var wire 1 ^ WriteData [10] $end
+$var wire 1 _ WriteData [9] $end
+$var wire 1 ` WriteData [8] $end
+$var wire 1 a WriteData [7] $end
+$var wire 1 b WriteData [6] $end
+$var wire 1 c WriteData [5] $end
+$var wire 1 d WriteData [4] $end
+$var wire 1 e WriteData [3] $end
+$var wire 1 f WriteData [2] $end
+$var wire 1 g WriteData [1] $end
+$var wire 1 h WriteData [0] $end
+$var wire 1 i IRQ $end
+$var wire 1 j iCounter [31] $end
+$var wire 1 k iCounter [30] $end
+$var wire 1 l iCounter [29] $end
+$var wire 1 m iCounter [28] $end
+$var wire 1 n iCounter [27] $end
+$var wire 1 o iCounter [26] $end
+$var wire 1 p iCounter [25] $end
+$var wire 1 q iCounter [24] $end
+$var wire 1 r iCounter [23] $end
+$var wire 1 s iCounter [22] $end
+$var wire 1 t iCounter [21] $end
+$var wire 1 u iCounter [20] $end
+$var wire 1 v iCounter [19] $end
+$var wire 1 w iCounter [18] $end
+$var wire 1 x iCounter [17] $end
+$var wire 1 y iCounter [16] $end
+$var wire 1 z iCounter [15] $end
+$var wire 1 { iCounter [14] $end
+$var wire 1 | iCounter [13] $end
+$var wire 1 } iCounter [12] $end
+$var wire 1 ~ iCounter [11] $end
+$var wire 1 !! iCounter [10] $end
+$var wire 1 "! iCounter [9] $end
+$var wire 1 #! iCounter [8] $end
+$var wire 1 $! iCounter [7] $end
+$var wire 1 %! iCounter [6] $end
+$var wire 1 &! iCounter [5] $end
+$var wire 1 '! iCounter [4] $end
+$var wire 1 (! iCounter [3] $end
+$var wire 1 )! iCounter [2] $end
+$var wire 1 *! iCounter [1] $end
+$var wire 1 +! iCounter [0] $end
+$var wire 1 ,! iEn $end
+$var wire 1 -! iRz $end
+$var wire 1 .! iEOT $end
+$var wire 1 /! iClrEOT $end
+$var wire 1 0! iIRQEn $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#1000
+$dumpvars
+0!
+1"
+1&
+0'
+1(
+1i
+1,!
+0-!
+1.!
+0/!
+10!
+0#
+1$
+0%
+0)
+0*
+0+
+0,
+0-
+0.
+0/
+00
+01
+02
+03
+04
+05
+06
+07
+08
+09
+0:
+0;
+0<
+0=
+0>
+0?
+0@
+0A
+0B
+0C
+0D
+0E
+0F
+0G
+0H
+0I
+0J
+0K
+0L
+0M
+0N
+0O
+0P
+0Q
+0R
+0S
+0T
+0U
+0V
+0W
+0X
+0Y
+0Z
+0[
+0\
+0]
+0^
+0_
+0`
+0a
+0b
+0c
+0d
+0e
+0f
+0g
+1h
+0j
+0k
+0l
+0m
+0n
+0o
+0p
+0q
+0r
+0s
+0t
+0u
+0v
+0w
+0x
+0y
+0z
+0{
+0|
+0}
+0~
+0!!
+0"!
+0#!
+0$!
+1%!
+0&!
+1'!
+1(!
+1)!
+1*!
+0+!
+$end
+$dumpoff
+x!
+x"
+x&
+x'
+x(
+xi
+x,!
+x-!
+x.!
+x/!
+x0!
+x#
+x$
+x%
+x)
+x*
+x+
+x,
+x-
+x.
+x/
+x0
+x1
+x2
+x3
+x4
+x5
+x6
+x7
+x8
+x9
+x:
+x;
+x<
+x=
+x>
+x?
+x@
+xA
+xB
+xC
+xD
+xE
+xF
+xG
+xH
+xI
+xJ
+xK
+xL
+xM
+xN
+xO
+xP
+xQ
+xR
+xS
+xT
+xU
+xV
+xW
+xX
+xY
+xZ
+x[
+x\
+x]
+x^
+x_
+x`
+xa
+xb
+xc
+xd
+xe
+xf
+xg
+xh
+xj
+xk
+xl
+xm
+xn
+xo
+xp
+xq
+xr
+xs
+xt
+xu
+xv
+xw
+xx
+xy
+xz
+x{
+x|
+x}
+x~
+x!!
+x"!
+x#!
+x$!
+x%!
+x&!
+x'!
+x(!
+x)!
+x*!
+x+!
+$end

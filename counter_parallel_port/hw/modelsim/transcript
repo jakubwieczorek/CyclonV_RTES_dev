@@ -1,416 +1,299 @@
 # reading modelsim.ini
 # Loading project counter_parallel_port_tb
-vsim work.parallel_port_tb -t ns
-# vsim work.parallel_port_tb -t ns 
-# Start time: 11:12:00 on Mar 28,2020
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd failed with 3 errors.
+# 2 compiles, 1 failed with 3 errors.
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd failed with 3 errors.
+# 2 compiles, 1 failed with 3 errors.
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.swap_test -t ns
+# vsim work.swap_test -t ns 
+# Start time: 09:28:49 on Apr 22,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iIRQEn
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 78
-add wave -position end  sim:/parallel_port_tb/ParPort(2)
+# Loading work.swap_test(swap_test_logic)
+# ** Warning: (vsim-3473) Component instance "swap_instance : swap" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /swap_test File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+add wave -position end  sim:/swap_test/Clk
+add wave -position end  sim:/swap_test/nReset
+add wave -position end  sim:/swap_test/sAddress
+add wave -position end  sim:/swap_test/sChipSelect
+add wave -position end  sim:/swap_test/sWrite
+add wave -position end  sim:/swap_test/sWriteData
+add wave -position end  sim:/swap_test/sRead
+add wave -position end  sim:/swap_test/sReadData
+add wave -position end  sim:/swap_test/mAddress
+add wave -position end  sim:/swap_test/mByteEnable
+add wave -position end  sim:/swap_test/mWrite
+add wave -position end  sim:/swap_test/mWriteData
+add wave -position end  sim:/swap_test/mRead
+add wave -position end  sim:/swap_test/mReadData
+add wave -position end  sim:/swap_test/mWaitRequest
+add wave -position end  sim:/swap_test/period
 write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/wave.do
-quit -sim
-# End time: 11:13:56 on Mar 28,2020, Elapsed time: 0:01:56
-# Errors: 1, Warnings: 1
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 98
+vsim -t ns work.counter_tb
+# End time: 09:30:26 on Apr 22,2020, Elapsed time: 0:01:37
+# Errors: 1, Warnings: 2
+# vsim -t ns work.counter_tb 
+# Start time: 09:30:26 on Apr 22,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.counter_tb(counter_tb_logic)
+# Loading work.counter(counter_logic)
+add wave -position end sim:/counter_tb/counter_instance/pCounter/*
+# (vish-4014) No objects found matching '/counter_tb/counter_instance/pCounter/*'.
 vsim -t ns work.parallel_port_tb
+# End time: 09:31:34 on Apr 22,2020, Elapsed time: 0:01:08
+# Errors: 1, Warnings: 0
 # vsim -t ns work.parallel_port_tb 
-# Start time: 11:16:23 on Mar 28,2020
+# Start time: 09:31:34 on Apr 22,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading work.parallel_port_tb(parallel_port_tb_logic)
 # Loading work.parallel_port(parallel_port_logic)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iIRQEn
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort(2)
-# Can't move the Now cursor.
-add wave -position 0  sim:/parallel_port_tb/parallel_port_instance/Clk
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-add wave -position end  sim:/parallel_port_tb/Write
-restart -f
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-quit -sim
-# End time: 11:21:43 on Mar 28,2020, Elapsed time: 0:05:20
-# Errors: 3, Warnings: 2
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# No Design Loaded!
-vsim -t ns work.parallel_port_tb
-# vsim -t ns work.parallel_port_tb 
-# Start time: 11:22:17 on Mar 28,2020
+vsim -t ns work.swap_test
+# End time: 09:32:24 on Apr 22,2020, Elapsed time: 0:00:50
+# Errors: 0, Warnings: 0
+# vsim -t ns work.swap_test 
+# Start time: 09:32:24 on Apr 22,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-add wave -position end  sim:/parallel_port_tb/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 79
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-restart -f
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 79
-add wave -position end  sim:/parallel_port_tb/ParPort(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir(2)
+# Loading work.swap_test(swap_test_logic)
+# ** Warning: (vsim-3473) Component instance "swap_instance : swap" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /swap_test File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
 quit -sim
-# End time: 11:26:42 on Mar 28,2020, Elapsed time: 0:04:25
-# Errors: 2, Warnings: 2
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-vsim -t ns work.parallel_port_tb
-# vsim -t ns work.parallel_port_tb 
-# Start time: 11:27:01 on Mar 28,2020
+# End time: 09:34:23 on Apr 22,2020, Elapsed time: 0:01:59
+# Errors: 0, Warnings: 1
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -t ns work.swap_test
+# vsim -t ns work.swap_test 
+# Start time: 09:35:17 on Apr 22,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
+# Loading work.swap_test(swap_test_logic)
+# Loading work.swap(swap_logic)
+add wave -position end  sim:/swap_test/swap_instance/Clk
+add wave -position end  sim:/swap_test/swap_instance/nReset
+add wave -position end  sim:/swap_test/swap_instance/sAddress
+add wave -position end  sim:/swap_test/swap_instance/sChipSelect
+add wave -position end  sim:/swap_test/swap_instance/sWrite
+add wave -position end  sim:/swap_test/swap_instance/sWriteData
+add wave -position end  sim:/swap_test/swap_instance/sRead
+add wave -position end  sim:/swap_test/swap_instance/sReadData
+add wave -position end  sim:/swap_test/swap_instance/mAddress
+add wave -position end  sim:/swap_test/swap_instance/mByteEnable
+add wave -position end  sim:/swap_test/swap_instance/mWrite
+add wave -position end  sim:/swap_test/swap_instance/mWriteData
+add wave -position end  sim:/swap_test/swap_instance/mRead
+add wave -position end  sim:/swap_test/swap_instance/mReadData
+add wave -position end  sim:/swap_test/swap_instance/mWaitRequest
+add wave -position end  sim:/swap_test/swap_instance/RegAddStart
+add wave -position end  sim:/swap_test/swap_instance/RegLgt
+add wave -position end  sim:/swap_test/swap_instance/Result
+add wave -position end  sim:/swap_test/swap_instance/ResultRegAddStart
+add wave -position end  sim:/swap_test/swap_instance/DataRd
+add wave -position end  sim:/swap_test/swap_instance/start
+add wave -position end  sim:/swap_test/swap_instance/finish
+add wave -position end  sim:/swap_test/swap_instance/CntAdd
+add wave -position end  sim:/swap_test/swap_instance/CntLgt
+add wave -position end  sim:/swap_test/swap_instance/CntResultAdd
+add wave -position end  sim:/swap_test/swap_instance/state
+add wave -position end  sim:/swap_test/swap_instance/operation
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
 # ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 79
-add wave -position end  sim:/parallel_port_tb/ParPort(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Write
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 98
+# Compile of swap_tb.vhd was successful.
 restart -f
+# Loading work.swap_test(swap_test_logic)
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
 # ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 79
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 112
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 112
+# Compile of swap_tb.vhd failed with 2 errors.
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 113
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 113
+# Compile of swap_tb.vhd failed with 4 errors.
+# Compile of swap_tb.vhd failed with 2 errors.
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 114
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 114
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 114
+# Compile of swap_tb.vhd was successful.
+restart -f
+# Loading work.swap_test(swap_test_logic)
+run -all
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Error: Assertion violation.
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
+# ** Failure: simulation finished
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 114
 quit -sim
-# End time: 11:31:47 on Mar 28,2020, Elapsed time: 0:04:46
-# Errors: 2, Warnings: 2
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd failed with 2 errors.
-# 6 compiles, 1 failed with 2 errors.
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd failed with 2 errors.
-# 6 compiles, 1 failed with 2 errors.
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# No Design Loaded!
-vsim -t ns work.parallel_port_tb
-# vsim -t ns work.parallel_port_tb 
-# Start time: 11:34:27 on Mar 28,2020
+# End time: 11:41:50 on Apr 22,2020, Elapsed time: 2:06:33
+# Errors: 9, Warnings: 9
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -t ns work.swap_test
+# vsim -t ns work.swap_test 
+# Start time: 11:42:17 on Apr 22,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir(2)
-# Load canceled
+# Loading work.swap_test(swap_test_logic)
+# Loading work.swap(swap_logic)
+add wave -position end  sim:/swap_test/swap_instance/Clk
+add wave -position end  sim:/swap_test/swap_instance/nReset
+add wave -position end  sim:/swap_test/swap_instance/sAddress
+add wave -position end  sim:/swap_test/swap_instance/sChipSelect
+add wave -position end  sim:/swap_test/swap_instance/sWrite
+add wave -position end  sim:/swap_test/swap_instance/sWriteData
+add wave -position end  sim:/swap_test/swap_instance/sRead
+add wave -position end  sim:/swap_test/swap_instance/sReadData
+add wave -position end  sim:/swap_test/swap_instance/mAddress
+add wave -position end  sim:/swap_test/swap_instance/mByteEnable
+add wave -position end  sim:/swap_test/swap_instance/mWrite
+add wave -position end  sim:/swap_test/swap_instance/mWriteData
+add wave -position end  sim:/swap_test/swap_instance/mRead
+add wave -position end  sim:/swap_test/swap_instance/mReadData
+add wave -position end  sim:/swap_test/swap_instance/mWaitRequest
+add wave -position end  sim:/swap_test/swap_instance/RegAddStart
+add wave -position end  sim:/swap_test/swap_instance/RegLgt
+add wave -position end  sim:/swap_test/swap_instance/Result
+add wave -position end  sim:/swap_test/swap_instance/ResultRegAddStart
+add wave -position end  sim:/swap_test/swap_instance/DataRd
+add wave -position end  sim:/swap_test/swap_instance/start
+add wave -position end  sim:/swap_test/swap_instance/finish
+add wave -position end  sim:/swap_test/swap_instance/CntAdd
+add wave -position end  sim:/swap_test/swap_instance/CntLgt
+add wave -position end  sim:/swap_test/swap_instance/CntResultAdd
+add wave -position end  sim:/swap_test/swap_instance/state
+add wave -position end  sim:/swap_test/swap_instance/operation
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
 # ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 82
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 114
+# Compile of swap_tb.vhd failed with 2 errors.
+# Compile of swap.vhd was successful.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of swap_tb.vhd failed with 2 errors.
+# Compile of swap.vhd was successful.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd was successful.
+# 2 compiles, 0 failed with no errors.
 restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
+# Loading work.swap_test(swap_test_logic)
+# Loading work.swap(swap_logic)
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
+#    Time: 300 ns  Iteration: 0  Instance: /swap_test
 # ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 82
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
+#    Time: 300 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
+# Compile of swap_tb.vhd was successful.
+# Compile of swap.vhd was successful.
+# 2 compiles, 0 failed with no errors.
 restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
+# Loading work.swap_test(swap_test_logic)
+# Loading work.swap(swap_logic)
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
+#    Time: 500 ns  Iteration: 0  Instance: /swap_test
 # ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 82
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-restart -f
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-run -all
-# ** Error: Assertion violation.
-#    Time: 2 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 2 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/Clk
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/IRQ
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPin
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iIRQEn
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort(1)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegPort(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/iRegDir(2)
-add wave -position end  sim:/parallel_port_tb/parallel_port_instance/ParPort(2)
-restart -f
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-restart -f
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 81
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 80
-# Compile of DE1_SoC_top_level.vhd was successful.
-# Compile of counter_parallel_port_tb.vhd was successful.
-# Compile of counter_tb.vhd was successful.
-# Compile of counter.vhd was successful.
-# Compile of parallel_port.vhd was successful.
-# Compile of parallel_port_tb.vhd was successful.
-# 6 compiles, 0 failed with no errors.
-restart -f
-# Loading work.parallel_port_tb(parallel_port_tb_logic)
-# Loading work.parallel_port(parallel_port_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 1 us  Iteration: 0  Instance: /parallel_port_tb
-# ** Failure: simulation finished
-#    Time: 1 us  Iteration: 0  Process: /parallel_port_tb/stop_sim File: /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd
-# Break in Process stop_sim at /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/parallel_port_tb.vhd line 80
-# End time: 12:27:12 on Mar 28,2020, Elapsed time: 0:52:45
-# Errors: 15, Warnings: 13
+#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
+# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
+# End time: 20:00:13 on Apr 22,2020, Elapsed time: 8:17:56
+# Errors: 3, Warnings: 3

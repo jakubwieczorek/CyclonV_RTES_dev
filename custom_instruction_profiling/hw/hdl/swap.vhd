@@ -2,7 +2,7 @@ library IEEE;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity swap_accelerator is
+entity swap is
 	port
 	(	
 		-- avalon bus
@@ -26,9 +26,9 @@ entity swap_accelerator is
 		mReadData 	 : in std_logic_vector(31 downto 0);
 		mWaitRequest : in  std_logic
 	);
-end swap_accelerator;
+end swap;
 
-architecture swap_accelerator_logic of swap_accelerator is
+architecture swap_logic of swap is
 		
 	signal RegAddStart, RegLgt, Result, ResultRegAddStart: std_logic_vector(31 downto 0);
 	signal DataRd		   : std_logic_vector(31 downto 0);
@@ -36,7 +36,7 @@ architecture swap_accelerator_logic of swap_accelerator is
 	signal CntAdd, CntLgt, CntResultAdd			: unsigned(31 downto 0);
 		
 	type states_t is (IDLE, LOAD_PARAMETERS, RD_ACC, WAIT_RD, CALCULATE, SEND_WRITE_REQUEST, WAIT_FOR_WRITE);
-	signal state, nextState : states_t;
+	signal state : states_t;
 	
 	signal operation : std_logic;
 	
@@ -78,87 +78,88 @@ begin
 		end if;
 	end process slaveReadProcess;
 	
-	transitionMasterFSM : process(state, start, mWaitRequest)
+	transitionMasterFSM : process(Clk, nReset)
 	begin
-		case state is
-			when IDLE => 
-			-- init master
-				mAddress <= (others => '0');
-				mByteEnable <= "0000";
-				mWrite <= '0';
-				mRead <= '0';
-							
-				if start = '1' then
-					state <= LOAD_PARAMETERS;
-					finish <= '0';
-				end if;
-				
-			when LOAD_PARAMETERS =>
-				CntAdd <= unsigned(RegAddStart); -- why unsigned?
-				CntLgt <= unsigned(RegLgt);
-				CntResultAdd <= unsigned(ResultRegAddStart);
-				result <= (others => '0');
-				
-				nextState <= RD_ACC;
-							
-			when RD_ACC =>
-				mAddress <= std_logic_vector(CntAdd); -- from that address DMA will read data
-				mByteEnable <= "1111";
-				mRead	 <= '1';
-				mWrite <= '0';
-			
-				nextState <= WAIT_RD;
-				
-			when WAIT_RD =>
-				if mWaitRequest = '0' then
-					DataRd <= mReadData;
+		if nReset = '0' then
+			finish <= '0';
+			CntAdd <= (others => '0');
+			CntLgt <= (others => '0');
+			CntResultAdd <= (others => '0');
+			Result <= (others => '0');
+		elsif rising_edge(Clk) then
+			case state is
+				when IDLE => 
+				-- init master
+					mAddress <= (others => '0');
+					mByteEnable <= "0000";
+					mWrite <= '0';
 					mRead <= '0';
-					nextState <= CALCULATE;
-				end if;
-				
-			when CALCULATE =>
-				if operation = '1' then
-					for i in 0 to 31 loop
-						Result(i) <= DataRd(31-i);
-					end loop;
-				else
-					Result(31 downto 0) <= DataRd(7 downto 0) & DataRd(15 downto 8) & DataRd(23 downto 16) & DataRd(31 downto 24);
-				end if;
-				
-				nextState <= SEND_WRITE_REQUEST;
-			when SEND_WRITE_REQUEST =>
-				mAddress <= std_logic_vector(CntResultAdd);
-				mByteEnable <= "1111";
-				mWrite <= '1';
-				mWriteData <= Result;
-				nextState <= WAIT_FOR_WRITE;
-			
-			when SEND_WRITE_REQUEST =>
-				if mWaitRequest = '0' then
-					CntLgt <= CntLgt - 1;
-					
-					if CntLgt > 0 then
-						CntAdd <= CntAdd + 4;
-						CntResultAdd <= CntResultAdd + 4;
-						nextState <= RD_ACC;
-					else
-						mByteEnable <= "0000";
-						mWrite <= '0';
-						finish <= '1';
-						nextState <= IDLE;
+								
+					if start = '1' then
+						state <= LOAD_PARAMETERS;
+						finish <= '0';
 					end if;
-				end if;
-			
-			when others => 
-				nextState <= IDLE;
-		end case;
+					
+				when LOAD_PARAMETERS =>
+					CntAdd <= unsigned(RegAddStart); -- why unsigned?
+					CntLgt <= unsigned(RegLgt);
+					CntResultAdd <= unsigned(ResultRegAddStart);
+					result <= (others => '0');
+					
+					state <= RD_ACC;
+								
+				when RD_ACC =>
+					mAddress <= std_logic_vector(CntAdd); -- from that address DMA will read data
+					mByteEnable <= "1111";
+					mRead	 <= '1';
+					mWrite <= '0';
+				
+					state <= WAIT_RD;
+					
+				when WAIT_RD =>
+					if mWaitRequest = '0' then
+						DataRd <= mReadData;
+						mRead <= '0';
+						state <= CALCULATE;
+					end if;
+					
+				when CALCULATE =>
+					if operation = '1' then
+						for i in 0 to 31 loop
+							Result(i) <= DataRd(31-i);
+						end loop;
+					else
+						Result(31 downto 0) <= DataRd(7 downto 0) & DataRd(15 downto 8) & DataRd(23 downto 16) & DataRd(31 downto 24);
+					end if;
+					
+					state <= SEND_WRITE_REQUEST;
+				when SEND_WRITE_REQUEST =>
+					mAddress <= std_logic_vector(CntResultAdd);
+					mByteEnable <= "1111";
+					mWrite <= '1';
+					mWriteData <= Result;
+					state <= WAIT_FOR_WRITE;
+				
+				when WAIT_FOR_WRITE =>
+					if mWaitRequest = '0' then
+						CntLgt <= CntLgt - 1;
+						
+						if CntLgt > 0 then
+							CntAdd <= CntAdd + 4;
+							CntResultAdd <= CntResultAdd + 4;
+							state <= RD_ACC;
+						else
+							mByteEnable <= "0000";
+							mWrite <= '0';
+							finish <= '1';
+							state <= IDLE;
+						end if;
+					end if;
+				
+				when others => 
+					state <= IDLE;
+			end case;
+		end if;
 	end process transitionMasterFSM;
 	
-	state_register : process(Clk)
-		begin 
-			if rising_edge(Clk) then
-				state <= nextState;
-			end if;
-	end process state_register;
-	
-end swap_accelerator_logic;
+end swap_logic;

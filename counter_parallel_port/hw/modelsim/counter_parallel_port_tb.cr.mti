@@ -7,14 +7,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity swap_test
 -- Compiling architecture swap_test_logic of swap_test
 
-} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity tst_bench
--- Compiling architecture tst_bench_logic of tst_bench
-
 } {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -24,13 +16,12 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity counter_tb
 -- Compiling architecture counter_tb_logic of counter_tb
 
-} {} {}} /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/hdl/swap.vhd
+} {} {}} /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/modelsim/counter_parallel_port_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity swap
--- Compiling architecture swap_logic of swap
+-- Compiling entity tst_bench
+-- Compiling architecture tst_bench_logic of tst_bench
 
 } {} {}}

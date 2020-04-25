@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("/home/vm/CyclonV_RTES_dev/counter_parallel_port/hw/quartus/output_files/") File("counter_parallel_port.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("/home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/output_files/") File("counter_parallel_port.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -83,8 +83,10 @@ begin
 	nReset <= '0' after period,
 				 '1' after period + period/2;
 
-	sChipSelect <= '1';
-	sWrite <= '1';
+	sChipSelect <= '1',
+						'0' after period*7;
+	sWrite <= '1',
+				 '0' after period*7;
 	
 	-- slave read
 	sAddress <= "000" after period*2, -- RegAddStart

@@ -3,7 +3,7 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="255" />
+   <connections preferredWidth="223" />
    <irq preferredWidth="34" />
    <export preferredWidth="251" />
    <name preferredWidth="222" />
@@ -13,7 +13,7 @@
    <endaddress preferredWidth="99" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project/custom_components,Project" />
+ <library expandedCategories="Library,Project" />
  <window width="1853" height="1173" x="67" y="27" />
  <generation synthesis="VHDL" block_symbol_file="0" />
 </preferences>

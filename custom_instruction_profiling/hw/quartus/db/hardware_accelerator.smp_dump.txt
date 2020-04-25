@@ -1,4 +1,18 @@
 
+State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:nios2_gen2_0_debug_mem_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:sysid_control_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
 State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:sdram_controller_0_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
 Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
 state.ST_IDLE 0 0 0 0 
@@ -6,12 +20,15 @@ state.ST_COMP_TRANS 1 0 0 1
 state.ST_UNCOMP_TRANS 1 0 1 0 
 state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
 
-State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:nios2_gen2_0_debug_mem_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
-Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
-state.ST_IDLE 0 0 0 0 
-state.ST_COMP_TRANS 1 0 0 1 
-state.ST_UNCOMP_TRANS 1 0 1 0 
-state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+State Machine - |DE1_SoC_top_level|soc_system:u0|swap:swap_accelerator_0|state
+Name state.WAIT_FOR_WRITE state.SEND_WRITE_REQUEST state.CALCULATE state.WAIT_RD state.RD_ACC state.LOAD_PARAMETERS state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 
+state.LOAD_PARAMETERS 0 0 0 0 0 1 1 
+state.RD_ACC 0 0 0 0 1 0 1 
+state.WAIT_RD 0 0 0 1 0 0 1 
+state.CALCULATE 0 0 1 0 0 0 1 
+state.SEND_WRITE_REQUEST 0 1 0 0 0 0 1 
+state.WAIT_FOR_WRITE 1 0 0 0 0 0 1 
 
 State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_sdram_controller_0:sdram_controller_0|m_next
 Name m_next.010000000 m_next.000010000 m_next.000001000 m_next.000000001 

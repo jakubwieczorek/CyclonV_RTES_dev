@@ -36,10 +36,7 @@ architecture swap_logic of swap is
 	signal CntAdd, CntLgt, CntResultAdd			: unsigned(31 downto 0);
 		
 	type states_t is (IDLE, LOAD_PARAMETERS, RD_ACC, WAIT_RD, CALCULATE, SEND_WRITE_REQUEST, WAIT_FOR_WRITE);
-	signal state : states_t;
-	
-	signal operation : std_logic;
-	
+	signal state : states_t;	
 begin
 	
 	slaveWriteProcess : Process(Clk, nReset) 
@@ -58,7 +55,6 @@ begin
 					when "001" => RegLgt  	 		  <= sWriteData; 
 					when "010" => start 		 		  <= sWriteData(0); 
 					when "011" => ResultRegAddStart <= sWriteData;
-					when "100" => operation 		  <= sWriteData(0); 
 					when others => null;
 				end case;
 			end if;
@@ -75,7 +71,6 @@ begin
 					when "001" => sReadData 	<= RegLgt;
 					when "010" => sReadData(0) <= start;
 					when "011" => sReadData 	<= ResultRegAddStart; 
-					when "100" => sReadData(0) <= operation;
 					when "101" => sReadData(0) <= finish;
 
 					when others => null;
@@ -115,7 +110,7 @@ begin
 					state <= RD_ACC;
 								
 				when RD_ACC =>
-					mAddress <= std_logic_vector(CntAdd); -- from that address DMA will read data
+					mAddress <= std_logic_vector(CntAdd); -- from that address data will be read directly from the memory
 					mByteEnable <= "1111";
 					mRead	 <= '1';
 					mWrite <= '0';
@@ -130,37 +125,36 @@ begin
 					end if;
 					
 				when CALCULATE =>
-					if operation = '1' then
-						for i in 0 to 31 loop
-							Result(i) <= DataRd(31-i);
-						end loop;
-					else
-						Result(31 downto 0) <= DataRd(7 downto 0) & DataRd(15 downto 8) & DataRd(23 downto 16) & DataRd(31 downto 24);
-					end if;
+					-- 0x12345678 => 0x786A2C12
+					for i in 8 to 23 loop
+						Result(i) <= DataRd(31-i);
+					end loop;
+					Result(31 downto 24) <= DataRd(7 downto 0);
+					Result(7 downto 0) 	<= DataRd(31 downto 24);
 					
 					state <= SEND_WRITE_REQUEST;
 				when SEND_WRITE_REQUEST =>
-					--if mWaitRequest = '0' then
 						mAddress <= std_logic_vector(CntResultAdd);
-						mByteEnable <= "1111";
+						mByteEnable <= "1111"; -- can be all the 111, because we want to write/read all bytes
 						mWrite <= '1';
 						mWriteData <= Result;
 						state <= WAIT_FOR_WRITE;
-					--end if;
 				when WAIT_FOR_WRITE =>
 					if mWaitRequest = '0' then
-						CntLgt <= CntLgt - 1;
-						
+						mWrite <= '0'; -- all the time 
+
 						if CntLgt > 0 then
 							CntAdd <= CntAdd + 4;
 							CntResultAdd <= CntResultAdd + 4;
-							state <= RD_ACC;
-						else
+							CntLgt <= CntLgt - 1; 
+							state <= RD_ACC; -- if write only here it means that when I go to the IDLE I will stil have write at 1
+						else -- and for 1 cc more what was on the bus will be written into the memory. If it was trush, then that
+							-- trash will be written as well.
 							mByteEnable <= "0000";
-							mWrite <= '0';
 							finish <= '1';
 							state <= IDLE;
 						end if;
+						
 					end if;
 				
 				when others => 

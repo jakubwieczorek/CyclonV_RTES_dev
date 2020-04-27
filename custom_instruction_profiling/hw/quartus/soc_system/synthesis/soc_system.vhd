@@ -26,6 +26,13 @@ entity soc_system is
 end entity soc_system;
 
 architecture rtl of soc_system is
+	component BitSwap is
+		port (
+			dataa  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- dataa
+			result : out std_logic_vector(31 downto 0)                     -- result
+		);
+	end component BitSwap;
+
 	component soc_system_jtag_uart_0 is
 		port (
 			clk            : in  std_logic                     := 'X';             -- clk
@@ -71,7 +78,18 @@ architecture rtl of soc_system is
 			debug_mem_slave_waitrequest         : out std_logic;                                        -- waitrequest
 			debug_mem_slave_write               : in  std_logic                     := 'X';             -- write
 			debug_mem_slave_writedata           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			dummy_ci_port                       : out std_logic                                         -- readra
+			E_ci_combo_result                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			E_ci_combo_a                        : out std_logic_vector(4 downto 0);                     -- a
+			E_ci_combo_b                        : out std_logic_vector(4 downto 0);                     -- b
+			E_ci_combo_c                        : out std_logic_vector(4 downto 0);                     -- c
+			E_ci_combo_dataa                    : out std_logic_vector(31 downto 0);                    -- dataa
+			E_ci_combo_datab                    : out std_logic_vector(31 downto 0);                    -- datab
+			E_ci_combo_estatus                  : out std_logic;                                        -- estatus
+			E_ci_combo_ipending                 : out std_logic_vector(31 downto 0);                    -- ipending
+			E_ci_combo_n                        : out std_logic_vector(7 downto 0);                     -- n
+			E_ci_combo_readra                   : out std_logic;                                        -- readra
+			E_ci_combo_readrb                   : out std_logic;                                        -- readrb
+			E_ci_combo_writerc                  : out std_logic                                         -- writerc
 		);
 	end component soc_system_nios2_gen2_0;
 
@@ -176,6 +194,145 @@ architecture rtl of soc_system is
 			irq        : out std_logic                                         -- irq
 		);
 	end component soc_system_timer_0;
+
+	component altera_customins_master_translator is
+		generic (
+			SHARED_COMB_AND_MULTI : integer := 0
+		);
+		port (
+			ci_slave_dataa            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- dataa
+			ci_slave_datab            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- datab
+			ci_slave_result           : out std_logic_vector(31 downto 0);                    -- result
+			ci_slave_n                : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- n
+			ci_slave_readra           : in  std_logic                     := 'X';             -- readra
+			ci_slave_readrb           : in  std_logic                     := 'X';             -- readrb
+			ci_slave_writerc          : in  std_logic                     := 'X';             -- writerc
+			ci_slave_a                : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- a
+			ci_slave_b                : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- b
+			ci_slave_c                : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- c
+			ci_slave_ipending         : in  std_logic_vector(31 downto 0) := (others => 'X'); -- ipending
+			ci_slave_estatus          : in  std_logic                     := 'X';             -- estatus
+			comb_ci_master_dataa      : out std_logic_vector(31 downto 0);                    -- dataa
+			comb_ci_master_datab      : out std_logic_vector(31 downto 0);                    -- datab
+			comb_ci_master_result     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			comb_ci_master_n          : out std_logic_vector(7 downto 0);                     -- n
+			comb_ci_master_readra     : out std_logic;                                        -- readra
+			comb_ci_master_readrb     : out std_logic;                                        -- readrb
+			comb_ci_master_writerc    : out std_logic;                                        -- writerc
+			comb_ci_master_a          : out std_logic_vector(4 downto 0);                     -- a
+			comb_ci_master_b          : out std_logic_vector(4 downto 0);                     -- b
+			comb_ci_master_c          : out std_logic_vector(4 downto 0);                     -- c
+			comb_ci_master_ipending   : out std_logic_vector(31 downto 0);                    -- ipending
+			comb_ci_master_estatus    : out std_logic;                                        -- estatus
+			ci_slave_multi_clk        : in  std_logic                     := 'X';             -- clk
+			ci_slave_multi_reset      : in  std_logic                     := 'X';             -- reset
+			ci_slave_multi_clken      : in  std_logic                     := 'X';             -- clk_en
+			ci_slave_multi_reset_req  : in  std_logic                     := 'X';             -- reset_req
+			ci_slave_multi_start      : in  std_logic                     := 'X';             -- start
+			ci_slave_multi_done       : out std_logic;                                        -- done
+			ci_slave_multi_dataa      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- multi_dataa
+			ci_slave_multi_datab      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- multi_datab
+			ci_slave_multi_result     : out std_logic_vector(31 downto 0);                    -- multi_result
+			ci_slave_multi_n          : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- multi_n
+			ci_slave_multi_readra     : in  std_logic                     := 'X';             -- multi_readra
+			ci_slave_multi_readrb     : in  std_logic                     := 'X';             -- multi_readrb
+			ci_slave_multi_writerc    : in  std_logic                     := 'X';             -- multi_writerc
+			ci_slave_multi_a          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- multi_a
+			ci_slave_multi_b          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- multi_b
+			ci_slave_multi_c          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- multi_c
+			multi_ci_master_clk       : out std_logic;                                        -- clk
+			multi_ci_master_reset     : out std_logic;                                        -- reset
+			multi_ci_master_clken     : out std_logic;                                        -- clk_en
+			multi_ci_master_reset_req : out std_logic;                                        -- reset_req
+			multi_ci_master_start     : out std_logic;                                        -- start
+			multi_ci_master_done      : in  std_logic                     := 'X';             -- done
+			multi_ci_master_dataa     : out std_logic_vector(31 downto 0);                    -- dataa
+			multi_ci_master_datab     : out std_logic_vector(31 downto 0);                    -- datab
+			multi_ci_master_result    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			multi_ci_master_n         : out std_logic_vector(7 downto 0);                     -- n
+			multi_ci_master_readra    : out std_logic;                                        -- readra
+			multi_ci_master_readrb    : out std_logic;                                        -- readrb
+			multi_ci_master_writerc   : out std_logic;                                        -- writerc
+			multi_ci_master_a         : out std_logic_vector(4 downto 0);                     -- a
+			multi_ci_master_b         : out std_logic_vector(4 downto 0);                     -- b
+			multi_ci_master_c         : out std_logic_vector(4 downto 0)                      -- c
+		);
+	end component altera_customins_master_translator;
+
+	component soc_system_nios2_gen2_0_custom_instruction_master_comb_xconnect is
+		port (
+			ci_slave_dataa      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- dataa
+			ci_slave_datab      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- datab
+			ci_slave_result     : out std_logic_vector(31 downto 0);                    -- result
+			ci_slave_n          : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- n
+			ci_slave_readra     : in  std_logic                     := 'X';             -- readra
+			ci_slave_readrb     : in  std_logic                     := 'X';             -- readrb
+			ci_slave_writerc    : in  std_logic                     := 'X';             -- writerc
+			ci_slave_a          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- a
+			ci_slave_b          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- b
+			ci_slave_c          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- c
+			ci_slave_ipending   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- ipending
+			ci_slave_estatus    : in  std_logic                     := 'X';             -- estatus
+			ci_master0_dataa    : out std_logic_vector(31 downto 0);                    -- dataa
+			ci_master0_datab    : out std_logic_vector(31 downto 0);                    -- datab
+			ci_master0_result   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			ci_master0_n        : out std_logic_vector(7 downto 0);                     -- n
+			ci_master0_readra   : out std_logic;                                        -- readra
+			ci_master0_readrb   : out std_logic;                                        -- readrb
+			ci_master0_writerc  : out std_logic;                                        -- writerc
+			ci_master0_a        : out std_logic_vector(4 downto 0);                     -- a
+			ci_master0_b        : out std_logic_vector(4 downto 0);                     -- b
+			ci_master0_c        : out std_logic_vector(4 downto 0);                     -- c
+			ci_master0_ipending : out std_logic_vector(31 downto 0);                    -- ipending
+			ci_master0_estatus  : out std_logic                                         -- estatus
+		);
+	end component soc_system_nios2_gen2_0_custom_instruction_master_comb_xconnect;
+
+	component altera_customins_slave_translator is
+		generic (
+			N_WIDTH          : integer := 8;
+			USE_DONE         : integer := 1;
+			NUM_FIXED_CYCLES : integer := 2
+		);
+		port (
+			ci_slave_dataa      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- dataa
+			ci_slave_datab      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- datab
+			ci_slave_result     : out std_logic_vector(31 downto 0);                    -- result
+			ci_slave_n          : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- n
+			ci_slave_readra     : in  std_logic                     := 'X';             -- readra
+			ci_slave_readrb     : in  std_logic                     := 'X';             -- readrb
+			ci_slave_writerc    : in  std_logic                     := 'X';             -- writerc
+			ci_slave_a          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- a
+			ci_slave_b          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- b
+			ci_slave_c          : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- c
+			ci_slave_ipending   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- ipending
+			ci_slave_estatus    : in  std_logic                     := 'X';             -- estatus
+			ci_master_dataa     : out std_logic_vector(31 downto 0);                    -- dataa
+			ci_master_result    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			ci_master_datab     : out std_logic_vector(31 downto 0);                    -- datab
+			ci_master_n         : out std_logic_vector(7 downto 0);                     -- n
+			ci_master_readra    : out std_logic;                                        -- readra
+			ci_master_readrb    : out std_logic;                                        -- readrb
+			ci_master_writerc   : out std_logic;                                        -- writerc
+			ci_master_a         : out std_logic_vector(4 downto 0);                     -- a
+			ci_master_b         : out std_logic_vector(4 downto 0);                     -- b
+			ci_master_c         : out std_logic_vector(4 downto 0);                     -- c
+			ci_master_ipending  : out std_logic_vector(31 downto 0);                    -- ipending
+			ci_master_estatus   : out std_logic;                                        -- estatus
+			ci_master_clk       : out std_logic;                                        -- clk
+			ci_master_clken     : out std_logic;                                        -- clk_en
+			ci_master_reset_req : out std_logic;                                        -- reset_req
+			ci_master_reset     : out std_logic;                                        -- reset
+			ci_master_start     : out std_logic;                                        -- start
+			ci_master_done      : in  std_logic                     := 'X';             -- done
+			ci_slave_clk        : in  std_logic                     := 'X';             -- clk
+			ci_slave_clken      : in  std_logic                     := 'X';             -- clk_en
+			ci_slave_reset_req  : in  std_logic                     := 'X';             -- reset_req
+			ci_slave_reset      : in  std_logic                     := 'X';             -- reset
+			ci_slave_start      : in  std_logic                     := 'X';             -- start
+			ci_slave_done       : out std_logic                                         -- done
+		);
+	end component altera_customins_slave_translator;
 
 	component soc_system_mm_interconnect_0 is
 		port (
@@ -475,97 +632,141 @@ architecture rtl of soc_system is
 		);
 	end component soc_system_rst_controller_002;
 
-	signal pll_0_outclk0_clk                                               : std_logic;                     -- pll_0:outclk_0 -> [irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, nios_buttons:clk, nios_leds:clk, rst_controller:clk, rst_controller_002:clk, swap_accelerator_0:Clk, sysid:clock, timer_0:clk]
-	signal pll_0_outclk1_clk                                               : std_logic;                     -- pll_0:outclk_1 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, mm_interconnect_0:pll_0_outclk1_clk, nios2_gen2_0:clk, rst_controller_001:clk, sdram_controller_0:clk]
-	signal swap_accelerator_0_avalon_master_readdata                       : std_logic_vector(31 downto 0); -- mm_interconnect_0:swap_accelerator_0_avalon_master_readdata -> swap_accelerator_0:mReadData
-	signal swap_accelerator_0_avalon_master_waitrequest                    : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_master_waitrequest -> swap_accelerator_0:mWaitRequest
-	signal swap_accelerator_0_avalon_master_address                        : std_logic_vector(31 downto 0); -- swap_accelerator_0:mAddress -> mm_interconnect_0:swap_accelerator_0_avalon_master_address
-	signal swap_accelerator_0_avalon_master_byteenable                     : std_logic_vector(3 downto 0);  -- swap_accelerator_0:mByteEnable -> mm_interconnect_0:swap_accelerator_0_avalon_master_byteenable
-	signal swap_accelerator_0_avalon_master_read                           : std_logic;                     -- swap_accelerator_0:mRead -> mm_interconnect_0:swap_accelerator_0_avalon_master_read
-	signal swap_accelerator_0_avalon_master_write                          : std_logic;                     -- swap_accelerator_0:mWrite -> mm_interconnect_0:swap_accelerator_0_avalon_master_write
-	signal swap_accelerator_0_avalon_master_writedata                      : std_logic_vector(31 downto 0); -- swap_accelerator_0:mWriteData -> mm_interconnect_0:swap_accelerator_0_avalon_master_writedata
-	signal nios2_gen2_0_data_master_readdata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
-	signal nios2_gen2_0_data_master_waitrequest                            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
-	signal nios2_gen2_0_data_master_debugaccess                            : std_logic;                     -- nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
-	signal nios2_gen2_0_data_master_address                                : std_logic_vector(27 downto 0); -- nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
-	signal nios2_gen2_0_data_master_byteenable                             : std_logic_vector(3 downto 0);  -- nios2_gen2_0:d_byteenable -> mm_interconnect_0:nios2_gen2_0_data_master_byteenable
-	signal nios2_gen2_0_data_master_read                                   : std_logic;                     -- nios2_gen2_0:d_read -> mm_interconnect_0:nios2_gen2_0_data_master_read
-	signal nios2_gen2_0_data_master_readdatavalid                          : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_readdatavalid -> nios2_gen2_0:d_readdatavalid
-	signal nios2_gen2_0_data_master_write                                  : std_logic;                     -- nios2_gen2_0:d_write -> mm_interconnect_0:nios2_gen2_0_data_master_write
-	signal nios2_gen2_0_data_master_writedata                              : std_logic_vector(31 downto 0); -- nios2_gen2_0:d_writedata -> mm_interconnect_0:nios2_gen2_0_data_master_writedata
-	signal nios2_gen2_0_instruction_master_readdata                        : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdata -> nios2_gen2_0:i_readdata
-	signal nios2_gen2_0_instruction_master_waitrequest                     : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
-	signal nios2_gen2_0_instruction_master_address                         : std_logic_vector(27 downto 0); -- nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
-	signal nios2_gen2_0_instruction_master_read                            : std_logic;                     -- nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
-	signal nios2_gen2_0_instruction_master_readdatavalid                   : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
-	signal nios2_gen2_0_instruction_master_burstcount                      : std_logic_vector(3 downto 0);  -- nios2_gen2_0:i_burstcount -> mm_interconnect_0:nios2_gen2_0_instruction_master_burstcount
-	signal mm_interconnect_0_sdram_controller_0_s1_chipselect              : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_chipselect -> sdram_controller_0:az_cs
-	signal mm_interconnect_0_sdram_controller_0_s1_readdata                : std_logic_vector(15 downto 0); -- sdram_controller_0:za_data -> mm_interconnect_0:sdram_controller_0_s1_readdata
-	signal mm_interconnect_0_sdram_controller_0_s1_waitrequest             : std_logic;                     -- sdram_controller_0:za_waitrequest -> mm_interconnect_0:sdram_controller_0_s1_waitrequest
-	signal mm_interconnect_0_sdram_controller_0_s1_address                 : std_logic_vector(24 downto 0); -- mm_interconnect_0:sdram_controller_0_s1_address -> sdram_controller_0:az_addr
-	signal mm_interconnect_0_sdram_controller_0_s1_read                    : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_read -> mm_interconnect_0_sdram_controller_0_s1_read:in
-	signal mm_interconnect_0_sdram_controller_0_s1_byteenable              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sdram_controller_0_s1_byteenable -> mm_interconnect_0_sdram_controller_0_s1_byteenable:in
-	signal mm_interconnect_0_sdram_controller_0_s1_readdatavalid           : std_logic;                     -- sdram_controller_0:za_valid -> mm_interconnect_0:sdram_controller_0_s1_readdatavalid
-	signal mm_interconnect_0_sdram_controller_0_s1_write                   : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_write -> mm_interconnect_0_sdram_controller_0_s1_write:in
-	signal mm_interconnect_0_sdram_controller_0_s1_writedata               : std_logic_vector(15 downto 0); -- mm_interconnect_0:sdram_controller_0_s1_writedata -> sdram_controller_0:az_data
-	signal mm_interconnect_0_sysid_control_slave_readdata                  : std_logic_vector(31 downto 0); -- sysid:readdata -> mm_interconnect_0:sysid_control_slave_readdata
-	signal mm_interconnect_0_sysid_control_slave_address                   : std_logic_vector(0 downto 0);  -- mm_interconnect_0:sysid_control_slave_address -> sysid:address
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata         : std_logic_vector(31 downto 0); -- nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest      : std_logic;                     -- nios2_gen2_0:debug_mem_slave_waitrequest -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_waitrequest
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_debugaccess      : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_debugaccess -> nios2_gen2_0:debug_mem_slave_debugaccess
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_address          : std_logic_vector(8 downto 0);  -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_address -> nios2_gen2_0:debug_mem_slave_address
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_read             : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_read -> nios2_gen2_0:debug_mem_slave_read
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_byteenable       : std_logic_vector(3 downto 0);  -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_byteenable -> nios2_gen2_0:debug_mem_slave_byteenable
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_write -> nios2_gen2_0:debug_mem_slave_write
-	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata        : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_writedata -> nios2_gen2_0:debug_mem_slave_writedata
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata        : std_logic_vector(31 downto 0); -- jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest     : std_logic;                     -- jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address         : std_logic_vector(0 downto 0);  -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_address -> jtag_uart_0:av_address
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read            : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:in
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write           : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:in
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_chipselect  : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_chipselect -> swap_accelerator_0:sChipSelect
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_readdata    : std_logic_vector(31 downto 0); -- swap_accelerator_0:sReadData -> mm_interconnect_0:swap_accelerator_0_avalon_slave_0_readdata
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_address     : std_logic_vector(2 downto 0);  -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_address -> swap_accelerator_0:sAddress
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_read        : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_read -> swap_accelerator_0:sRead
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_write       : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_write -> swap_accelerator_0:sWrite
-	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_writedata   : std_logic_vector(31 downto 0); -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_writedata -> swap_accelerator_0:sWriteData
-	signal mm_interconnect_0_nios_leds_s1_chipselect                       : std_logic;                     -- mm_interconnect_0:nios_leds_s1_chipselect -> nios_leds:chipselect
-	signal mm_interconnect_0_nios_leds_s1_readdata                         : std_logic_vector(31 downto 0); -- nios_leds:readdata -> mm_interconnect_0:nios_leds_s1_readdata
-	signal mm_interconnect_0_nios_leds_s1_address                          : std_logic_vector(1 downto 0);  -- mm_interconnect_0:nios_leds_s1_address -> nios_leds:address
-	signal mm_interconnect_0_nios_leds_s1_write                            : std_logic;                     -- mm_interconnect_0:nios_leds_s1_write -> mm_interconnect_0_nios_leds_s1_write:in
-	signal mm_interconnect_0_nios_leds_s1_writedata                        : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios_leds_s1_writedata -> nios_leds:writedata
-	signal mm_interconnect_0_nios_buttons_s1_readdata                      : std_logic_vector(31 downto 0); -- nios_buttons:readdata -> mm_interconnect_0:nios_buttons_s1_readdata
-	signal mm_interconnect_0_nios_buttons_s1_address                       : std_logic_vector(1 downto 0);  -- mm_interconnect_0:nios_buttons_s1_address -> nios_buttons:address
-	signal mm_interconnect_0_timer_0_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:timer_0_s1_chipselect -> timer_0:chipselect
-	signal mm_interconnect_0_timer_0_s1_readdata                           : std_logic_vector(15 downto 0); -- timer_0:readdata -> mm_interconnect_0:timer_0_s1_readdata
-	signal mm_interconnect_0_timer_0_s1_address                            : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_0_s1_address -> timer_0:address
-	signal mm_interconnect_0_timer_0_s1_write                              : std_logic;                     -- mm_interconnect_0:timer_0_s1_write -> mm_interconnect_0_timer_0_s1_write:in
-	signal mm_interconnect_0_timer_0_s1_writedata                          : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
-	signal nios2_gen2_0_irq_irq                                            : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
-	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
-	signal irq_synchronizer_receiver_irq                                   : std_logic_vector(0 downto 0);  -- jtag_uart_0:av_irq -> irq_synchronizer:receiver_irq
-	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver1_irq
-	signal irq_synchronizer_001_receiver_irq                               : std_logic_vector(0 downto 0);  -- timer_0:irq -> irq_synchronizer_001:receiver_irq
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mm_interconnect_0:swap_accelerator_0_reset_sink_1_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
-	signal nios2_gen2_0_debug_reset_request_reset                          : std_logic;                     -- nios2_gen2_0:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
-	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset]
-	signal rst_controller_001_reset_out_reset_req                          : std_logic;                     -- rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
-	signal rst_controller_002_reset_out_reset                              : std_logic;                     -- rst_controller_002:reset_out -> [mm_interconnect_0:nios_leds_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in]
-	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> [pll_0:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
-	signal mm_interconnect_0_sdram_controller_0_s1_read_ports_inv          : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_read:inv -> sdram_controller_0:az_rd_n
-	signal mm_interconnect_0_sdram_controller_0_s1_byteenable_ports_inv    : std_logic_vector(1 downto 0);  -- mm_interconnect_0_sdram_controller_0_s1_byteenable:inv -> sdram_controller_0:az_be_n
-	signal mm_interconnect_0_sdram_controller_0_s1_write_ports_inv         : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_write:inv -> sdram_controller_0:az_wr_n
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
-	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
-	signal mm_interconnect_0_nios_leds_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_nios_leds_s1_write:inv -> nios_leds:write_n
-	signal mm_interconnect_0_timer_0_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_timer_0_s1_write:inv -> timer_0:write_n
-	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [jtag_uart_0:rst_n, nios_buttons:reset_n, swap_accelerator_0:nReset, sysid:reset_n, timer_0:reset_n]
-	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [nios2_gen2_0:reset_n, sdram_controller_0:reset_n]
-	signal rst_controller_002_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> nios_leds:reset_n
+	signal pll_0_outclk0_clk                                                              : std_logic;                     -- pll_0:outclk_0 -> [irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, jtag_uart_0:clk, mm_interconnect_0:pll_0_outclk0_clk, nios_buttons:clk, nios_leds:clk, rst_controller:clk, rst_controller_002:clk, swap_accelerator_0:Clk, sysid:clock, timer_0:clk]
+	signal pll_0_outclk1_clk                                                              : std_logic;                     -- pll_0:outclk_1 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, mm_interconnect_0:pll_0_outclk1_clk, nios2_gen2_0:clk, rst_controller_001:clk, sdram_controller_0:clk]
+	signal nios2_gen2_0_custom_instruction_master_result                                  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_translator:ci_slave_result -> nios2_gen2_0:E_ci_combo_result
+	signal nios2_gen2_0_custom_instruction_master_readra                                  : std_logic;                     -- nios2_gen2_0:E_ci_combo_readra -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_readra
+	signal nios2_gen2_0_custom_instruction_master_a                                       : std_logic_vector(4 downto 0);  -- nios2_gen2_0:E_ci_combo_a -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_a
+	signal nios2_gen2_0_custom_instruction_master_b                                       : std_logic_vector(4 downto 0);  -- nios2_gen2_0:E_ci_combo_b -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_b
+	signal nios2_gen2_0_custom_instruction_master_c                                       : std_logic_vector(4 downto 0);  -- nios2_gen2_0:E_ci_combo_c -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_c
+	signal nios2_gen2_0_custom_instruction_master_readrb                                  : std_logic;                     -- nios2_gen2_0:E_ci_combo_readrb -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_readrb
+	signal nios2_gen2_0_custom_instruction_master_estatus                                 : std_logic;                     -- nios2_gen2_0:E_ci_combo_estatus -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_estatus
+	signal nios2_gen2_0_custom_instruction_master_ipending                                : std_logic_vector(31 downto 0); -- nios2_gen2_0:E_ci_combo_ipending -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_ipending
+	signal nios2_gen2_0_custom_instruction_master_datab                                   : std_logic_vector(31 downto 0); -- nios2_gen2_0:E_ci_combo_datab -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_dataa                                   : std_logic_vector(31 downto 0); -- nios2_gen2_0:E_ci_combo_dataa -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_writerc                                 : std_logic;                     -- nios2_gen2_0:E_ci_combo_writerc -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_writerc
+	signal nios2_gen2_0_custom_instruction_master_n                                       : std_logic_vector(7 downto 0);  -- nios2_gen2_0:E_ci_combo_n -> nios2_gen2_0_custom_instruction_master_translator:ci_slave_n
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_result        : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_result -> nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_result
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readra        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_readra -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_readra
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_a             : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_a -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_a
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_b             : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_b -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_b
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readrb        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_readrb -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_readrb
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_c             : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_c -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_c
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_estatus       : std_logic;                     -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_estatus -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_estatus
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_ipending      : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_ipending -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_ipending
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_datab         : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_datab -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_dataa         : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_dataa -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_writerc       : std_logic;                     -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_writerc -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_writerc
+	signal nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_n             : std_logic_vector(7 downto 0);  -- nios2_gen2_0_custom_instruction_master_translator:comb_ci_master_n -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_slave_n
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_result         : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_result -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_result
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readra         : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_readra -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_readra
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_a              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_a -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_a
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_b              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_b -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_b
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readrb         : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_readrb -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_readrb
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_c              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_c -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_c
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_estatus        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_estatus -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_estatus
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_ipending       : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_ipending -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_ipending
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_datab          : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_datab -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_dataa          : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_dataa -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_writerc        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_writerc -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_writerc
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_n              : std_logic_vector(7 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_n -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_n
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result : std_logic_vector(31 downto 0); -- custom_bitswap_0:result -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_result
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_dataa -> custom_bitswap_0:dataa
+	signal swap_accelerator_0_avalon_master_readdata                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:swap_accelerator_0_avalon_master_readdata -> swap_accelerator_0:mReadData
+	signal swap_accelerator_0_avalon_master_waitrequest                                   : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_master_waitrequest -> swap_accelerator_0:mWaitRequest
+	signal swap_accelerator_0_avalon_master_address                                       : std_logic_vector(31 downto 0); -- swap_accelerator_0:mAddress -> mm_interconnect_0:swap_accelerator_0_avalon_master_address
+	signal swap_accelerator_0_avalon_master_byteenable                                    : std_logic_vector(3 downto 0);  -- swap_accelerator_0:mByteEnable -> mm_interconnect_0:swap_accelerator_0_avalon_master_byteenable
+	signal swap_accelerator_0_avalon_master_read                                          : std_logic;                     -- swap_accelerator_0:mRead -> mm_interconnect_0:swap_accelerator_0_avalon_master_read
+	signal swap_accelerator_0_avalon_master_write                                         : std_logic;                     -- swap_accelerator_0:mWrite -> mm_interconnect_0:swap_accelerator_0_avalon_master_write
+	signal swap_accelerator_0_avalon_master_writedata                                     : std_logic_vector(31 downto 0); -- swap_accelerator_0:mWriteData -> mm_interconnect_0:swap_accelerator_0_avalon_master_writedata
+	signal nios2_gen2_0_data_master_readdata                                              : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
+	signal nios2_gen2_0_data_master_waitrequest                                           : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
+	signal nios2_gen2_0_data_master_debugaccess                                           : std_logic;                     -- nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
+	signal nios2_gen2_0_data_master_address                                               : std_logic_vector(27 downto 0); -- nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
+	signal nios2_gen2_0_data_master_byteenable                                            : std_logic_vector(3 downto 0);  -- nios2_gen2_0:d_byteenable -> mm_interconnect_0:nios2_gen2_0_data_master_byteenable
+	signal nios2_gen2_0_data_master_read                                                  : std_logic;                     -- nios2_gen2_0:d_read -> mm_interconnect_0:nios2_gen2_0_data_master_read
+	signal nios2_gen2_0_data_master_readdatavalid                                         : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_readdatavalid -> nios2_gen2_0:d_readdatavalid
+	signal nios2_gen2_0_data_master_write                                                 : std_logic;                     -- nios2_gen2_0:d_write -> mm_interconnect_0:nios2_gen2_0_data_master_write
+	signal nios2_gen2_0_data_master_writedata                                             : std_logic_vector(31 downto 0); -- nios2_gen2_0:d_writedata -> mm_interconnect_0:nios2_gen2_0_data_master_writedata
+	signal nios2_gen2_0_instruction_master_readdata                                       : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdata -> nios2_gen2_0:i_readdata
+	signal nios2_gen2_0_instruction_master_waitrequest                                    : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
+	signal nios2_gen2_0_instruction_master_address                                        : std_logic_vector(27 downto 0); -- nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
+	signal nios2_gen2_0_instruction_master_read                                           : std_logic;                     -- nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
+	signal nios2_gen2_0_instruction_master_readdatavalid                                  : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
+	signal nios2_gen2_0_instruction_master_burstcount                                     : std_logic_vector(3 downto 0);  -- nios2_gen2_0:i_burstcount -> mm_interconnect_0:nios2_gen2_0_instruction_master_burstcount
+	signal mm_interconnect_0_sdram_controller_0_s1_chipselect                             : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_chipselect -> sdram_controller_0:az_cs
+	signal mm_interconnect_0_sdram_controller_0_s1_readdata                               : std_logic_vector(15 downto 0); -- sdram_controller_0:za_data -> mm_interconnect_0:sdram_controller_0_s1_readdata
+	signal mm_interconnect_0_sdram_controller_0_s1_waitrequest                            : std_logic;                     -- sdram_controller_0:za_waitrequest -> mm_interconnect_0:sdram_controller_0_s1_waitrequest
+	signal mm_interconnect_0_sdram_controller_0_s1_address                                : std_logic_vector(24 downto 0); -- mm_interconnect_0:sdram_controller_0_s1_address -> sdram_controller_0:az_addr
+	signal mm_interconnect_0_sdram_controller_0_s1_read                                   : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_read -> mm_interconnect_0_sdram_controller_0_s1_read:in
+	signal mm_interconnect_0_sdram_controller_0_s1_byteenable                             : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sdram_controller_0_s1_byteenable -> mm_interconnect_0_sdram_controller_0_s1_byteenable:in
+	signal mm_interconnect_0_sdram_controller_0_s1_readdatavalid                          : std_logic;                     -- sdram_controller_0:za_valid -> mm_interconnect_0:sdram_controller_0_s1_readdatavalid
+	signal mm_interconnect_0_sdram_controller_0_s1_write                                  : std_logic;                     -- mm_interconnect_0:sdram_controller_0_s1_write -> mm_interconnect_0_sdram_controller_0_s1_write:in
+	signal mm_interconnect_0_sdram_controller_0_s1_writedata                              : std_logic_vector(15 downto 0); -- mm_interconnect_0:sdram_controller_0_s1_writedata -> sdram_controller_0:az_data
+	signal mm_interconnect_0_sysid_control_slave_readdata                                 : std_logic_vector(31 downto 0); -- sysid:readdata -> mm_interconnect_0:sysid_control_slave_readdata
+	signal mm_interconnect_0_sysid_control_slave_address                                  : std_logic_vector(0 downto 0);  -- mm_interconnect_0:sysid_control_slave_address -> sysid:address
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata                        : std_logic_vector(31 downto 0); -- nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest                     : std_logic;                     -- nios2_gen2_0:debug_mem_slave_waitrequest -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_waitrequest
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_debugaccess                     : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_debugaccess -> nios2_gen2_0:debug_mem_slave_debugaccess
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_address                         : std_logic_vector(8 downto 0);  -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_address -> nios2_gen2_0:debug_mem_slave_address
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_read                            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_read -> nios2_gen2_0:debug_mem_slave_read
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_byteenable                      : std_logic_vector(3 downto 0);  -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_byteenable -> nios2_gen2_0:debug_mem_slave_byteenable
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write                           : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_write -> nios2_gen2_0:debug_mem_slave_write
+	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata                       : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_writedata -> nios2_gen2_0:debug_mem_slave_writedata
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect                     : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata                       : std_logic_vector(31 downto 0); -- jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest                    : std_logic;                     -- jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address                        : std_logic_vector(0 downto 0);  -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_address -> jtag_uart_0:av_address
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read                           : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:in
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write                          : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:in
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_chipselect                 : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_chipselect -> swap_accelerator_0:sChipSelect
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_readdata                   : std_logic_vector(31 downto 0); -- swap_accelerator_0:sReadData -> mm_interconnect_0:swap_accelerator_0_avalon_slave_0_readdata
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_address                    : std_logic_vector(2 downto 0);  -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_address -> swap_accelerator_0:sAddress
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_read                       : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_read -> swap_accelerator_0:sRead
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_write                      : std_logic;                     -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_write -> swap_accelerator_0:sWrite
+	signal mm_interconnect_0_swap_accelerator_0_avalon_slave_0_writedata                  : std_logic_vector(31 downto 0); -- mm_interconnect_0:swap_accelerator_0_avalon_slave_0_writedata -> swap_accelerator_0:sWriteData
+	signal mm_interconnect_0_nios_leds_s1_chipselect                                      : std_logic;                     -- mm_interconnect_0:nios_leds_s1_chipselect -> nios_leds:chipselect
+	signal mm_interconnect_0_nios_leds_s1_readdata                                        : std_logic_vector(31 downto 0); -- nios_leds:readdata -> mm_interconnect_0:nios_leds_s1_readdata
+	signal mm_interconnect_0_nios_leds_s1_address                                         : std_logic_vector(1 downto 0);  -- mm_interconnect_0:nios_leds_s1_address -> nios_leds:address
+	signal mm_interconnect_0_nios_leds_s1_write                                           : std_logic;                     -- mm_interconnect_0:nios_leds_s1_write -> mm_interconnect_0_nios_leds_s1_write:in
+	signal mm_interconnect_0_nios_leds_s1_writedata                                       : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios_leds_s1_writedata -> nios_leds:writedata
+	signal mm_interconnect_0_nios_buttons_s1_readdata                                     : std_logic_vector(31 downto 0); -- nios_buttons:readdata -> mm_interconnect_0:nios_buttons_s1_readdata
+	signal mm_interconnect_0_nios_buttons_s1_address                                      : std_logic_vector(1 downto 0);  -- mm_interconnect_0:nios_buttons_s1_address -> nios_buttons:address
+	signal mm_interconnect_0_timer_0_s1_chipselect                                        : std_logic;                     -- mm_interconnect_0:timer_0_s1_chipselect -> timer_0:chipselect
+	signal mm_interconnect_0_timer_0_s1_readdata                                          : std_logic_vector(15 downto 0); -- timer_0:readdata -> mm_interconnect_0:timer_0_s1_readdata
+	signal mm_interconnect_0_timer_0_s1_address                                           : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_0_s1_address -> timer_0:address
+	signal mm_interconnect_0_timer_0_s1_write                                             : std_logic;                     -- mm_interconnect_0:timer_0_s1_write -> mm_interconnect_0_timer_0_s1_write:in
+	signal mm_interconnect_0_timer_0_s1_writedata                                         : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
+	signal nios2_gen2_0_irq_irq                                                           : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
+	signal irq_mapper_receiver0_irq                                                       : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
+	signal irq_synchronizer_receiver_irq                                                  : std_logic_vector(0 downto 0);  -- jtag_uart_0:av_irq -> irq_synchronizer:receiver_irq
+	signal irq_mapper_receiver1_irq                                                       : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver1_irq
+	signal irq_synchronizer_001_receiver_irq                                              : std_logic_vector(0 downto 0);  -- timer_0:irq -> irq_synchronizer_001:receiver_irq
+	signal rst_controller_reset_out_reset                                                 : std_logic;                     -- rst_controller:reset_out -> [irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mm_interconnect_0:swap_accelerator_0_reset_sink_1_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
+	signal nios2_gen2_0_debug_reset_request_reset                                         : std_logic;                     -- nios2_gen2_0:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
+	signal rst_controller_001_reset_out_reset                                             : std_logic;                     -- rst_controller_001:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_001_reset_out_reset_req                                         : std_logic;                     -- rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
+	signal rst_controller_002_reset_out_reset                                             : std_logic;                     -- rst_controller_002:reset_out -> [mm_interconnect_0:nios_leds_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in]
+	signal reset_reset_n_ports_inv                                                        : std_logic;                     -- reset_reset_n:inv -> [pll_0:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
+	signal mm_interconnect_0_sdram_controller_0_s1_read_ports_inv                         : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_read:inv -> sdram_controller_0:az_rd_n
+	signal mm_interconnect_0_sdram_controller_0_s1_byteenable_ports_inv                   : std_logic_vector(1 downto 0);  -- mm_interconnect_0_sdram_controller_0_s1_byteenable:inv -> sdram_controller_0:az_be_n
+	signal mm_interconnect_0_sdram_controller_0_s1_write_ports_inv                        : std_logic;                     -- mm_interconnect_0_sdram_controller_0_s1_write:inv -> sdram_controller_0:az_wr_n
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv                 : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
+	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv                : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
+	signal mm_interconnect_0_nios_leds_s1_write_ports_inv                                 : std_logic;                     -- mm_interconnect_0_nios_leds_s1_write:inv -> nios_leds:write_n
+	signal mm_interconnect_0_timer_0_s1_write_ports_inv                                   : std_logic;                     -- mm_interconnect_0_timer_0_s1_write:inv -> timer_0:write_n
+	signal rst_controller_reset_out_reset_ports_inv                                       : std_logic;                     -- rst_controller_reset_out_reset:inv -> [jtag_uart_0:rst_n, nios_buttons:reset_n, swap_accelerator_0:nReset, sysid:reset_n, timer_0:reset_n]
+	signal rst_controller_001_reset_out_reset_ports_inv                                   : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [nios2_gen2_0:reset_n, sdram_controller_0:reset_n]
+	signal rst_controller_002_reset_out_reset_ports_inv                                   : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> nios_leds:reset_n
 
 begin
+
+	custom_bitswap_0 : component BitSwap
+		port map (
+			dataa  => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa,  -- nios_custom_instruction_slave.dataa
+			result => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result  --                              .result
+		);
 
 	jtag_uart_0 : component soc_system_jtag_uart_0
 		port map (
@@ -611,7 +812,18 @@ begin
 			debug_mem_slave_waitrequest         => mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest, --                          .waitrequest
 			debug_mem_slave_write               => mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write,       --                          .write
 			debug_mem_slave_writedata           => mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata,   --                          .writedata
-			dummy_ci_port                       => open                                                        -- custom_instruction_master.readra
+			E_ci_combo_result                   => nios2_gen2_0_custom_instruction_master_result,              -- custom_instruction_master.result
+			E_ci_combo_a                        => nios2_gen2_0_custom_instruction_master_a,                   --                          .a
+			E_ci_combo_b                        => nios2_gen2_0_custom_instruction_master_b,                   --                          .b
+			E_ci_combo_c                        => nios2_gen2_0_custom_instruction_master_c,                   --                          .c
+			E_ci_combo_dataa                    => nios2_gen2_0_custom_instruction_master_dataa,               --                          .dataa
+			E_ci_combo_datab                    => nios2_gen2_0_custom_instruction_master_datab,               --                          .datab
+			E_ci_combo_estatus                  => nios2_gen2_0_custom_instruction_master_estatus,             --                          .estatus
+			E_ci_combo_ipending                 => nios2_gen2_0_custom_instruction_master_ipending,            --                          .ipending
+			E_ci_combo_n                        => nios2_gen2_0_custom_instruction_master_n,                   --                          .n
+			E_ci_combo_readra                   => nios2_gen2_0_custom_instruction_master_readra,              --                          .readra
+			E_ci_combo_readrb                   => nios2_gen2_0_custom_instruction_master_readrb,              --                          .readrb
+			E_ci_combo_writerc                  => nios2_gen2_0_custom_instruction_master_writerc              --                          .writerc
 		);
 
 	nios_buttons : component soc_system_nios_buttons
@@ -707,6 +919,142 @@ begin
 			chipselect => mm_interconnect_0_timer_0_s1_chipselect,      --      .chipselect
 			write_n    => mm_interconnect_0_timer_0_s1_write_ports_inv, --      .write_n
 			irq        => irq_synchronizer_001_receiver_irq(0)          --   irq.irq
+		);
+
+	nios2_gen2_0_custom_instruction_master_translator : component altera_customins_master_translator
+		generic map (
+			SHARED_COMB_AND_MULTI => 0
+		)
+		port map (
+			ci_slave_dataa            => nios2_gen2_0_custom_instruction_master_dataa,                              --       ci_slave.dataa
+			ci_slave_datab            => nios2_gen2_0_custom_instruction_master_datab,                              --               .datab
+			ci_slave_result           => nios2_gen2_0_custom_instruction_master_result,                             --               .result
+			ci_slave_n                => nios2_gen2_0_custom_instruction_master_n,                                  --               .n
+			ci_slave_readra           => nios2_gen2_0_custom_instruction_master_readra,                             --               .readra
+			ci_slave_readrb           => nios2_gen2_0_custom_instruction_master_readrb,                             --               .readrb
+			ci_slave_writerc          => nios2_gen2_0_custom_instruction_master_writerc,                            --               .writerc
+			ci_slave_a                => nios2_gen2_0_custom_instruction_master_a,                                  --               .a
+			ci_slave_b                => nios2_gen2_0_custom_instruction_master_b,                                  --               .b
+			ci_slave_c                => nios2_gen2_0_custom_instruction_master_c,                                  --               .c
+			ci_slave_ipending         => nios2_gen2_0_custom_instruction_master_ipending,                           --               .ipending
+			ci_slave_estatus          => nios2_gen2_0_custom_instruction_master_estatus,                            --               .estatus
+			comb_ci_master_dataa      => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_dataa,    -- comb_ci_master.dataa
+			comb_ci_master_datab      => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_datab,    --               .datab
+			comb_ci_master_result     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_result,   --               .result
+			comb_ci_master_n          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_n,        --               .n
+			comb_ci_master_readra     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readra,   --               .readra
+			comb_ci_master_readrb     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readrb,   --               .readrb
+			comb_ci_master_writerc    => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_writerc,  --               .writerc
+			comb_ci_master_a          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_a,        --               .a
+			comb_ci_master_b          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_b,        --               .b
+			comb_ci_master_c          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_c,        --               .c
+			comb_ci_master_ipending   => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_ipending, --               .ipending
+			comb_ci_master_estatus    => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_estatus,  --               .estatus
+			ci_slave_multi_clk        => '0',                                                                       --    (terminated)
+			ci_slave_multi_reset      => '0',                                                                       --    (terminated)
+			ci_slave_multi_clken      => '0',                                                                       --    (terminated)
+			ci_slave_multi_reset_req  => '0',                                                                       --    (terminated)
+			ci_slave_multi_start      => '0',                                                                       --    (terminated)
+			ci_slave_multi_done       => open,                                                                      --    (terminated)
+			ci_slave_multi_dataa      => "00000000000000000000000000000000",                                        --    (terminated)
+			ci_slave_multi_datab      => "00000000000000000000000000000000",                                        --    (terminated)
+			ci_slave_multi_result     => open,                                                                      --    (terminated)
+			ci_slave_multi_n          => "00000000",                                                                --    (terminated)
+			ci_slave_multi_readra     => '0',                                                                       --    (terminated)
+			ci_slave_multi_readrb     => '0',                                                                       --    (terminated)
+			ci_slave_multi_writerc    => '0',                                                                       --    (terminated)
+			ci_slave_multi_a          => "00000",                                                                   --    (terminated)
+			ci_slave_multi_b          => "00000",                                                                   --    (terminated)
+			ci_slave_multi_c          => "00000",                                                                   --    (terminated)
+			multi_ci_master_clk       => open,                                                                      --    (terminated)
+			multi_ci_master_reset     => open,                                                                      --    (terminated)
+			multi_ci_master_clken     => open,                                                                      --    (terminated)
+			multi_ci_master_reset_req => open,                                                                      --    (terminated)
+			multi_ci_master_start     => open,                                                                      --    (terminated)
+			multi_ci_master_done      => '0',                                                                       --    (terminated)
+			multi_ci_master_dataa     => open,                                                                      --    (terminated)
+			multi_ci_master_datab     => open,                                                                      --    (terminated)
+			multi_ci_master_result    => "00000000000000000000000000000000",                                        --    (terminated)
+			multi_ci_master_n         => open,                                                                      --    (terminated)
+			multi_ci_master_readra    => open,                                                                      --    (terminated)
+			multi_ci_master_readrb    => open,                                                                      --    (terminated)
+			multi_ci_master_writerc   => open,                                                                      --    (terminated)
+			multi_ci_master_a         => open,                                                                      --    (terminated)
+			multi_ci_master_b         => open,                                                                      --    (terminated)
+			multi_ci_master_c         => open                                                                       --    (terminated)
+		);
+
+	nios2_gen2_0_custom_instruction_master_comb_xconnect : component soc_system_nios2_gen2_0_custom_instruction_master_comb_xconnect
+		port map (
+			ci_slave_dataa      => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_dataa,    --   ci_slave.dataa
+			ci_slave_datab      => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_datab,    --           .datab
+			ci_slave_result     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_result,   --           .result
+			ci_slave_n          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_n,        --           .n
+			ci_slave_readra     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readra,   --           .readra
+			ci_slave_readrb     => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_readrb,   --           .readrb
+			ci_slave_writerc    => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_writerc,  --           .writerc
+			ci_slave_a          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_a,        --           .a
+			ci_slave_b          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_b,        --           .b
+			ci_slave_c          => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_c,        --           .c
+			ci_slave_ipending   => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_ipending, --           .ipending
+			ci_slave_estatus    => nios2_gen2_0_custom_instruction_master_translator_comb_ci_master_estatus,  --           .estatus
+			ci_master0_dataa    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_dataa,     -- ci_master0.dataa
+			ci_master0_datab    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_datab,     --           .datab
+			ci_master0_result   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_result,    --           .result
+			ci_master0_n        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_n,         --           .n
+			ci_master0_readra   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readra,    --           .readra
+			ci_master0_readrb   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readrb,    --           .readrb
+			ci_master0_writerc  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_writerc,   --           .writerc
+			ci_master0_a        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_a,         --           .a
+			ci_master0_b        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_b,         --           .b
+			ci_master0_c        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_c,         --           .c
+			ci_master0_ipending => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_ipending,  --           .ipending
+			ci_master0_estatus  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_estatus    --           .estatus
+		);
+
+	nios2_gen2_0_custom_instruction_master_comb_slave_translator0 : component altera_customins_slave_translator
+		generic map (
+			N_WIDTH          => 8,
+			USE_DONE         => 0,
+			NUM_FIXED_CYCLES => 0
+		)
+		port map (
+			ci_slave_dataa      => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_dataa,          --  ci_slave.dataa
+			ci_slave_datab      => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_datab,          --          .datab
+			ci_slave_result     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_result,         --          .result
+			ci_slave_n          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_n,              --          .n
+			ci_slave_readra     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readra,         --          .readra
+			ci_slave_readrb     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_readrb,         --          .readrb
+			ci_slave_writerc    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_writerc,        --          .writerc
+			ci_slave_a          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_a,              --          .a
+			ci_slave_b          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_b,              --          .b
+			ci_slave_c          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_c,              --          .c
+			ci_slave_ipending   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_ipending,       --          .ipending
+			ci_slave_estatus    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_estatus,        --          .estatus
+			ci_master_dataa     => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa,  -- ci_master.dataa
+			ci_master_result    => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result, --          .result
+			ci_master_datab     => open,                                                                           -- (terminated)
+			ci_master_n         => open,                                                                           -- (terminated)
+			ci_master_readra    => open,                                                                           -- (terminated)
+			ci_master_readrb    => open,                                                                           -- (terminated)
+			ci_master_writerc   => open,                                                                           -- (terminated)
+			ci_master_a         => open,                                                                           -- (terminated)
+			ci_master_b         => open,                                                                           -- (terminated)
+			ci_master_c         => open,                                                                           -- (terminated)
+			ci_master_ipending  => open,                                                                           -- (terminated)
+			ci_master_estatus   => open,                                                                           -- (terminated)
+			ci_master_clk       => open,                                                                           -- (terminated)
+			ci_master_clken     => open,                                                                           -- (terminated)
+			ci_master_reset_req => open,                                                                           -- (terminated)
+			ci_master_reset     => open,                                                                           -- (terminated)
+			ci_master_start     => open,                                                                           -- (terminated)
+			ci_master_done      => '0',                                                                            -- (terminated)
+			ci_slave_clk        => '0',                                                                            -- (terminated)
+			ci_slave_clken      => '0',                                                                            -- (terminated)
+			ci_slave_reset_req  => '0',                                                                            -- (terminated)
+			ci_slave_reset      => '0',                                                                            -- (terminated)
+			ci_slave_start      => '0',                                                                            -- (terminated)
+			ci_slave_done       => open                                                                            -- (terminated)
 		);
 
 	mm_interconnect_0 : component soc_system_mm_interconnect_0

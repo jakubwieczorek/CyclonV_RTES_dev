@@ -147,6 +147,7 @@ C_SRCS += src/parallel_port_test.c
 C_SRCS += src/interrupts_measurment.c
 C_SRCS += src/leds_service.c
 C_SRCS += src/counter.c
+C_SRCS += src/ucosIIsyncmechanisms.c
 CXX_SRCS :=
 ASM_SRCS :=
 

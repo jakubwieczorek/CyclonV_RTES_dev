@@ -5,15 +5,16 @@
   <columns>
    <connections preferredWidth="223" />
    <irq preferredWidth="34" />
-   <export preferredWidth="251" />
+   <export preferredWidth="255" />
    <name preferredWidth="222" />
    <description preferredWidth="215" />
    <inputclock preferredWidth="99" />
    <baseaddress preferredWidth="111" />
    <endaddress preferredWidth="99" />
+   <tags preferredWidth="30" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
+ <library expandedCategories="Project/custom_components,Library,Project" />
  <window width="1853" height="1173" x="67" y="27" />
  <generation synthesis="VHDL" block_symbol_file="0" />
 </preferences>

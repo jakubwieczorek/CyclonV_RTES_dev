@@ -92,14 +92,12 @@ begin
 	sAddress <= "000" after period*2, -- RegAddStart
 					"001" after period*3, -- RegLgt
 					"011" after period*4, -- ResultRegAddStart
-					"100" after period*5, -- operation
-					"010" after period*6; -- start
+					"010" after period*5; -- start
 					
 	sWriteData <= x"FFFFFFFF" after period*2, -- RegAddStart
 				     x"00000004" after period*3, -- RegLgt
 	              x"AAAAAAAA" after period*4, -- ResultRegAddStart
-	              x"FFFFFFF1" after period*5, -- operation
-	              x"FFFFFFF1" after period*6; -- start
+	              x"FFFFFFF1" after period*5; -- start
 	-- slave read
 	
 	-- master 

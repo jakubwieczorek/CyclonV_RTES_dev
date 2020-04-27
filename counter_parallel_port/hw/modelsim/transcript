@@ -3,42 +3,15 @@
 # Compile of swap_tb.vhd was successful.
 # Compile of swap.vhd was successful.
 # 2 compiles, 0 failed with no errors.
-vsim work.swap -t ns
-# vsim work.swap -t ns 
-# Start time: 09:06:22 on Apr 24,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.swap(swap_logic)
-quit -sim
-# End time: 09:06:46 on Apr 24,2020, Elapsed time: 0:00:24
-# Errors: 0, Warnings: 0
-vsim -t ns work.swap_test
-# vsim -t ns work.swap_test 
-# Start time: 09:06:54 on Apr 24,2020
+vsim work.swap_test -t ns
+# vsim work.swap_test -t ns 
+# Start time: 12:37:40 on Apr 27,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading work.swap_test(swap_test_logic)
 # Loading work.swap(swap_logic)
-add wave -position end  sim:/swap_test/Clk
-add wave -position end  sim:/swap_test/nReset
-add wave -position end  sim:/swap_test/sAddress
-add wave -position end  sim:/swap_test/sChipSelect
-add wave -position end  sim:/swap_test/sWrite
-add wave -position end  sim:/swap_test/sWriteData
-add wave -position end  sim:/swap_test/sRead
-add wave -position end  sim:/swap_test/sReadData
-add wave -position end  sim:/swap_test/mAddress
-add wave -position end  sim:/swap_test/mByteEnable
-add wave -position end  sim:/swap_test/mWrite
-add wave -position end  sim:/swap_test/mWriteData
-add wave -position end  sim:/swap_test/mRead
-add wave -position end  sim:/swap_test/mReadData
-add wave -position end  sim:/swap_test/mWaitRequest
-add wave -position end  sim:/swap_test/period
 add wave -position end  sim:/swap_test/swap_instance/Clk
 add wave -position end  sim:/swap_test/swap_instance/nReset
 add wave -position end  sim:/swap_test/swap_instance/sAddress
@@ -65,7 +38,6 @@ add wave -position end  sim:/swap_test/swap_instance/CntAdd
 add wave -position end  sim:/swap_test/swap_instance/CntLgt
 add wave -position end  sim:/swap_test/swap_instance/CntResultAdd
 add wave -position end  sim:/swap_test/swap_instance/state
-add wave -position end  sim:/swap_test/swap_instance/operation
 run -all
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
 # ** Error: Assertion violation.
@@ -73,205 +45,5 @@ run -all
 # ** Failure: simulation finished
 #    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
 # Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-vsim -t ns work.swap_test
-# End time: 09:12:04 on Apr 24,2020, Elapsed time: 0:05:10
+# End time: 12:42:35 on Apr 27,2020, Elapsed time: 0:04:55
 # Errors: 1, Warnings: 1
-# vsim -t ns work.swap_test 
-# Start time: 09:12:04 on Apr 24,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-add wave -position end  sim:/swap_test/swap_instance/Clk
-add wave -position end  sim:/swap_test/swap_instance/nReset
-add wave -position end  sim:/swap_test/swap_instance/sAddress
-add wave -position end  sim:/swap_test/swap_instance/sChipSelect
-add wave -position end  sim:/swap_test/swap_instance/sWrite
-add wave -position end  sim:/swap_test/swap_instance/sWriteData
-add wave -position end  sim:/swap_test/swap_instance/sRead
-add wave -position end  sim:/swap_test/swap_instance/sReadData
-add wave -position end  sim:/swap_test/swap_instance/mAddress
-add wave -position end  sim:/swap_test/swap_instance/mByteEnable
-add wave -position end  sim:/swap_test/swap_instance/mWrite
-add wave -position end  sim:/swap_test/swap_instance/mWriteData
-add wave -position end  sim:/swap_test/swap_instance/mRead
-add wave -position end  sim:/swap_test/swap_instance/mReadData
-add wave -position end  sim:/swap_test/swap_instance/mWaitRequest
-add wave -position end  sim:/swap_test/swap_instance/RegAddStart
-add wave -position end  sim:/swap_test/swap_instance/RegLgt
-add wave -position end  sim:/swap_test/swap_instance/Result
-add wave -position end  sim:/swap_test/swap_instance/ResultRegAddStart
-add wave -position end  sim:/swap_test/swap_instance/DataRd
-add wave -position end  sim:/swap_test/swap_instance/start
-add wave -position end  sim:/swap_test/swap_instance/finish
-add wave -position end  sim:/swap_test/swap_instance/CntAdd
-add wave -position end  sim:/swap_test/swap_instance/CntLgt
-add wave -position end  sim:/swap_test/swap_instance/CntResultAdd
-add wave -position end  sim:/swap_test/swap_instance/state
-add wave -position end  sim:/swap_test/swap_instance/operation
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-vsim -t ns work.swap_test
-# End time: 09:14:49 on Apr 24,2020, Elapsed time: 0:02:45
-# Errors: 1, Warnings: 1
-# vsim -t ns work.swap_test 
-# Start time: 09:14:49 on Apr 24,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-add wave -position end  sim:/swap_test/swap_instance/Clk
-add wave -position end  sim:/swap_test/swap_instance/nReset
-add wave -position end  sim:/swap_test/swap_instance/sAddress
-add wave -position end  sim:/swap_test/swap_instance/sChipSelect
-add wave -position end  sim:/swap_test/swap_instance/sWrite
-add wave -position end  sim:/swap_test/swap_instance/sWriteData
-add wave -position end  sim:/swap_test/swap_instance/sRead
-add wave -position end  sim:/swap_test/swap_instance/sReadData
-add wave -position end  sim:/swap_test/swap_instance/mAddress
-add wave -position end  sim:/swap_test/swap_instance/mByteEnable
-add wave -position end  sim:/swap_test/swap_instance/mWrite
-add wave -position end  sim:/swap_test/swap_instance/mWriteData
-add wave -position end  sim:/swap_test/swap_instance/mRead
-add wave -position end  sim:/swap_test/swap_instance/mReadData
-add wave -position end  sim:/swap_test/swap_instance/mWaitRequest
-add wave -position end  sim:/swap_test/swap_instance/RegAddStart
-add wave -position end  sim:/swap_test/swap_instance/RegLgt
-add wave -position end  sim:/swap_test/swap_instance/Result
-add wave -position end  sim:/swap_test/swap_instance/ResultRegAddStart
-add wave -position end  sim:/swap_test/swap_instance/DataRd
-add wave -position end  sim:/swap_test/swap_instance/start
-add wave -position end  sim:/swap_test/swap_instance/finish
-add wave -position end  sim:/swap_test/swap_instance/CntAdd
-add wave -position end  sim:/swap_test/swap_instance/CntLgt
-add wave -position end  sim:/swap_test/swap_instance/CntResultAdd
-add wave -position end  sim:/swap_test/swap_instance/state
-add wave -position end  sim:/swap_test/swap_instance/operation
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 123
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 125
-# Compile of swap_tb.vhd was successful.
-# Compile of swap.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-restart -f
-# Loading work.swap_test(swap_test_logic)
-# Loading work.swap(swap_logic)
-run -all
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Error: Assertion violation.
-#    Time: 500 ns  Iteration: 0  Instance: /swap_test
-# ** Failure: simulation finished
-#    Time: 500 ns  Iteration: 0  Process: /swap_test/end_process File: /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd
-# Break in Process end_process at /home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/modelsim/swap_tb.vhd line 125
-# End time: 09:35:05 on Apr 24,2020, Elapsed time: 0:20:16
-# Errors: 9, Warnings: 9

@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 27, 2020 10:22:09 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1588018929078</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 1, 2020 12:22:11 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1588328531598</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/software/bit_operations3_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspSettingsFile>/home/vm/CyclonV_RTES_dev/custom_instruction_profiling/hw/quartus/software/bit_operations3_bsp/settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../soc_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2_0</Cpu>

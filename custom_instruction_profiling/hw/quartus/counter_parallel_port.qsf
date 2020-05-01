@@ -1261,17 +1261,9 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
 set_global_assignment -name VHDL_FILE ../hdl/BitSwap.vhd
 set_global_assignment -name VHDL_FILE ../hdl/swap.vhd
-set_global_assignment -name VHDL_FILE ../modelsim/parallel_port_tb.vhd
-set_global_assignment -name VHDL_FILE ../hdl/parallel_port.vhd
-set_global_assignment -name VHDL_FILE ../modelsim/counter_tb.vhd
 set_global_assignment -name QSYS_FILE soc_system.qsys
 set_global_assignment -name VHDL_FILE ../hdl/DE1_SoC_top_level.vhd
-set_global_assignment -name VHDL_FILE ../hdl/counter.vhd
 set_global_assignment -name TCL_SCRIPT_FILE pin_assignment_DE1_SoC.tcl
-set_global_assignment -name SIGNALTAP_FILE logic_analysis.stp
-set_global_assignment -name TCL_SCRIPT_FILE interupt_counterr_hw.tcl
-set_global_assignment -name TCL_SCRIPT_FILE parallel_port_hw.tcl
-set_global_assignment -name SOURCE_FILE db/counter_parallel_port.cmp.rdb
 set_global_assignment -name VHDL_FILE ../modelsim/swap_tb.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/logic_analysis_auto_stripped.stp

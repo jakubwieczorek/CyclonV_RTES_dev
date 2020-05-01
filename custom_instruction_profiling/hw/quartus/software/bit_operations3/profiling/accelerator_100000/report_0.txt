@@ -1,0 +1,345 @@
+Flat profile:
+
+Each sample counts as 1 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00        3     0.00     0.00  alt_file_locked
+  0.00      0.00     0.00        3     0.00     0.00  alt_find_dev
+  0.00      0.00     0.00        3     0.00     0.00  alt_get_fd
+  0.00      0.00     0.00        3     0.00     0.00  alt_load_section
+  0.00      0.00     0.00        3     0.00     0.00  alt_open_fd
+  0.00      0.00     0.00        3     0.00     0.00  alt_release_fd
+  0.00      0.00     0.00        3     0.00     0.00  memcmp
+  0.00      0.00     0.00        3     0.00     0.00  open
+  0.00      0.00     0.00        3     0.00     0.00  strlen
+  0.00      0.00     0.00        2     0.00     0.00  alt_alarm_start
+  0.00      0.00     0.00        2     0.00     0.00  alt_ic_irq_enable
+  0.00      0.00     0.00        2     0.00     0.00  alt_ic_isr_register
+  0.00      0.00     0.00        2     0.00     0.00  alt_iic_isr_register
+  0.00      0.00     0.00        1     0.00     0.00  __call_exitprocs
+  0.00      0.00     0.00        1     0.00     0.00  __register_exitproc
+  0.00      0.00     0.00        1     0.00     0.00  _do_ctors
+  0.00      0.00     0.00        1     0.00     0.00  _do_dtors
+  0.00      0.00     0.00        1     0.00     0.00  _exit
+  0.00      0.00     0.00        1     0.00     0.00  alt_avalon_timer_sc_init
+  0.00      0.00     0.00        1     0.00     0.00  alt_avalon_timer_sc_irq
+  0.00      0.00     0.00        1     0.00     0.00  alt_dcache_flush_all
+  0.00      0.00     0.00        1     0.00     0.00  alt_dev_llist_insert
+  0.00      0.00     0.00        1     0.00     0.00  alt_dev_reg
+  0.00      0.00     0.00        1     0.00     0.00  alt_icache_flush
+  0.00      0.00     0.00        1     0.00     0.00  alt_icache_flush_all
+  0.00      0.00     0.00        1     0.00     0.00  alt_io_redirect
+  0.00      0.00     0.00        1     0.00     0.00  alt_irq_handler
+  0.00      0.00     0.00        1     0.00     0.00  alt_irq_init
+  0.00      0.00     0.00        1     0.00     0.00  alt_load
+  0.00      0.00     0.00        1     0.00     0.00  alt_main
+  0.00      0.00     0.00        1     0.00     0.00  alt_sys_init
+  0.00      0.00     0.00        1     0.00     0.00  alt_tick
+  0.00      0.00     0.00        1     0.00     0.00  altera_avalon_jtag_uart_init
+  0.00      0.00     0.00        1     0.00     0.00  altera_nios2_gen2_irq_init
+  0.00      0.00     0.00        1     0.00     0.00  atexit
+  0.00      0.00     0.00        1     0.00     0.00  bit_reshuffle_hardware_accelerator
+  0.00      0.00     0.00        1     0.00     0.00  exit
+  0.00      0.00     0.00        1     0.00     0.00  main
+  0.00      0.00     0.00        1     0.00     0.00  memset
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 32 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00       3/3           open [8]
+[1]      0.0    0.00    0.00       3         alt_file_locked [1]
+-----------------------------------------------
+                0.00    0.00       3/3           open [8]
+[2]      0.0    0.00    0.00       3         alt_find_dev [2]
+                0.00    0.00       3/3           strlen [9]
+                0.00    0.00       3/3           memcmp [7]
+-----------------------------------------------
+                0.00    0.00       3/3           open [8]
+[3]      0.0    0.00    0.00       3         alt_get_fd [3]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_load [24]
+[4]      0.0    0.00    0.00       3         alt_load_section [4]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_io_redirect [21]
+[5]      0.0    0.00    0.00       3         alt_open_fd [5]
+                0.00    0.00       3/3           alt_release_fd [6]
+                0.00    0.00       3/3           open [8]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_open_fd [5]
+[6]      0.0    0.00    0.00       3         alt_release_fd [6]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_find_dev [2]
+[7]      0.0    0.00    0.00       3         memcmp [7]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_open_fd [5]
+[8]      0.0    0.00    0.00       3         open [8]
+                0.00    0.00       3/3           alt_file_locked [1]
+                0.00    0.00       3/3           alt_find_dev [2]
+                0.00    0.00       3/3           alt_get_fd [3]
+-----------------------------------------------
+                0.00    0.00       3/3           alt_find_dev [2]
+[9]      0.0    0.00    0.00       3         strlen [9]
+-----------------------------------------------
+                0.00    0.00       1/2           altera_avalon_jtag_uart_init [28]
+                0.00    0.00       1/2           nios2_pcsample_init [81]
+[10]     0.0    0.00    0.00       2         alt_alarm_start [10]
+-----------------------------------------------
+                0.00    0.00       2/2           alt_iic_isr_register [13]
+[11]     0.0    0.00    0.00       2         alt_ic_irq_enable [11]
+-----------------------------------------------
+                0.00    0.00       1/2           altera_avalon_jtag_uart_init [28]
+                0.00    0.00       1/2           alt_avalon_timer_sc_init [14]
+[12]     0.0    0.00    0.00       2         alt_ic_isr_register [12]
+                0.00    0.00       2/2           alt_iic_isr_register [13]
+-----------------------------------------------
+                0.00    0.00       2/2           alt_ic_isr_register [12]
+[13]     0.0    0.00    0.00       2         alt_iic_isr_register [13]
+                0.00    0.00       2/2           alt_ic_irq_enable [11]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_sys_init [26]
+[14]     0.0    0.00    0.00       1         alt_avalon_timer_sc_init [14]
+                0.00    0.00       1/2           alt_ic_isr_register [12]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_irq_handler [22]
+[15]     0.0    0.00    0.00       1         alt_avalon_timer_sc_irq [15]
+                0.00    0.00       1/1           alt_tick [27]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_load [24]
+[16]     0.0    0.00    0.00       1         alt_dcache_flush_all [16]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_dev_reg [18]
+[17]     0.0    0.00    0.00       1         alt_dev_llist_insert [17]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_sys_init [26]
+[18]     0.0    0.00    0.00       1         alt_dev_reg [18]
+                0.00    0.00       1/1           alt_dev_llist_insert [17]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_icache_flush_all [20]
+[19]     0.0    0.00    0.00       1         alt_icache_flush [19]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_load [24]
+[20]     0.0    0.00    0.00       1         alt_icache_flush_all [20]
+                0.00    0.00       1/1           alt_icache_flush [19]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[21]     0.0    0.00    0.00       1         alt_io_redirect [21]
+                0.00    0.00       3/3           alt_open_fd [5]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_exception [40]
+[22]     0.0    0.00    0.00       1         alt_irq_handler [22]
+                0.00    0.00       1/1           alt_avalon_timer_sc_irq [15]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[23]     0.0    0.00    0.00       1         alt_irq_init [23]
+                0.00    0.00       1/1           altera_nios2_gen2_irq_init [29]
+-----------------------------------------------
+                0.00    0.00       1/1           _start [202]
+[24]     0.0    0.00    0.00       1         alt_load [24]
+                0.00    0.00       3/3           alt_load_section [4]
+                0.00    0.00       1/1           alt_dcache_flush_all [16]
+                0.00    0.00       1/1           alt_icache_flush_all [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _start [202]
+[25]     0.0    0.00    0.00       1         alt_main [25]
+                0.00    0.00       1/1           __register_exitproc [97]
+                0.00    0.00       1/1           alt_io_redirect [21]
+                0.00    0.00       1/1           _do_ctors [98]
+                0.00    0.00       1/1           alt_irq_init [23]
+                0.00    0.00       1/1           alt_sys_init [26]
+                0.00    0.00       1/1           main [33]
+                0.00    0.00       1/1           atexit [30]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[26]     0.0    0.00    0.00       1         alt_sys_init [26]
+                0.00    0.00       1/1           alt_avalon_timer_sc_init [14]
+                0.00    0.00       1/1           alt_dev_reg [18]
+                0.00    0.00       1/1           altera_avalon_jtag_uart_init [28]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_avalon_timer_sc_irq [15]
+[27]     0.0    0.00    0.00       1         alt_tick [27]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_sys_init [26]
+[28]     0.0    0.00    0.00       1         altera_avalon_jtag_uart_init [28]
+                0.00    0.00       1/2           alt_alarm_start [10]
+                0.00    0.00       1/2           alt_ic_isr_register [12]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_irq_init [23]
+[29]     0.0    0.00    0.00       1         altera_nios2_gen2_irq_init [29]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[30]     0.0    0.00    0.00       1         atexit [30]
+-----------------------------------------------
+                0.00    0.00       1/1           main [33]
+[31]     0.0    0.00    0.00       1         bit_reshuffle_hardware_accelerator [31]
+-----------------------------------------------
+                0.00    0.00       1/1           main [33]
+[32]     0.0    0.00    0.00       1         exit [32]
+                0.00    0.00       1/1           __call_exitprocs [96]
+                0.00    0.00       1/1           _exit [100]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[33]     0.0    0.00    0.00       1         main [33]
+                0.00    0.00       1/1           exit [32]
+                0.00    0.00       1/1           bit_reshuffle_hardware_accelerator [31]
+-----------------------------------------------
+                0.00    0.00       1/1           nios2_pcsample_init [81]
+[34]     0.0    0.00    0.00       1         memset [34]
+-----------------------------------------------
+                0.00    0.00       1/1           exit [32]
+[96]     0.0    0.00    0.00       1         __call_exitprocs [96]
+                0.00    0.00       1/1           _do_dtors [99]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[97]     0.0    0.00    0.00       1         __register_exitproc [97]
+-----------------------------------------------
+                0.00    0.00       1/1           alt_main [25]
+[98]     0.0    0.00    0.00       1         _do_ctors [98]
+-----------------------------------------------
+                0.00    0.00       1/1           __call_exitprocs [96]
+[99]     0.0    0.00    0.00       1         _do_dtors [99]
+-----------------------------------------------
+                0.00    0.00       1/1           exit [32]
+[100]    0.0    0.00    0.00       1         _exit [100]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [96] __call_exitprocs        [3] alt_get_fd              [6] alt_release_fd
+  [97] __register_exitproc    [11] alt_ic_irq_enable      [26] alt_sys_init
+  [98] _do_ctors              [12] alt_ic_isr_register    [27] alt_tick
+  [99] _do_dtors              [19] alt_icache_flush       [28] altera_avalon_jtag_uart_init
+ [100] _exit                  [20] alt_icache_flush_all   [29] altera_nios2_gen2_irq_init
+  [10] alt_alarm_start        [13] alt_iic_isr_register   [30] atexit
+  [14] alt_avalon_timer_sc_init [21] alt_io_redirect      [31] bit_reshuffle_hardware_accelerator
+  [15] alt_avalon_timer_sc_irq (altera_avalon_timer_sc.c) [22] alt_irq_handler [32] exit
+  [16] alt_dcache_flush_all   [23] alt_irq_init           [33] main
+  [17] alt_dev_llist_insert   [24] alt_load                [7] memcmp
+  [18] alt_dev_reg (alt_dev.h) [4] alt_load_section (alt_load.h) [34] memset
+   [1] alt_file_locked (alt_open.c) [25] alt_main          [8] open
+   [2] alt_find_dev            [5] alt_open_fd (alt_io_redirect.c) [9] strlen

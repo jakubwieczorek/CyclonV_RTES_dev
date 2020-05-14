@@ -7,6 +7,8 @@
    <irq preferredWidth="47" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
- <window width="1853" height="948" x="67" y="27" />
+ <library
+   expandedCategories="Library/Qsys Interconnect,Project/custom_components,Library,Library/Qsys Interconnect/Interrupt,Project" />
+ <window width="1853" height="1173" x="67" y="27" />
+ <generation synthesis="VHDL" />
 </preferences>

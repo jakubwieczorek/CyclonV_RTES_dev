@@ -49,6 +49,27 @@
          type = "String";
       }
    }
+   element interrupt_counter_0
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element interrupt_counter_0.avalon_slave_0
+   {
+      datum baseAddress
+      {
+         value = "135232";
+         type = "String";
+      }
+   }
    element jtag_uart_0
    {
       datum _sortIndex
@@ -61,7 +82,7 @@
    {
       datum baseAddress
       {
-         value = "135320";
+         value = "135336";
          type = "String";
       }
    }
@@ -77,7 +98,7 @@
    {
       datum baseAddress
       {
-         value = "135320";
+         value = "135336";
          type = "String";
       }
    }
@@ -117,7 +138,7 @@
    {
       datum baseAddress
       {
-         value = "135264";
+         value = "135312";
          type = "String";
       }
    }
@@ -125,7 +146,7 @@
    {
       datum baseAddress
       {
-         value = "135280";
+         value = "135312";
          type = "String";
       }
    }
@@ -141,7 +162,7 @@
    {
       datum baseAddress
       {
-         value = "135312";
+         value = "135328";
          type = "String";
       }
    }
@@ -221,7 +242,7 @@
    {
       datum baseAddress
       {
-         value = "135232";
+         value = "135264";
          type = "String";
       }
    }
@@ -237,7 +258,7 @@
    {
       datum baseAddress
       {
-         value = "135232";
+         value = "135264";
          type = "String";
       }
    }
@@ -295,7 +316,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x10000' end='0x20000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='perf_count_0.control_slave' start='0x21000' end='0x21040' type='altera_avalon_performance_counter.control_slave' /><slave name='timer_0.s1' start='0x21040' end='0x21060' type='altera_avalon_timer.s1' /><slave name='mailbox_simple_0.avmm_msg_sender' start='0x21070' end='0x21080' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='leds_0.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='mutex_0.s1' start='0x21090' end='0x21098' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21098' end='0x210A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x10000' end='0x20000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='perf_count_0.control_slave' start='0x21000' end='0x21040' type='altera_avalon_performance_counter.control_slave' /><slave name='interrupt_counter_0.avalon_slave_0' start='0x21040' end='0x21060' type='interrupt_counter.avalon_slave_0' /><slave name='timer_0.s1' start='0x21060' end='0x21080' type='altera_avalon_timer.s1' /><slave name='leds_0.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='mailbox_simple_0.avmm_msg_sender' start='0x21090' end='0x210A0' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='mutex_0.s1' start='0x210A0' end='0x210A8' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x210A8' end='0x210B0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -341,7 +362,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="15" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -473,7 +494,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_1.s1' start='0x10000' end='0x20000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu_1.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='perf_count_1.control_slave' start='0x21000' end='0x21040' type='altera_avalon_performance_counter.control_slave' /><slave name='timer_1.s1' start='0x21040' end='0x21060' type='altera_avalon_timer.s1' /><slave name='mailbox_simple_0.avmm_msg_receiver' start='0x21060' end='0x21070' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='leds_0.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='mutex_0.s1' start='0x21090' end='0x21098' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_1.avalon_jtag_slave' start='0x21098' end='0x210A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_1.s1' start='0x10000' end='0x20000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu_1.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='perf_count_1.control_slave' start='0x21000' end='0x21040' type='altera_avalon_performance_counter.control_slave' /><slave name='interrupt_counter_0.avalon_slave_0' start='0x21040' end='0x21060' type='interrupt_counter.avalon_slave_0' /><slave name='timer_1.s1' start='0x21060' end='0x21080' type='altera_avalon_timer.s1' /><slave name='leds_0.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='mailbox_simple_0.avmm_msg_receiver' start='0x21090' end='0x210A0' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='mutex_0.s1' start='0x210A0' end='0x210A8' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_1.avalon_jtag_slave' start='0x210A8' end='0x210B0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -519,7 +540,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="15" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -632,6 +653,11 @@
   <parameter name="userDefinedSettings" value="" />
  </module>
  <module
+   name="interrupt_counter_0"
+   kind="interrupt_counter"
+   version="1.0"
+   enabled="1" />
+ <module
    name="jtag_uart_0"
    kind="altera_avalon_jtag_uart"
    version="18.1"
@@ -703,7 +729,7 @@
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2_0</parameter>
+  <parameter name="autoInitializationFileName">soc_system_onchip_memory2_0</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -735,7 +761,7 @@
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2_1</parameter>
+  <parameter name="autoInitializationFileName">soc_system_onchip_memory2_1</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -805,7 +831,7 @@
    start="cpu_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021098" />
+  <parameter name="baseAddress" value="0x000210a8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -814,7 +840,25 @@
    start="cpu_1.data_master"
    end="jtag_uart_1.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021098" />
+  <parameter name="baseAddress" value="0x000210a8" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="cpu_1.data_master"
+   end="interrupt_counter_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="cpu_0.data_master"
+   end="interrupt_counter_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -823,7 +867,7 @@
    start="cpu_1.data_master"
    end="mailbox_simple_0.avmm_msg_receiver">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021060" />
+  <parameter name="baseAddress" value="0x00021090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -832,7 +876,7 @@
    start="cpu_0.data_master"
    end="mailbox_simple_0.avmm_msg_sender">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021070" />
+  <parameter name="baseAddress" value="0x00021090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -886,7 +930,7 @@
    start="cpu_1.data_master"
    end="mutex_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021090" />
+  <parameter name="baseAddress" value="0x000210a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -895,7 +939,7 @@
    start="cpu_0.data_master"
    end="mutex_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021090" />
+  <parameter name="baseAddress" value="0x000210a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -931,7 +975,7 @@
    start="cpu_1.data_master"
    end="timer_1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021040" />
+  <parameter name="baseAddress" value="0x00021060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -940,7 +984,7 @@
    start="cpu_0.data_master"
    end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021040" />
+  <parameter name="baseAddress" value="0x00021060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1005,32 +1049,51 @@
    start="clk_0.clk"
    end="onchip_memory2_1.clk1" />
  <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="interrupt_counter_0.clock" />
+ <connection
    kind="interrupt"
    version="18.1"
    start="cpu_1.irq"
    end="mailbox_simple_0.interrupt_msg_pending">
-  <parameter name="irqNumber" value="1" />
+  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="cpu_0.irq"
    end="mailbox_simple_0.interrupt_msg_pending">
-  <parameter name="irqNumber" value="1" />
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="cpu_1.irq"
+   end="interrupt_counter_0.interrupt_sender">
+  <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="cpu_0.irq"
+   end="interrupt_counter_0.interrupt_sender">
+  <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="cpu_0.irq"
    end="jtag_uart_0.irq">
-  <parameter name="irqNumber" value="0" />
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="cpu_1.irq"
    end="jtag_uart_1.irq">
-  <parameter name="irqNumber" value="0" />
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection kind="interrupt" version="18.1" start="cpu_0.irq" end="timer_0.irq">
   <parameter name="irqNumber" value="2" />
@@ -1090,6 +1153,11 @@
    version="18.1"
    start="clk_0.clk_reset"
    end="onchip_memory2_1.reset1" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="interrupt_counter_0.reset_sink" />
  <connection
    kind="reset"
    version="18.1"
@@ -1165,6 +1233,16 @@
    version="18.1"
    start="cpu_1.debug_reset_request"
    end="onchip_memory2_1.reset1" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu_1.debug_reset_request"
+   end="interrupt_counter_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu_0.debug_reset_request"
+   end="interrupt_counter_0.reset_sink" />
  <connection
    kind="reset"
    version="18.1"

@@ -764,6 +764,11 @@
 													<placeholder>dock.single.Interconnect\ Requirements</placeholder>
 												</key>
 											</entry>
+											<entry>
+												<key shared="false">
+													<placeholder>dock.single.Parameters</placeholder>
+												</key>
+											</entry>
 										</placeholders>
 									</content>
 								</delegate>
@@ -935,7 +940,6 @@
 														<leaf id="-1" nodeId="1389812800464">
 															<placeholders>
 																<placeholder>dock.single.Details</placeholder>
-																<placeholder>dock.single.Parameters</placeholder>
 																<placeholder>dock.single.Block\ Symbol</placeholder>
 																<placeholder>dock.single.Presets</placeholder>
 															</placeholders>
@@ -950,11 +954,6 @@
 																<entry>
 																	<key shared="false">
 																		<placeholder>dock.single.Details</placeholder>
-																	</key>
-																</entry>
-																<entry>
-																	<key shared="false">
-																		<placeholder>dock.single.Parameters</placeholder>
 																	</key>
 																</entry>
 																<entry>
@@ -1024,7 +1023,7 @@
 								</child>
 								<child>
 									<layout factory="delegate_StackDockStationFactory">
-										<selected>0</selected>
+										<selected>3</selected>
 										<placeholders>
 											<version>0</version>
 											<format>dock.PlaceholderList</format>
@@ -1095,6 +1094,20 @@
 													<placeholder>dock.single.Schematic</placeholder>
 												</key>
 											</entry>
+											<entry>
+												<key shared="false">
+													<placeholder>dock.single.Parameters</placeholder>
+												</key>
+												<item key="convert" type="b">true</item>
+												<item key="convert-keys" type="a">
+													<item type="s">index</item>
+													<item type="s">id</item>
+													<item type="s">placeholder</item>
+												</item>
+												<item key="dock.index" type="i">3</item>
+												<item key="dock.id" type="i">3</item>
+												<item key="dock.placeholder" type="s">dock.single.Parameters</item>
+											</entry>
 										</placeholders>
 									</layout>
 									<children ignore="false">
@@ -1123,6 +1136,16 @@
 												<replacement id="dockablesingle Interconnect Requirements"/>
 												<delegate id="delegate_ccontrol backup factory id">
 													<id>Interconnect Requirements</id>
+													<area/>
+												</delegate>
+											</layout>
+											<children ignore="false"/>
+										</child>
+										<child>
+											<layout factory="predefined" placeholder="dock.single.Parameters">
+												<replacement id="dockablesingle Parameters"/>
+												<delegate id="delegate_ccontrol backup factory id">
+													<id>Parameters</id>
 													<area/>
 												</delegate>
 											</layout>
@@ -1264,30 +1287,6 @@
 									<replacement id="dockablesingle Assignments"/>
 									<delegate id="delegate_ccontrol backup factory id">
 										<id>Assignments</id>
-										<area/>
-									</delegate>
-								</layout>
-								<children ignore="false"/>
-							</layout>
-						</child>
-						<child key="single Parameters" root="ccontrol center" location="true">
-							<location>
-								<property factory="SplitDockPlaceholderProperty">
-									<placeholder>dock.single.Parameters</placeholder>
-									<backup-path>
-										<node location="RIGHT" size="0.7781885397412199" id="1372710005721"/>
-										<node location="TOP" size="0.75" id="1372710005725"/>
-										<node location="RIGHT" size="0.38168060992145725" id="1372710005727"/>
-										<node location="TOP" size="0.6704331450094162" id="1389812802503"/>
-										<leaf id="1389812800464"/>
-									</backup-path>
-								</property>
-							</location>
-							<layout>
-								<layout factory="predefined" placeholder="dock.single.Parameters">
-									<replacement id="dockablesingle Parameters"/>
-									<delegate id="delegate_ccontrol backup factory id">
-										<id>Parameters</id>
 										<area/>
 									</delegate>
 								</layout>
@@ -1567,7 +1566,7 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single Parameters">
+						<entry id="single Parameters" current="dock.mode.normal">
 							<history>
 								<mode>dock.mode.minimized</mode>
 								<mode>dock.mode.normal</mode>
@@ -1575,7 +1574,7 @@
 							<properties>
 								<property id="dock.mode.minimized">
 									<mode>dock.mode.minimized</mode>
-									<root>ccontrol west</root>
+									<root>ccontrol north</root>
 									<location>
 										<property factory="flap dock">
 											<index>0</index>
@@ -1596,9 +1595,12 @@
 												<node location="TOP" size="0.75" id="1372710005725"/>
 												<node location="LEFT" size="0.6183193900785428" id="1372710005727"/>
 												<node location="TOP" size="0.75" id="1372710005733"/>
-												<node location="BOTTOM" size="0.47858823529411765" id="1389812862722"/>
-												<leaf id="1389812862721"/>
+												<leaf id="1372710005735"/>
 											</backup-path>
+										</property>
+										<property factory="StackDockPropertyFactory">
+											<index>3</index>
+											<placeholder>dock.single.Parameters</placeholder>
 										</property>
 									</location>
 								</property>

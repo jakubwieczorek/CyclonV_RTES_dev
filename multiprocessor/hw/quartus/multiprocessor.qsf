@@ -1152,8 +1152,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[34]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1_34
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[35]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1_35
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VHDL_FILE ../hdl/parallel_port.vhd
 set_global_assignment -name VHDL_FILE ../hdl/counter.vhd
+set_global_assignment -name VHDL_FILE ../hdl/parallel_port.vhd
 set_global_assignment -name QSYS_FILE soc_system.qsys
 set_global_assignment -name VHDL_FILE ../hdl/DE1_SoC_top_level.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

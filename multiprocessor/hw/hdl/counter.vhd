@@ -29,15 +29,15 @@ ARCHITECTURE counter_logic OF counter IS
 	signal iIRQEn 	 : std_logic;
 
 BEGIN
-	pCounter : process(Clk) begin
-		if rising_edge(Clk) then
-			if iRz= '1' then
-				iCounter <= (others => '0');
-			elsif iEn = '1' then
-				iCounter <= iCounter+1;
-			end if;
-		end if;
-	end process pCounter;
+--	pCounter : process(Clk) begin
+--		if rising_edge(Clk) then
+--			if iRz= '1' then
+--				iCounter <= (others => '0');
+--			elsif iEn = '1' then
+--				iCounter <= iCounter+1;
+--			end if;
+--		end if;
+--	end process pCounter;
 	
 	pRegWr : process(Clk, nReset) begin
 		if nReset = '0' then 
@@ -55,7 +55,9 @@ BEGIN
 					when "011" => iEn 	 <= '0'; -- Stop Run
 					when "100" => iIRQEn  <= WriteData(0);
 					when "101" => iClrEOT <= WriteData(0);
-					when "110" => iCounter<= unsigned(WriteData);
+					when "110" => iCounter <= unsigned(WriteData);
+					when "111" => iCounter <= iCounter + unsigned(WriteData);
+
 					when others => null;
 				end case;
 			end if;

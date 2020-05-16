@@ -17,19 +17,15 @@
 #include <stdio.h>
 #include "system.h"
 #include "io.h"
-#include "altera_avalon_mutex_regs.h"
 #include "altera_avalon_mutex.h"
 
 int main(void)
 {
-	alt_mutex_dev* mutex = altera_avalon_mutex_open("/dev/mutex_0");
+	alt_mutex_dev* mutex = altera_avalon_mutex_open(MUTEX_0_NAME);
 	int i;
-	while(1)
-	{
-		altera_avalon_mutex_lock(mutex, 1);
-		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b0000000001);
-		altera_avalon_mutex_unlock(mutex);
-		for(i = 0;i <3000000;i++);
-	}
-  return 0;
+	altera_avalon_mutex_lock(mutex, 1);
+	for(i = 0;i <11000000;i++);
+	IOWR_32DIRECT(LEDS_0_BASE, 0, 0b0000000001);
+	altera_avalon_mutex_unlock(mutex);
+	return 0;
 }

@@ -19,17 +19,36 @@
 #include "io.h"
 #include "altera_avalon_mutex_regs.h"
 #include "altera_avalon_mutex.h"
+#include "altera_avalon_mailbox_simple.h"
+
+void ReceiveCallBack(void* message)
+{
+	/* Get message read from mailbox */
+	alt_u32* data = (alt_u32*) message;
+	if (message!= NULL)
+		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b00110000); // Success
+	else
+		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b00011000); // Fail
+}
+
 
 int main(void)
 {
-	alt_mutex_dev* mutex = altera_avalon_mutex_open("/dev/mutex_0");
-	int i;
-	while(1)
-	{
-		altera_avalon_mutex_lock(mutex, 1);
-		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b0000000010);
-		altera_avalon_mutex_unlock(mutex);
-		for(i = 0;i <300000;i++);
-	}
-  return 0;
+	alt_u32* rmessage[2];
+	int timeout     = 50000;
+	altera_avalon_mailbox_dev* mailbox_rcv;
+
+	/* This example is running on receiver processor */
+	mailbox_rcv = altera_avalon_mailbox_open("/dev/mailbox_simple_1", NULL, ReceiveCallBack);
+
+	/* For interrupt disable system */
+	altera_avalon_mailbox_retrieve_poll(mailbox_rcv, rmessage, timeout);
+
+	if (rmessage == NULL)
+		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b00010000); // Fail
+	else
+		IOWR_32DIRECT(LEDS_0_BASE, 0, 0b00100000); // Success
+
+	altera_avalon_mailbox_close (mailbox_rcv);
+	return 0;
 }

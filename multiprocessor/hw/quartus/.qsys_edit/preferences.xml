@@ -5,6 +5,8 @@
   <columns>
    <connections preferredWidth="223" />
    <irq preferredWidth="47" />
+   <tags preferredWidth="30" />
+   <opcodeName preferredWidth="30" />
   </columns>
  </systemtable>
  <library expandedCategories="Project/custom_components,Library,Project" />
